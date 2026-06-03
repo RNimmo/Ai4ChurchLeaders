@@ -3,356 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI for Ministry - Emmaus Workshop Resource</title>
+<title>AI for Ministry - Workshop Resource</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg: #faf9f7;
-    --surface: #ffffff;
-    --surface2: #f3f1ee;
-    --border: rgba(0,0,0,0.1);
-    --border2: rgba(0,0,0,0.18);
-    --text: #1a1916;
-    --text2: #5a574f;
-    --text3: #8a8780;
-    --teal-bg: #e1f5ee;
-    --teal-border: #5dcaa5;
-    --teal-text: #085041;
-    --teal-mid: #0f6e56;
-    --amber-bg: #faeeda;
-    --amber-border: #ef9f27;
-    --amber-text: #633806;
-    --red-bg: #fcebeb;
-    --red-border: #f09595;
-    --red-text: #791f1f;
-    --green-bg: #eaf3de;
-    --green-border: #97c459;
-    --green-text: #27500a;
-    --purple-bg: #eeedfe;
-    --purple-border: #afa9ec;
-    --purple-text: #3c3489;
-    --blue-bg: #e6f1fb;
-    --blue-border: #85b7eb;
-    --blue-text: #0c447c;
-    --coral-bg: #faece7;
-    --coral-border: #f0997b;
-    --coral-text: #712b13;
-    --radius: 10px;
-    --radius-sm: 6px;
+    --bg: #faf9f7; --surface: #ffffff; --surface2: #f3f1ee;
+    --border: rgba(0,0,0,0.1); --border2: rgba(0,0,0,0.18);
+    --text: #1a1916; --text2: #5a574f; --text3: #8a8780;
+    --teal-bg: #e1f5ee; --teal-border: #5dcaa5; --teal-text: #085041; --teal-mid: #0f6e56;
+    --amber-bg: #faeeda; --amber-border: #ef9f27; --amber-text: #633806;
+    --red-bg: #fcebeb; --red-border: #f09595; --red-text: #791f1f;
+    --green-bg: #eaf3de; --green-border: #97c459; --green-text: #27500a;
+    --purple-bg: #eeedfe; --purple-border: #afa9ec; --purple-text: #3c3489;
+    --blue-bg: #e6f1fb; --blue-border: #85b7eb; --blue-text: #0c447c;
+    --coral-bg: #faece7; --coral-border: #f0997b; --coral-text: #712b13;
+    --radius: 10px; --radius-sm: 6px;
   }
-
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #1a1916;
-      --surface: #242220;
-      --surface2: #2e2c29;
-      --border: rgba(255,255,255,0.1);
-      --border2: rgba(255,255,255,0.18);
-      --text: #f0ede8;
-      --text2: #a8a49c;
-      --text3: #6a6760;
-      --teal-bg: #04342c;
-      --teal-border: #1d9e75;
-      --teal-text: #9fe1cb;
-      --teal-mid: #5dcaa5;
-      --amber-bg: #412402;
-      --amber-border: #ba7517;
-      --amber-text: #fac775;
-      --red-bg: #501313;
-      --red-border: #a32d2d;
-      --red-text: #f7c1c1;
-      --green-bg: #173404;
-      --green-border: #3b6d11;
-      --green-text: #c0dd97;
-      --purple-bg: #26215c;
-      --purple-border: #534ab7;
-      --purple-text: #cecbf6;
-      --blue-bg: #042c53;
-      --blue-border: #185fa5;
-      --blue-text: #b5d4f4;
-      --coral-bg: #4a1b0c;
-      --coral-border: #993c1d;
-      --coral-text: #f5c4b3;
+      --bg: #1a1916; --surface: #242220; --surface2: #2e2c29;
+      --border: rgba(255,255,255,0.1); --border2: rgba(255,255,255,0.18);
+      --text: #f0ede8; --text2: #a8a49c; --text3: #6a6760;
+      --teal-bg: #04342c; --teal-border: #1d9e75; --teal-text: #9fe1cb; --teal-mid: #5dcaa5;
+      --amber-bg: #412402; --amber-border: #ba7517; --amber-text: #fac775;
+      --red-bg: #501313; --red-border: #a32d2d; --red-text: #f7c1c1;
+      --green-bg: #173404; --green-border: #3b6d11; --green-text: #c0dd97;
+      --purple-bg: #26215c; --purple-border: #534ab7; --purple-text: #cecbf6;
+      --blue-bg: #042c53; --blue-border: #185fa5; --blue-text: #b5d4f4;
+      --coral-bg: #4a1b0c; --coral-border: #993c1d; --coral-text: #f5c4b3;
     }
   }
-
   html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    font-size: 16px;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-
-  /* Header */
-  .site-header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 2.5rem 1.5rem 2rem;
-    text-align: center;
-  }
-  .eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text3);
-    margin-bottom: 0.6rem;
-  }
-  .site-header h1 {
-    font-family: 'Lora', Georgia, serif;
-    font-size: clamp(1.75rem, 5vw, 2.4rem);
-    font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 0.6rem;
-  }
-  .site-header p {
-    color: var(--text2);
-    font-size: 15px;
-    max-width: 520px;
-    margin: 0 auto 1.25rem;
-    line-height: 1.65;
-  }
-  .header-tagline {
-    display: inline-block;
-    font-family: 'Lora', serif;
-    font-style: italic;
-    font-size: 14px;
-    color: var(--teal-mid);
-    border: 1px solid var(--teal-border);
-    background: var(--teal-bg);
-    border-radius: 20px;
-    padding: 5px 16px;
-  }
-
-  /* Nav */
-  .tab-nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 0.75rem 1rem;
-    display: flex;
-    gap: 6px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
+  body { font-family: 'DM Sans', system-ui, sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.6; min-height: 100vh; }
+  .site-header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 2.5rem 1.5rem 2rem; text-align: center; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); margin-bottom: 0.6rem; }
+  .site-header h1 { font-family: 'Lora', Georgia, serif; font-size: clamp(1.75rem, 5vw, 2.4rem); font-weight: 600; line-height: 1.2; margin-bottom: 0.6rem; }
+  .site-header p { color: var(--text2); font-size: 15px; max-width: 520px; margin: 0 auto 1.25rem; line-height: 1.65; }
+  .header-tagline { display: inline-block; font-family: 'Lora', serif; font-style: italic; font-size: 14px; color: var(--teal-mid); border: 1px solid var(--teal-border); background: var(--teal-bg); border-radius: 20px; padding: 5px 16px; }
+  .tab-nav { position: sticky; top: 0; z-index: 100; background: var(--surface); border-bottom: 1px solid var(--border); padding: 0.75rem 1rem; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .tab-nav::-webkit-scrollbar { display: none; }
-
-  .tab-btn {
-    flex-shrink: 0;
-    padding: 7px 15px;
-    border-radius: 20px;
-    border: 1px solid var(--border2);
-    background: transparent;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text2);
-    cursor: pointer;
-    transition: all 0.15s ease;
-    white-space: nowrap;
-  }
+  .tab-btn { flex-shrink: 0; padding: 7px 15px; border-radius: 20px; border: 1px solid var(--border2); background: transparent; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--text2); cursor: pointer; transition: all 0.15s ease; white-space: nowrap; }
   .tab-btn:hover { background: var(--surface2); color: var(--text); }
   .tab-btn.active { background: var(--text); color: var(--bg); border-color: var(--text); }
-
-  /* Main */
   main { max-width: 720px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
-
   .tab-section { display: none; }
   .tab-section.visible { display: block; }
-
-  .section-intro {
-    font-size: 14px;
-    color: var(--text2);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .section-intro em { font-style: italic; }
-
-  /* Cards */
-  .prompt-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.1rem 1.25rem;
-    margin-bottom: 1rem;
-    transition: border-color 0.15s;
-  }
+  .section-intro { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+  .prompt-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.25rem; margin-bottom: 1rem; transition: border-color 0.15s; }
   .prompt-card:hover { border-color: var(--border2); }
-
-  .card-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 0.85rem;
-  }
-  .card-icon {
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 17px;
-  }
+  .card-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 0.85rem; }
+  .card-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 17px; }
   .card-title { font-weight: 500; font-size: 15px; margin-bottom: 3px; line-height: 1.3; }
   .card-desc { font-size: 13px; color: var(--text2); line-height: 1.5; }
-
-  .prompt-box {
-    background: var(--surface2);
-    border-radius: var(--radius-sm);
-    border-left: 2px solid var(--border2);
-    padding: 0.85rem 1rem;
-    font-size: 13.5px;
-    line-height: 1.7;
-    color: var(--text);
-    font-style: italic;
-    margin-bottom: 0.85rem;
-    white-space: pre-wrap;
-  }
-
+  .prompt-box { background: var(--surface2); border-radius: var(--radius-sm); border-left: 2px solid var(--border2); padding: 0.85rem 1rem; font-size: 13.5px; line-height: 1.7; color: var(--text); font-style: italic; margin-bottom: 0.85rem; white-space: pre-wrap; }
   .card-footer { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-
-  .copy-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 13px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border2);
-    background: transparent;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text2);
-    cursor: pointer;
-    transition: all 0.15s;
-  }
+  .copy-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 13px; border-radius: var(--radius-sm); border: 1px solid var(--border2); background: transparent; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; color: var(--text2); cursor: pointer; transition: all 0.15s; }
   .copy-btn:hover { background: var(--surface2); color: var(--text); }
   .copy-btn.copied { background: var(--teal-bg); border-color: var(--teal-border); color: var(--teal-text); }
   .copy-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
-
-  .badge {
-    font-size: 11px;
-    font-weight: 500;
-    padding: 3px 9px;
-    border-radius: 10px;
-  }
+  .badge { font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 10px; }
   .badge-any { background: var(--surface2); color: var(--text3); border: 1px solid var(--border); }
   .badge-claude { background: var(--purple-bg); color: var(--purple-text); }
   .badge-chatgpt { background: var(--green-bg); color: var(--green-text); }
   .badge-copilot { background: var(--blue-bg); color: var(--blue-text); }
   .badge-gemini { background: var(--amber-bg); color: var(--amber-text); }
   .badge-image { background: var(--coral-bg); color: var(--coral-text); }
-
-  /* Info boxes */
-  .info-box {
-    border-radius: var(--radius);
-    padding: 1rem 1.1rem;
-    margin-bottom: 1rem;
-    font-size: 13.5px;
-    line-height: 1.65;
-  }
-  .info-box-title {
-    font-weight: 500;
-    font-size: 13px;
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  .info-box { border-radius: var(--radius); padding: 1rem 1.1rem; margin-bottom: 1rem; font-size: 13.5px; line-height: 1.65; }
+  .info-box-title { font-weight: 500; font-size: 13px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
   .info-teal { background: var(--teal-bg); border: 1px solid var(--teal-border); color: var(--teal-text); }
   .info-teal .info-box-title { color: var(--teal-text); }
   .info-amber { background: var(--amber-bg); border: 1px solid var(--amber-border); color: var(--amber-text); }
   .info-amber .info-box-title { color: var(--amber-text); }
-
-  /* Traffic light */
+  .info-red { background: var(--red-bg); border: 1px solid var(--red-border); color: var(--red-text); }
+  .info-red .info-box-title { color: var(--red-text); }
   .traffic-group { margin-bottom: 1.5rem; }
-  .traffic-heading {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 15px;
-    font-weight: 500;
-    margin-bottom: 0.6rem;
-  }
+  .traffic-heading { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; margin-bottom: 0.6rem; }
   .dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
-  .dot-green { background: #639922; }
-  .dot-amber { background: #ba7517; }
-  .dot-red { background: #a32d2d; }
-
-  .traffic-item {
-    border-radius: var(--radius-sm);
-    padding: 0.65rem 1rem;
-    margin-bottom: 6px;
-    font-size: 13.5px;
-    line-height: 1.55;
-  }
+  .dot-green { background: #639922; } .dot-amber { background: #ba7517; } .dot-red { background: #a32d2d; }
+  .traffic-item { border-radius: var(--radius-sm); padding: 0.65rem 1rem; margin-bottom: 6px; font-size: 13.5px; line-height: 1.55; }
   .t-green { background: var(--green-bg); color: var(--green-text); border: 1px solid var(--green-border); }
   .t-amber { background: var(--amber-bg); color: var(--amber-text); border: 1px solid var(--amber-border); }
   .t-red { background: var(--red-bg); color: var(--red-text); border: 1px solid var(--red-border); }
-
-  /* Key principle */
-  .principle {
-    font-family: 'Lora', serif;
-    font-style: italic;
-    font-size: 15px;
-    border-left: 3px solid var(--border2);
-    padding: 0.75rem 1rem;
-    color: var(--text2);
-    margin: 1.25rem 0;
-    background: var(--surface2);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  }
-
-  /* Tool cards for getting started / learn more */
-  .tool-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1rem 1.25rem;
-    margin-bottom: 0.85rem;
-  }
+  .principle { font-family: 'Lora', serif; font-style: italic; font-size: 15px; border-left: 3px solid var(--border2); padding: 0.75rem 1rem; color: var(--text2); margin: 1.25rem 0; background: var(--surface2); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+  .tool-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 0.85rem; }
   .tool-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
   .tool-name { font-weight: 500; font-size: 15px; }
   .tool-desc { font-size: 13.5px; color: var(--text2); line-height: 1.6; margin-bottom: 0.75rem; }
-  .tool-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--blue-text);
-    text-decoration: none;
-    border: 1px solid var(--blue-border);
-    background: var(--blue-bg);
-    padding: 5px 12px;
-    border-radius: var(--radius-sm);
-    transition: opacity 0.15s;
-  }
+  .tool-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--blue-text); text-decoration: none; border: 1px solid var(--blue-border); background: var(--blue-bg); padding: 5px 12px; border-radius: var(--radius-sm); transition: opacity 0.15s; }
   .tool-link:hover { opacity: 0.8; }
   .tool-link svg { width: 13px; height: 13px; }
-
-  /* Image tool comparison grid */
   .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
-  .tool-grid-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1rem;
-  }
+  .tool-grid-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; }
   .tg-name { font-weight: 500; font-size: 14px; margin-bottom: 4px; }
   .tg-free { font-size: 11px; font-weight: 500; padding: 2px 7px; border-radius: 8px; margin-bottom: 8px; display: inline-block; }
   .free { background: var(--green-bg); color: var(--green-text); }
@@ -361,55 +105,28 @@
   .tg-desc { font-size: 12.5px; color: var(--text2); line-height: 1.55; margin-bottom: 0.6rem; }
   .tg-link { font-size: 12px; color: var(--blue-text); text-decoration: none; }
   .tg-link:hover { text-decoration: underline; }
-
-  /* Design tools section */
-  .design-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.1rem 1.25rem;
-    margin-bottom: 1rem;
-  }
+  .design-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
   .design-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 8px; }
   .design-title { font-weight: 500; font-size: 15px; }
   .design-desc { font-size: 13.5px; color: var(--text2); line-height: 1.6; margin-bottom: 0.75rem; }
   .design-uses { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.75rem; }
   .use-tag { font-size: 11.5px; background: var(--surface2); border: 1px solid var(--border); color: var(--text2); padding: 3px 9px; border-radius: 8px; }
-
-  /* Prompt for image gen */
   .image-prompt { background: var(--surface2); border-radius: var(--radius-sm); padding: 0.85rem 1rem; font-size: 13.5px; line-height: 1.7; font-style: italic; margin-bottom: 0.75rem; border-left: 2px solid var(--coral-border); }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 2rem 1.5rem;
-    font-size: 13px;
-    color: var(--text3);
-    border-top: 1px solid var(--border);
-    max-width: 720px;
-    margin: 0 auto;
-  }
-
-  /* Responsive */
-  @media (max-width: 480px) {
-    main { padding: 1.5rem 1rem 3rem; }
-    .card-header { flex-direction: row; }
-  }
-
-  /* Icon helpers */
-  .ico { display: inline-flex; align-items: center; justify-content: center; }
-  .ico svg { width: 16px; height: 16px; }
-
-  /* Scroll to top */
+  .specialist-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+  .specialist-name { font-weight: 500; font-size: 15px; margin-bottom: 4px; }
+  .specialist-tag { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 8px; margin-bottom: 8px; display: inline-block; }
+  .specialist-desc { font-size: 13.5px; color: var(--text2); line-height: 1.6; margin-bottom: 0.75rem; }
+  footer { text-align: center; padding: 2rem 1.5rem; font-size: 13px; color: var(--text3); border-top: 1px solid var(--border); max-width: 720px; margin: 0 auto; }
   .back-to-top { display: block; text-align: center; margin-top: 2rem; }
   .back-to-top a { font-size: 13px; color: var(--text3); text-decoration: none; }
   .back-to-top a:hover { color: var(--text); }
+  @media (max-width: 480px) { main { padding: 1.5rem 1rem 3rem; } }
 </style>
 </head>
 <body>
 
 <header class="site-header" id="top">
-  <p class="eyebrow">Workshop resource &mdash; Emmaus Leadership Workshop 2026</p>
+  <p class="eyebrow">Workshop resource &mdash; Emmaus Leadership Training</p>
   <h1>AI for Ministry</h1>
   <p>Practical prompts and guidance to help church leaders use AI wisely &mdash; saving time on draining tasks so you can be more present for the people and work that matters.</p>
   <span class="header-tagline">AI is a brilliant first draft, never a final authority.</span>
@@ -421,6 +138,8 @@
   <button class="tab-btn" onclick="showTab('admin', this)">Admin &amp; emails</button>
   <button class="tab-btn" onclick="showTab('pastoral', this)">Pastoral care</button>
   <button class="tab-btn" onclick="showTab('events', this)">Events &amp; comms</button>
+  <button class="tab-btn" onclick="showTab('study', this)">Bible study</button>
+  <button class="tab-btn" onclick="showTab('translation', this)">Translation</button>
   <button class="tab-btn" onclick="showTab('images', this)">Images &amp; design</button>
   <button class="tab-btn" onclick="showTab('safety', this)">Safe use</button>
   <button class="tab-btn" onclick="showTab('more', this)">Learn more</button>
@@ -428,790 +147,535 @@
 
 <main>
 
-<!-- ===== GETTING STARTED ===== -->
+<!-- GETTING STARTED -->
 <section id="tab-start" class="tab-section visible">
-
   <div class="info-box info-teal" style="margin-bottom:1.5rem;">
     <div class="info-box-title">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
       The big idea
     </div>
-    <p>AI is a very capable writing and thinking assistant &mdash; not magic, and not a replacement for your pastoral heart. It doesn't know your congregation, your theology, or your relationships. You bring all of that. Use it to handle draining tasks so you have more energy for people and prayer.</p>
+    <p>AI is a very capable writing and thinking assistant &mdash; not a replacement for your pastoral heart. It doesn&rsquo;t know your congregation, your theology, or your relationships. You bring all of that. Use it to handle draining tasks so you have more energy for people and prayer.</p>
   </div>
-
-  <p style="font-size:14px; color:var(--text2); line-height:1.7; margin-bottom:1.5rem;">Choose any tab above to explore ready-to-use prompts for common ministry tasks. Each prompt can be copied and pasted straight into your AI tool of choice &mdash; then personalise from there. The <strong>copy</strong> buttons make it easy on your phone.</p>
-
+  <p style="font-size:14px; color:var(--text2); line-height:1.7; margin-bottom:1.5rem;">Choose any tab above to explore ready-to-use prompts for common ministry tasks. Each prompt can be copied and pasted straight into your AI tool of choice &mdash; then personalise from there.</p>
   <div class="principle">"AI handles the draining draft. You bring the pastor&rsquo;s heart."</div>
-
   <p style="font-size:14px; font-weight:500; margin-bottom:0.75rem; margin-top:1.5rem;">The main AI tools</p>
-
   <div class="tool-card">
-    <div class="tool-card-header">
-      <span class="badge badge-chatgpt">ChatGPT</span>
-    </div>
-    <p class="tool-desc">Made by OpenAI. Free to start. The most widely known AI tool. Excellent for writing, drafting, planning, and research. The free version (GPT-4o) is very capable for most ministry tasks.</p>
-    <a class="tool-link" href="https://chatgpt.com" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-      Open ChatGPT
-    </a>
+    <div class="tool-card-header"><span class="badge badge-chatgpt">ChatGPT</span></div>
+    <p class="tool-desc">Made by OpenAI. Free to start. The most widely known AI tool. Excellent for writing, drafting, planning, and research. The free version is very capable for most ministry tasks.</p>
+    <a class="tool-link" href="https://chatgpt.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Open ChatGPT</a>
   </div>
-
   <div class="tool-card">
-    <div class="tool-card-header">
-      <span class="badge badge-claude">Claude</span>
-    </div>
+    <div class="tool-card-header"><span class="badge badge-claude">Claude</span></div>
     <p class="tool-desc">Made by Anthropic. Free to start. Known for thoughtful, nuanced responses &mdash; especially good for longer writing, pastoral language, and reflection tasks. Often feels a little more considered than ChatGPT.</p>
-    <a class="tool-link" href="https://claude.ai" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-      Open Claude
-    </a>
+    <a class="tool-link" href="https://claude.ai" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Open Claude</a>
   </div>
-
   <div class="tool-card">
-    <div class="tool-card-header">
-      <span class="badge badge-gemini">Gemini</span>
-    </div>
-    <p class="tool-desc">Made by Google. Free to start. Integrates well with Gmail and Google Docs if your church uses Google Workspace. Good for summarising, drafting, and research. Also available inside Google apps directly.</p>
-    <a class="tool-link" href="https://gemini.google.com" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-      Open Gemini
-    </a>
+    <div class="tool-card-header"><span class="badge badge-gemini">Gemini</span></div>
+    <p class="tool-desc">Made by Google. Free to start. Integrates well with Gmail and Google Docs if your church uses Google Workspace. Available inside Google apps directly.</p>
+    <a class="tool-link" href="https://gemini.google.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Open Gemini</a>
   </div>
-
   <div class="tool-card">
-    <div class="tool-card-header">
-      <span class="badge badge-copilot">Microsoft Copilot</span>
-    </div>
-    <p class="tool-desc">Made by Microsoft, powered by the same technology as ChatGPT. If your church has a Microsoft 365 Business subscription, Copilot is available inside Word, Outlook, and Teams. Excellent for document-heavy tasks.</p>
-    <a class="tool-link" href="https://copilot.microsoft.com" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-      Open Copilot
-    </a>
+    <div class="tool-card-header"><span class="badge badge-copilot">Microsoft Copilot</span></div>
+    <p class="tool-desc">Made by Microsoft. If your church has a Microsoft 365 Business subscription, Copilot is available inside Word, Outlook, and Teams. Excellent for document-heavy tasks.</p>
+    <a class="tool-link" href="https://copilot.microsoft.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Open Copilot</a>
   </div>
-
   <div class="info-box info-amber" style="margin-top:1.25rem;">
-    <div class="info-box-title">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      One challenge to take away
-    </div>
+    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>One challenge to take away</div>
     <p>Before next Sunday &mdash; pick just one prompt from this resource and try it. Notice where AI helps, where it falls short, and what you need to adjust. That&rsquo;s the learning curve, and it&rsquo;s shorter than you think.</p>
   </div>
-
 </section>
 
-<!-- ===== SERMON PREP ===== -->
+<!-- SERMON PREP -->
 <section id="tab-sermons" class="tab-section">
-
   <p class="section-intro">AI works best as a <em>thinking partner</em> for sermon prep &mdash; helping you explore angles, find illustrations, or write discussion questions. Your exegesis, your pastoral voice, and your prayerful discernment remain entirely yours.</p>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--purple-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-text)" stroke-width="2" width="18" height="18"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Fresh sermon angles</p>
-        <p class="card-desc">When you&rsquo;re stuck on how to approach a passage</p>
-      </div>
+      <div class="card-icon" style="background:var(--purple-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-text)" stroke-width="2" width="18" height="18"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <div><p class="card-title">Fresh sermon angles</p><p class="card-desc">When you&rsquo;re stuck on how to approach a passage</p></div>
     </div>
     <div class="prompt-box" id="ps1">I'm preaching on [passage, e.g. John 6:1-15] this Sunday. My congregation includes [describe your people briefly, e.g. young families, long-term Christians, people new to faith]. Give me three fresh angles on this passage I might not have considered, and suggest one contemporary illustration for each angle.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('ps1', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-any">Any AI tool</span>
-    </div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('ps1', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
   </div>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--teal-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Small group discussion questions</p>
-        <p class="card-desc">Turn a sermon into a week of community conversation</p>
-      </div>
+      <div class="card-icon" style="background:var(--teal-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <div><p class="card-title">Small group discussion questions</p><p class="card-desc">Turn a sermon into a week of community conversation</p></div>
     </div>
     <div class="prompt-box" id="ps2">Based on a sermon on [passage or theme], write 5 discussion questions for a small group. Make them progressively deeper - starting with observation, then reflection, then personal application. Include one question that might challenge longer-term Christians and one that's accessible to someone newer to faith.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('ps2', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-any">Any AI tool</span>
-    </div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('ps2', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
   </div>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--amber-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2" width="18" height="18"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Sermon series outline</p>
-        <p class="card-desc">Plan several weeks in one go</p>
-      </div>
+      <div class="card-icon" style="background:var(--amber-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2" width="18" height="18"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+      <div><p class="card-title">Sermon series outline</p><p class="card-desc">Plan several weeks in one go</p></div>
     </div>
     <div class="prompt-box" id="ps3">Help me plan a 4-week sermon series on [theme or book of the Bible]. Suggest a title for the series, a title for each week, a key passage for each week, and one central question the sermon should answer. Keep it grounded in Scripture and accessible to a mixed congregation.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('ps3', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-any">Any AI tool</span>
-    </div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('ps3', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
   </div>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--coral-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--coral-text)" stroke-width="2" width="18" height="18"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Children&rsquo;s talk version</p>
-        <p class="card-desc">Adapt a passage for younger ears</p>
-      </div>
+      <div class="card-icon" style="background:var(--coral-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral-text)" stroke-width="2" width="18" height="18"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+      <div><p class="card-title">Children&rsquo;s talk version</p><p class="card-desc">Adapt a passage for younger ears</p></div>
     </div>
     <div class="prompt-box" id="ps4">I'm preaching on [passage] for adults. Help me write a short 3-minute children's talk on the same theme for ages 5-10. Use a simple object lesson or story, avoid jargon, and end with one clear takeaway that a child could repeat back.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('ps4', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-any">Any AI tool</span>
-    </div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('ps4', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
   </div>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--blue-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Contextual background research</p>
-        <p class="card-desc">Historical and cultural context quickly summarised</p>
-      </div>
+      <div class="card-icon" style="background:var(--blue-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <div><p class="card-title">Historical and cultural context</p><p class="card-desc">Background that helps a passage come alive</p></div>
     </div>
     <div class="prompt-box" id="ps5">Give me a brief summary of the historical and cultural context of [passage, e.g. the Sermon on the Mount / Nehemiah rebuilding the walls]. What would the original audience have understood that a modern reader might miss? Keep it accessible - I want to weave this into a sermon, not write an academic paper.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('ps5', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-any">Any AI tool</span>
-    </div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('ps5', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
   </div>
 
   <div class="info-box info-amber">
-    <div class="info-box-title">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      Heads up
-    </div>
-    <p>AI can be confidently wrong on theology &mdash; especially on nuanced or denominational matters. Always bring your own discernment and cross-check anything doctrinal before using it. AI is a starting point, not a commentary.</p>
+    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>Heads up</div>
+    <p>AI can be confidently wrong on theology &mdash; especially on nuanced or denominational matters. Always bring your own discernment and cross-check anything doctrinal. AI is a starting point, not a commentary.</p>
   </div>
-
 </section>
 
-<!-- ===== ADMIN & EMAILS ===== -->
+<!-- ADMIN & EMAILS -->
 <section id="tab-admin" class="tab-section">
-
   <p class="section-intro">Admin and email are where most leaders say AI saves them the most time, fastest. Paste in your rough notes and get a polished draft back in seconds &mdash; then personalise it.</p>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--blue-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Turn dot-points into a warm email</p>
-        <p class="card-desc">The fastest admin win &mdash; works in seconds</p>
-      </div>
+      <div class="card-icon" style="background:var(--blue-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div><p class="card-title">Turn dot-points into a warm email</p><p class="card-desc">The fastest admin win &mdash; works in seconds</p></div>
     </div>
     <div class="prompt-box" id="pa1">Turn these rough notes into a warm, clear email from a church leader to their congregation. Keep the tone caring and personal, not corporate. Notes: [paste your rough dot points here]</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pa1', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-any">Any AI tool</span>
-    </div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pa1', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
   </div>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--purple-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-text)" stroke-width="2" width="18" height="18"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Meeting notes to action list</p>
-        <p class="card-desc">Especially useful for wardens and vestry meetings</p>
-      </div>
+      <div class="card-icon" style="background:var(--purple-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-text)" stroke-width="2" width="18" height="18"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>
+      <div><p class="card-title">Meeting notes to action list</p><p class="card-desc">Especially useful for wardens and vestry meetings</p></div>
     </div>
     <div class="prompt-box" id="pa2">Here are rough notes from a church leadership meeting. Please summarise the key decisions made, and list all action items with the person responsible and any deadline mentioned. Format it clearly so it can be sent to the team. Notes: [paste your meeting notes here]</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pa2', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-copilot">Great for Copilot</span>
-      <span class="badge badge-gemini">Or Gemini</span>
-    </div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pa2', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-copilot">Great for Copilot</span><span class="badge badge-gemini">Or Gemini</span></div>
   </div>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--teal-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Policy or procedure first draft</p>
-        <p class="card-desc">Save hours on document drafting</p>
-      </div>
+      <div class="card-icon" style="background:var(--teal-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div><p class="card-title">Policy or procedure first draft</p><p class="card-desc">Save hours on document drafting</p></div>
     </div>
     <div class="prompt-box" id="pa3">Draft a [type of policy, e.g. child safety policy / volunteer onboarding guide / building hire agreement] for a small Anglican church in New Zealand. Keep it practical and clearly written. Flag any sections where I'll need to add our specific details or check with a legal adviser.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pa3', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-any">Any AI tool</span>
-    </div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pa3', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
   </div>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--amber-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2" width="18" height="18"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Rewrite for clarity</p>
-        <p class="card-desc">Simplify something that&rsquo;s become too long or formal</p>
-      </div>
+      <div class="card-icon" style="background:var(--amber-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2" width="18" height="18"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+      <div><p class="card-title">Rewrite for clarity</p><p class="card-desc">Simplify something that&rsquo;s become too long or formal</p></div>
     </div>
     <div class="prompt-box" id="pa4">Please rewrite the following text so it is clearer, warmer, and easier to read. Aim for plain language at about a Year 10 reading level. Keep all the key information but cut anything repetitive. Here is the original: [paste your text]</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pa4', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-any">Any AI tool</span>
-    </div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pa4', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
   </div>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--coral-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--coral-text)" stroke-width="2" width="18" height="18"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Annual report section</p>
-        <p class="card-desc">Turn activity notes into a polished report narrative</p>
-      </div>
+      <div class="card-icon" style="background:var(--coral-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral-text)" stroke-width="2" width="18" height="18"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <div><p class="card-title">Annual report section</p><p class="card-desc">Turn activity notes into a polished report narrative</p></div>
     </div>
     <div class="prompt-box" id="pa5">Here are rough notes about what our church did this year in [area, e.g. community outreach / youth ministry / pastoral care]: [paste notes]. Please write a 200-word section for our annual report. Keep it warm, honest, and grateful in tone - highlighting people and impact rather than just activity counts.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pa5', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-any">Any AI tool</span>
-    </div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pa5', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
   </div>
-
 </section>
 
-<!-- ===== PASTORAL CARE ===== -->
+<!-- PASTORAL CARE -->
 <section id="tab-pastoral" class="tab-section">
+  <p class="section-intro">AI has a limited and specific role in pastoral care. It can help you <em>prepare</em> &mdash; finding words for a card, drafting a prayer, or thinking through a difficult conversation in advance. It is not a substitute for human presence, professional supervision, or the advice of a trusted colleague.</p>
 
-  <p class="section-intro">AI can help you prepare thoughtful responses and resources for pastoral situations &mdash; but remember, it doesn&rsquo;t know the person. Use it to find words, never to replace presence.</p>
+  <div class="info-box info-red" style="margin-bottom:1.25rem;">
+    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg>For actual pastoral situations &mdash; talk to a person</div>
+    <p>For real pastoral challenges &mdash; a difficult conversation, a safeguarding concern, a complex family situation, a person in crisis &mdash; your supervisor, a trusted colleague, or a professional counsellor is always the right first call. AI does not know the person, cannot exercise pastoral judgement, and should never replace professional supervision.</p>
+  </div>
 
   <div class="info-box" style="background:var(--red-bg); border:1px solid var(--red-border); color:var(--red-text); margin-bottom:1.25rem;">
-    <div class="info-box-title" style="color:var(--red-text);">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-      Important: protect privacy always
+    <div class="info-box-title" style="color:var(--red-text);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Always protect privacy</div>
+    <p>Never include real names, identifying details, or confidential disclosures in any AI prompt. Use generic descriptions only &mdash; &ldquo;a church member&rdquo; or &ldquo;someone in my congregation&rdquo;.</p>
+  </div>
+
+  <p style="font-size:14px; font-weight:500; margin-bottom:0.75rem;">Where AI can help: preparation and written communication</p>
+
+  <div class="prompt-card">
+    <div class="card-header">
+      <div class="card-icon" style="background:var(--blue-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div><p class="card-title">Condolence or sympathy message</p><p class="card-desc">When words don&rsquo;t come easily &mdash; a starting point only</p></div>
     </div>
-    <p>Never include real names, identifying details, or confidential disclosures in an AI prompt. Use generic descriptions like &ldquo;a church member&rdquo; or &ldquo;someone in my congregation&rdquo; instead.</p>
+    <div class="prompt-box" id="pp1">Help me write a short, heartfelt message to someone in my congregation who has recently lost [e.g. a spouse / a parent / a child]. Keep it warm and grounded in Christian hope without being platitudinous. About 3-4 sentences. I'll personalise it before sending.</div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pp1', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
   </div>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--purple-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-text)" stroke-width="2" width="18" height="18"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Finding words for a difficult conversation</p>
-        <p class="card-desc">When you need to start a hard meeting or email</p>
-      </div>
+      <div class="card-icon" style="background:var(--teal-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+      <div><p class="card-title">Prayer for a specific situation</p><p class="card-desc">A starting point for a service, visit, or card</p></div>
     </div>
-    <div class="prompt-box" id="pp1">I need to have a difficult pastoral conversation with a church member about [describe the general situation without naming anyone, e.g. "someone who has been causing conflict in a team"]. Help me think through how to approach this with care and clarity. What might I say to open the conversation? What should I be careful about?</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pp1', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-claude">Works well in Claude</span>
-    </div>
+    <div class="prompt-box" id="pp2">Write a short prayer (about 100 words) for [describe situation generally, e.g. a family facing serious illness / a couple preparing for marriage / a community grieving a sudden loss]. Use accessible, non-jargon language that someone unfamiliar with church would still find meaningful.</div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pp2', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
   </div>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--blue-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Sympathy or condolence message</p>
-        <p class="card-desc">When words don&rsquo;t come easily</p>
-      </div>
+      <div class="card-icon" style="background:var(--amber-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+      <div><p class="card-title">Prepare open questions for a visit</p><p class="card-desc">Conversation starter ideas for specific situations</p></div>
     </div>
-    <div class="prompt-box" id="pp2">Help me write a short, heartfelt message to someone in my congregation who has recently lost [e.g. a spouse / a parent / a child]. Keep it warm and grounded in Christian hope without being platitudinous. About 3-4 sentences. I'll personalise it before sending.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pp2', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-any">Any AI tool</span>
-    </div>
+    <div class="prompt-box" id="pp3">I'm visiting a church member who is [describe situation generally, e.g. recently bereaved / living with a long-term illness]. Suggest 3-4 open questions I could use to open conversation well. Also, are there any topics or phrases I should be careful to avoid in this situation?</div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pp3', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-claude">Works well in Claude</span></div>
   </div>
 
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--teal-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Prayer or liturgy for a specific situation</p>
-        <p class="card-desc">A starting point for a service, visit, or card</p>
-      </div>
-    </div>
-    <div class="prompt-box" id="pp3">Write a short prayer (about 100 words) for [describe situation, e.g. a family facing serious illness / a couple preparing for marriage / a community grieving a sudden loss]. Use accessible, non-jargon language that someone unfamiliar with church would still find meaningful.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pp3', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-any">Any AI tool</span>
-    </div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--amber-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Prepare for a pastoral visit</p>
-        <p class="card-desc">Conversation starter ideas for specific situations</p>
-      </div>
-    </div>
-    <div class="prompt-box" id="pp4">I'm visiting a church member who is [describe situation generally, e.g. recently bereaved / living with a long-term illness / going through a marriage breakdown]. Suggest 3-4 open questions I could use to open conversation well. Also, are there any topics or phrases I should be careful to avoid in this situation?</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pp4', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-claude">Works well in Claude</span>
-    </div>
-  </div>
-
+  <div class="principle">"AI can help you find words. It cannot replace the wisdom of a trusted colleague or the presence of a caring pastor."</div>
 </section>
 
-<!-- ===== EVENTS & COMMS ===== -->
+<!-- EVENTS & COMMS -->
 <section id="tab-events" class="tab-section">
-
   <p class="section-intro">Planning events and communicating them across multiple channels takes time. AI can help you turn one idea into a full suite of communications quickly.</p>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--blue-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      </div>
-      <div>
-        <p class="card-title">One idea, many formats</p>
-        <p class="card-desc">Turn one event or sermon into a week of content</p>
-      </div>
+      <div class="card-icon" style="background:var(--blue-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <div><p class="card-title">One idea, many formats</p><p class="card-desc">Turn one event or sermon into a week of content</p></div>
     </div>
     <div class="prompt-box" id="pe1">Here is a short summary of our upcoming [event/sermon/announcement]: [paste summary]. From this, please write: (1) a short Facebook post, (2) a 3-sentence email newsletter intro, (3) a bulletin notice under 50 words, and (4) a short text message version for SMS or WhatsApp. Keep the tone warm and inviting.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pe1', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-any">Any AI tool</span>
-    </div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pe1', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
   </div>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--amber-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2" width="18" height="18"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Event planning checklist</p>
-        <p class="card-desc">Don&rsquo;t miss anything &mdash; especially for new events</p>
-      </div>
+      <div class="card-icon" style="background:var(--amber-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2" width="18" height="18"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
+      <div><p class="card-title">Event planning checklist</p><p class="card-desc">Don&rsquo;t miss anything &mdash; especially for new events</p></div>
     </div>
     <div class="prompt-box" id="pe2">I'm planning [describe the event, e.g. a community Christmas carols evening for around 200 people at a church in New Zealand]. Create a practical planning checklist with tasks grouped by timing - 6 weeks out, 3 weeks out, 1 week out, and day of event. Include things that churches often forget.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pe2', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-any">Any AI tool</span>
-    </div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pe2', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
   </div>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--purple-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-text)" stroke-width="2" width="18" height="18"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Volunteer recruitment message</p>
-        <p class="card-desc">Inviting people to serve in an engaging way</p>
-      </div>
+      <div class="card-icon" style="background:var(--purple-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-text)" stroke-width="2" width="18" height="18"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg></div>
+      <div><p class="card-title">Volunteer recruitment message</p><p class="card-desc">Inviting people to serve without the guilt</p></div>
     </div>
     <div class="prompt-box" id="pe3">Write a warm, non-pressuring invitation for church members to volunteer for [describe the role or team, e.g. our welcome team / Sunday morning kids programme / community meal]. Include what the role involves, why it matters, and how people can express interest. About 150 words. Avoid guilt-based language.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pe3', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-any">Any AI tool</span>
-    </div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pe3', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
   </div>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--teal-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Monthly newsletter draft</p>
-        <p class="card-desc">From rough notes to a readable newsletter</p>
-      </div>
+      <div class="card-icon" style="background:var(--teal-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+      <div><p class="card-title">Monthly newsletter draft</p><p class="card-desc">From rough notes to a readable newsletter</p></div>
     </div>
     <div class="prompt-box" id="pe4">Here are my rough notes for this month's church newsletter: [paste notes]. Please organise these into a readable newsletter with a short opening paragraph from the minister, then clear sections for each item. Keep the tone warm, personal, and encouraging. Flag anywhere I should add a specific detail.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pe4', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-copilot">Great for Copilot</span>
-      <span class="badge badge-gemini">Or Gemini</span>
-    </div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pe4', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-copilot">Great for Copilot</span><span class="badge badge-gemini">Or Gemini</span></div>
   </div>
-
 </section>
 
-<!-- ===== IMAGES & DESIGN ===== -->
-<section id="tab-images" class="tab-section">
+<!-- BIBLE STUDY -->
+<section id="tab-study" class="tab-section">
+  <p class="section-intro">AI can be a genuinely useful study companion &mdash; helping you explore context, generate questions, and think through a passage from different angles. Several specialist tools now go deeper than general AI, with access to commentaries, original languages, and theological resources.</p>
 
-  <p class="section-intro">AI can help you create royalty-free images for newsletters, slides, and social media &mdash; and design tools like Canva now have AI built right in. No graphic design experience needed.</p>
+  <p style="font-weight:500; font-size:14px; margin-bottom:0.75rem;">Specialist Bible study tools</p>
+
+  <div class="specialist-card">
+    <p class="specialist-name">Logos Bible Software</p>
+    <span class="specialist-tag freemium">Free tier + paid</span>
+    <p class="specialist-desc">The most powerful dedicated Bible study platform available. AI-assisted search, sermon builder, original language tools, and a library of 250,000+ titles. The free tier includes 40+ books. Widely used by clergy and seminary students. Available on web, iOS, and Android.</p>
+    <a class="tool-link" href="https://www.logos.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Visit Logos</a>
+  </div>
+
+  <div class="specialist-card">
+    <p class="specialist-name">YouVersion Bible App</p>
+    <span class="specialist-tag free">Free</span>
+    <p class="specialist-desc">The world&rsquo;s most downloaded Bible app &mdash; over 1 billion installs. AI features help surface relevant reading plans, devotionals, and cross-references based on what you&rsquo;re studying. Over 3,600 Bible versions in 2,300+ languages, including te reo M&#257;ori. Good for congregation members as well as leaders.</p>
+    <a class="tool-link" href="https://www.youversion.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Visit YouVersion</a>
+  </div>
+
+  <div class="specialist-card">
+    <p class="specialist-name">Ecclesia Bible</p>
+    <span class="specialist-tag free">Free</span>
+    <p class="specialist-desc">A free AI-enhanced study app offering source language analysis, nearly 50,000 verse correlations, and real-time translational variations. Good for digging into original-language meaning without needing Hebrew or Greek training.</p>
+    <a class="tool-link" href="https://ecclesiabible.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Visit Ecclesia Bible</a>
+  </div>
+
+  <div class="specialist-card">
+    <p class="specialist-name">ScriptureArk</p>
+    <span class="specialist-tag freemium">Free tier</span>
+    <p class="specialist-desc">An AI research tool trained specifically on biblical and theological resources. Good for pastors, Bible study leaders, and anyone wanting deeper engagement with Scripture beyond what general AI tools provide.</p>
+    <a class="tool-link" href="https://www.scriptureark.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Visit ScriptureArk</a>
+  </div>
+
+  <p style="font-weight:500; font-size:14px; margin-bottom:0.75rem; margin-top:1.5rem;">Prompts for general AI tools</p>
+
+  <div class="prompt-card">
+    <div class="card-header">
+      <div class="card-icon" style="background:var(--amber-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2" width="18" height="18"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+      <div><p class="card-title">Explain a passage in plain language</p><p class="card-desc">Useful for teaching prep or personal study</p></div>
+    </div>
+    <div class="prompt-box" id="st1">Please explain [passage, e.g. Romans 8:1-17] in plain, accessible language. What is the main point? What would a first-time reader struggle to understand? What are 2-3 key ideas that someone could take away from this passage?</div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('st1', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="card-header">
+      <div class="card-icon" style="background:var(--purple-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-text)" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+      <div><p class="card-title">Explore a theological question</p><p class="card-desc">Understand how different traditions approach an issue</p></div>
+    </div>
+    <div class="prompt-box" id="st2">I'd like to understand how different Christian traditions approach the question of [theological topic, e.g. the nature of baptism / spiritual gifts / salvation and free will]. Please summarise the main positions briefly and fairly, noting where Anglican thinking typically sits. I'm not looking for a definitive answer, just a map of the landscape.</div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('st2', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-claude">Works well in Claude</span></div>
+  </div>
+
+  <div class="info-box info-amber">
+    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>Important caution</div>
+    <p>General AI tools like ChatGPT and Claude can be confidently wrong on theology &mdash; sometimes subtly so. The YouVersion CEO has noted AI Bible misquote rates of 15&ndash;60% depending on the tool. Specialist tools like Logos are safer for doctrinal questions because they draw from verified theological sources. Always cross-check anything significant.</p>
+  </div>
+</section>
+
+<!-- TRANSLATION -->
+<section id="tab-translation" class="tab-section">
+  <p class="section-intro">AI translation has become genuinely useful for communicating across language barriers &mdash; making newsletters, notices, and simple resources accessible to congregation members whose first language isn&rsquo;t English. It is not perfect, and for important documents a fluent speaker should always check the output.</p>
+
+  <div class="info-box info-teal" style="margin-bottom:1.25rem;">
+    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>Best practice</div>
+    <p>AI translation is strongest for widely spoken languages (Spanish, Mandarin, Samoan, Tongan, Hindi, Tagalog) and weaker for languages with less online content. For anything going on signage or in a printed bulletin, always ask a fluent speaker to review it before publishing. For te reo M&#257;ori, consider using a specialist service or a kaumātua review.</p>
+  </div>
+
+  <div class="prompt-card">
+    <div class="card-header">
+      <div class="card-icon" style="background:var(--blue-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div><p class="card-title">Translate a newsletter</p><p class="card-desc">Make your regular communication accessible to all</p></div>
+    </div>
+    <div class="prompt-box" id="tr1">Please translate the following church newsletter into [language, e.g. Samoan / Tongan / Mandarin / Hindi]. Keep the tone warm and friendly. If any phrase doesn't translate well culturally, please note it and suggest an alternative. Here is the newsletter: [paste text]</div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('tr1', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="card-header">
+      <div class="card-icon" style="background:var(--purple-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-text)" stroke-width="2" width="18" height="18"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <div><p class="card-title">Translate a church notice or sign</p><p class="card-desc">Welcome signage, service times, toilet signs, safety notices</p></div>
+    </div>
+    <div class="prompt-box" id="tr2">Please translate the following short notice into [language]. Keep it simple and clear. If there is a more natural or culturally appropriate way to express any of it, please suggest that instead of a literal translation. Text to translate: [paste notice]</div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('tr2', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="card-header">
+      <div class="card-icon" style="background:var(--teal-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+      <div><p class="card-title">Translate sermon notes or a summary</p><p class="card-desc">Help English-second-language members follow along</p></div>
+    </div>
+    <div class="prompt-box" id="tr3">Please translate these sermon notes into [language]. These will be used as a reading guide for congregation members whose first language is [language]. Keep the language clear and accessible - avoid overly formal or religious vocabulary where simpler words work just as well. Sermon notes: [paste notes]</div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('tr3', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="card-header">
+      <div class="card-icon" style="background:var(--amber-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+      <div><p class="card-title">Simplify English for ESL readers</p><p class="card-desc">Plain English version for those still learning</p></div>
+    </div>
+    <div class="prompt-box" id="tr4">Please rewrite the following text in simple English suitable for someone who is still learning the language. Use short sentences, common words, and avoid idioms or cultural references that might be confusing. Keep the same meaning and warm tone. Text: [paste content]</div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('tr4', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="card-header">
+      <div class="card-icon" style="background:var(--coral-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral-text)" stroke-width="2" width="18" height="18"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <div><p class="card-title">Welcoming message in another language</p><p class="card-desc">A warm welcome for visitors whose first language isn&rsquo;t English</p></div>
+    </div>
+    <div class="prompt-box" id="tr5">Please write a short, warm welcome message (about 50 words) in [language] for visitors to our church who speak [language] as their first language. The message should: welcome them warmly, let them know they belong, and tell them that English-language support is available if they need help during the service.</div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('tr5', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
+  </div>
+
+  <div class="info-box info-amber">
+    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>Always get a human check</div>
+    <p>AI translation can be surprisingly good, but it makes mistakes &mdash; especially with Pacific languages, te reo M&#257;ori, and less commonly spoken languages. Before anything is printed or displayed, ask a fluent speaker from your congregation or community to review it. This also builds relationship and shows genuine respect.</p>
+  </div>
+</section>
+
+<!-- IMAGES & DESIGN -->
+<section id="tab-images" class="tab-section">
+  <p class="section-intro">AI can generate original, royalty-free images from a plain-English description &mdash; and design tools now have AI built right in. No graphic design experience needed.</p>
 
   <p style="font-weight:500; font-size:15px; margin-bottom:0.75rem;">AI image generation tools</p>
-  <p style="font-size:13.5px; color:var(--text2); margin-bottom:1rem; line-height:1.65;">These tools create original images from a text description you provide. Everything they create is royalty-free for you to use.</p>
 
   <div class="tool-grid">
     <div class="tool-grid-card">
+      <p class="tg-name">Adobe Firefly</p>
+      <span class="tg-free freemium">Free starter</span>
+      <p class="tg-desc">The safest choice for church use &mdash; trained only on licensed content. Excellent quality. Free account available.</p>
+      <a class="tg-link" href="https://firefly.adobe.com" target="_blank">firefly.adobe.com &rarr;</a>
+    </div>
+    <div class="tool-grid-card">
       <p class="tg-name">ChatGPT (DALL-E)</p>
       <span class="tg-free freemium">Free with limits</span>
-      <p class="tg-desc">Type a description inside ChatGPT and ask it to create an image. Simple and fast. Free accounts get limited generations per day.</p>
-      <a class="tg-link" href="https://chatgpt.com" target="_blank">Open ChatGPT &rarr;</a>
+      <p class="tg-desc">Ask for an image the same way you&rsquo;d ask a question. Free accounts get limited generations per day.</p>
+      <a class="tg-link" href="https://chatgpt.com" target="_blank">chatgpt.com &rarr;</a>
     </div>
     <div class="tool-grid-card">
       <p class="tg-name">Gemini (Imagen)</p>
       <span class="tg-free freemium">Free with limits</span>
-      <p class="tg-desc">Google&rsquo;s Gemini can generate images directly in the chat. Good for simple, illustrative visuals. Ask it the same way you would ChatGPT.</p>
-      <a class="tg-link" href="https://gemini.google.com" target="_blank">Open Gemini &rarr;</a>
-    </div>
-    <div class="tool-grid-card">
-      <p class="tg-name">Adobe Firefly</p>
-      <span class="tg-free freemium">Free starter</span>
-      <p class="tg-desc">Adobe&rsquo;s AI image tool. Trained only on licensed images so it&rsquo;s very safe for commercial/church use. Excellent quality. Free account available.</p>
-      <a class="tg-link" href="https://firefly.adobe.com" target="_blank">Open Firefly &rarr;</a>
+      <p class="tg-desc">Google&rsquo;s image generation inside Gemini chat. Good for simple illustrative visuals.</p>
+      <a class="tg-link" href="https://gemini.google.com" target="_blank">gemini.google.com &rarr;</a>
     </div>
     <div class="tool-grid-card">
       <p class="tg-name">Microsoft Designer</p>
       <span class="tg-free freemium">Free with Microsoft</span>
-      <p class="tg-desc">Included with Microsoft 365. Good for creating social posts, banners, and newsletter images. Integrates well with Word and PowerPoint.</p>
-      <a class="tg-link" href="https://designer.microsoft.com" target="_blank">Open Designer &rarr;</a>
+      <p class="tg-desc">Included with Microsoft 365. Good for social posts and newsletter images.</p>
+      <a class="tg-link" href="https://designer.microsoft.com" target="_blank">designer.microsoft.com &rarr;</a>
     </div>
   </div>
 
   <p style="font-weight:500; font-size:15px; margin-bottom:0.75rem; margin-top:1.75rem;">How to write a good image prompt</p>
-
   <div class="info-box info-teal" style="margin-bottom:1rem;">
-    <div class="info-box-title">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      The formula
-    </div>
+    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>The formula</div>
     <p><strong>[Subject]</strong> + <strong>[Setting or mood]</strong> + <strong>[Style]</strong> + <strong>[What to avoid]</strong></p>
   </div>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--coral-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--coral-text)" stroke-width="2" width="18" height="18"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Newsletter header image</p>
-        <p class="card-desc">A welcoming image for the top of a church newsletter</p>
-      </div>
+      <div class="card-icon" style="background:var(--coral-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral-text)" stroke-width="2" width="18" height="18"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+      <div><p class="card-title">Newsletter header image</p><p class="card-desc">A welcoming image for the top of a church newsletter</p></div>
     </div>
     <div class="image-prompt" id="pi1">A warm, inviting photograph of a small community gathering around a table in a light-filled room, soft natural light, diverse group of people, joyful and peaceful atmosphere, photorealistic style. No text in the image.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pi1', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-image">Image tool</span>
-    </div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pi1', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-image">Image tool</span></div>
   </div>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--blue-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Sermon slide background</p>
-        <p class="card-desc">Abstract backgrounds that don&rsquo;t distract from text</p>
-      </div>
+      <div class="card-icon" style="background:var(--blue-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+      <div><p class="card-title">Sermon slide background</p><p class="card-desc">Subtle backgrounds that don&rsquo;t distract from text</p></div>
     </div>
     <div class="image-prompt" id="pi2">Abstract watercolour wash in soft muted blues and greens, calm and contemplative mood, wide landscape orientation, no figures, no text, subtle texture, suitable as a presentation slide background.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pi2', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-image">Image tool</span>
-    </div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pi2', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-image">Image tool</span></div>
   </div>
 
   <div class="prompt-card">
     <div class="card-header">
-      <div class="card-icon" style="background:var(--teal-bg);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-      </div>
-      <div>
-        <p class="card-title">Social media event graphic</p>
-        <p class="card-desc">Eye-catching image to pair with your event post</p>
-      </div>
+      <div class="card-icon" style="background:var(--teal-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+      <div><p class="card-title">Social media event graphic</p><p class="card-desc">Square image to pair with an event post</p></div>
     </div>
-    <div class="image-prompt" id="pi3">Minimalist flat illustration of [describe event theme, e.g. candles and stars for a Christmas service / open hands and sunlight for an Easter service], warm colour palette, square format suitable for Instagram or Facebook, space at the top for overlaid text. Clean and modern style.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pi3', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-image">Image tool</span>
-    </div>
+    <div class="image-prompt" id="pi3">Minimalist flat illustration of [describe event theme, e.g. candles and stars for a Christmas service / open hands and sunlight for Easter], warm colour palette, square format suitable for Instagram or Facebook, space at the top for overlaid text. Clean and modern style.</div>
+    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pi3', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-image">Image tool</span></div>
   </div>
 
   <div class="info-box info-amber" style="margin-top:0.5rem; margin-bottom:1.75rem;">
-    <div class="info-box-title">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
-      AI image cautions
-    </div>
-    <p>AI image tools sometimes get hands wrong, add unreadable text, or create unintentionally odd details. Always check before publishing. Avoid asking AI to depict Jesus or biblical figures specifically &mdash; the results are often theologically and culturally problematic.</p>
+    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>AI image cautions</div>
+    <p>Always check AI images carefully before publishing &mdash; hands, faces, and text within images can go wrong. Avoid asking AI to depict Jesus or biblical figures; the results are often theologically and culturally problematic. Adobe Firefly is the safest option as it is trained only on licensed content.</p>
   </div>
 
   <p style="font-weight:500; font-size:15px; margin-bottom:0.75rem;">Design tools for slides, newsletters &amp; graphics</p>
-  <p style="font-size:13.5px; color:var(--text2); margin-bottom:1rem; line-height:1.65;">You don&rsquo;t need to be a designer. These tools have AI built in and thousands of church-ready templates.</p>
 
   <div class="design-card">
-    <div class="design-card-top">
-      <p class="design-title">Canva</p>
-      <span class="tg-free freemium" style="font-size:11px; padding:3px 9px; border-radius:8px;">Free &amp; paid</span>
-    </div>
-    <p class="design-desc">The most popular design tool for non-designers. Has a huge library of church and ministry templates. The free version is excellent &mdash; paid adds AI features like background removal, image generation, and "Magic Write" for drafting text inside designs.</p>
-    <div class="design-uses">
-      <span class="use-tag">Sermon slides</span>
-      <span class="use-tag">Social graphics</span>
-      <span class="use-tag">Newsletters</span>
-      <span class="use-tag">Posters &amp; flyers</span>
-      <span class="use-tag">Bulletins</span>
-    </div>
-    <a class="tool-link" href="https://canva.com" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-      Open Canva
-    </a>
+    <div class="design-card-top"><p class="design-title">Canva</p><span class="tg-free freemium" style="font-size:11px; padding:3px 9px; border-radius:8px;">Free &amp; paid</span></div>
+    <p class="design-desc">The most popular design tool for non-designers. Thousands of church and ministry templates. The free version is excellent &mdash; paid adds AI features like background removal and Magic Write for drafting text inside designs.</p>
+    <div class="design-uses"><span class="use-tag">Sermon slides</span><span class="use-tag">Social graphics</span><span class="use-tag">Newsletters</span><span class="use-tag">Posters &amp; flyers</span><span class="use-tag">Bulletins</span></div>
+    <a class="tool-link" href="https://canva.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Open Canva</a>
   </div>
 
   <div class="design-card">
-    <div class="design-card-top">
-      <p class="design-title">Microsoft PowerPoint + Copilot</p>
-      <span class="badge badge-copilot" style="font-size:11px;">Office 365</span>
-    </div>
-    <p class="design-desc">If your church has Microsoft 365 Business, Copilot can build an entire presentation from a brief description, suggest slide layouts, and generate images. You can also ask it to improve or redesign existing slides.</p>
-    <div class="design-uses">
-      <span class="use-tag">Sermon slides</span>
-      <span class="use-tag">Teaching series</span>
-      <span class="use-tag">Leadership reports</span>
-      <span class="use-tag">AGM presentations</span>
-    </div>
-    <div class="prompt-box" id="pi4" style="margin-top:0.75rem; margin-bottom:0.75rem;">Create a 6-slide presentation for a sermon on [passage/theme]. Include a title slide, an introduction to the passage, three main points, and a closing reflection. Use a clean, calm design with minimal text per slide.</div>
-    <div class="card-footer">
-      <button class="copy-btn" onclick="copyPrompt('pi4', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copy prompt
-      </button>
-      <span class="badge badge-copilot">Copilot in PowerPoint</span>
-    </div>
+    <div class="design-card-top"><p class="design-title">Microsoft PowerPoint + Copilot</p><span class="badge badge-copilot" style="font-size:11px;">Office 365</span></div>
+    <p class="design-desc">If your church has Microsoft 365 Business, Copilot can build an entire presentation from a brief description, suggest layouts, and generate images. Ask it: &ldquo;Create a 6-slide sermon presentation on [passage] with a clean, calm design.&rdquo;</p>
+    <div class="design-uses"><span class="use-tag">Sermon slides</span><span class="use-tag">Teaching series</span><span class="use-tag">AGM presentations</span></div>
   </div>
 
   <div class="design-card">
-    <div class="design-card-top">
-      <p class="design-title">Google Slides + Gemini</p>
-      <span class="badge badge-gemini" style="font-size:11px;">Google Workspace</span>
-    </div>
-    <p class="design-desc">If your church uses Google Workspace, Gemini is available inside Google Slides. Ask it to help structure a presentation, suggest speaker notes, or improve the layout of existing slides.</p>
-    <div class="design-uses">
-      <span class="use-tag">Sermon slides</span>
-      <span class="use-tag">Shared team presentations</span>
-      <span class="use-tag">Training materials</span>
-    </div>
+    <div class="design-card-top"><p class="design-title">Google Slides + Gemini</p><span class="badge badge-gemini" style="font-size:11px;">Google Workspace</span></div>
+    <p class="design-desc">If your church uses Google Workspace, Gemini is available inside Google Slides to help structure presentations, suggest speaker notes, and improve layouts.</p>
+    <div class="design-uses"><span class="use-tag">Sermon slides</span><span class="use-tag">Shared team presentations</span><span class="use-tag">Training materials</span></div>
   </div>
-
-  <div class="design-card">
-    <div class="design-card-top">
-      <p class="design-title">Adobe Express</p>
-      <span class="tg-free freemium" style="font-size:11px; padding:3px 9px; border-radius:8px;">Free starter</span>
-    </div>
-    <p class="design-desc">Adobe&rsquo;s free design tool, similar to Canva. Integrates with Adobe Firefly for AI image generation. Good for social media graphics and simple flyers. More polished output than Canva for those willing to spend a little more time.</p>
-    <div class="design-uses">
-      <span class="use-tag">Social media</span>
-      <span class="use-tag">Posters</span>
-      <span class="use-tag">Quick graphics</span>
-    </div>
-    <a class="tool-link" href="https://express.adobe.com" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-      Open Adobe Express
-    </a>
-  </div>
-
 </section>
 
-<!-- ===== SAFE USE ===== -->
+<!-- SAFE USE -->
 <section id="tab-safety" class="tab-section">
-
   <p class="section-intro">Using AI wisely means knowing where it helps and where to be careful. Here&rsquo;s a simple framework for church leaders.</p>
 
   <div class="traffic-group">
-    <div class="traffic-heading"><span class="dot dot-green"></span> Generally fine &mdash; go ahead</div>
+    <div class="traffic-heading"><span class="dot dot-green"></span>Generally fine &mdash; go ahead</div>
     <div class="traffic-item t-green">Drafting, editing, and summarising text you will review before using</div>
     <div class="traffic-item t-green">Research and brainstorming &mdash; exploring ideas, illustrations, angles</div>
     <div class="traffic-item t-green">Admin writing &mdash; emails, notices, meeting summaries, reports</div>
     <div class="traffic-item t-green">Planning tools &mdash; event checklists, series outlines, communication calendars</div>
     <div class="traffic-item t-green">Royalty-free image creation for newsletters, slides, and social media</div>
-    <div class="traffic-item t-green">Learning &mdash; asking AI to explain a concept or summarise a topic</div>
+    <div class="traffic-item t-green">Translation of newsletters, notices, and signage (with a human review)</div>
+    <div class="traffic-item t-green">Bible study support &mdash; context, questions, reflection prompts</div>
   </div>
 
   <div class="traffic-group">
-    <div class="traffic-heading"><span class="dot dot-amber"></span> Use with care &mdash; your judgement required</div>
+    <div class="traffic-heading"><span class="dot dot-amber"></span>Use with care &mdash; your judgement required</div>
     <div class="traffic-item t-amber">Theological questions &mdash; AI can be confidently wrong; always cross-check important claims</div>
-    <div class="traffic-item t-amber">Pastoral language &mdash; AI doesn&rsquo;t know the person; always personalise before sending</div>
+    <div class="traffic-item t-amber">Pastoral preparation &mdash; AI can help you find words, but not replace wisdom or presence</div>
     <div class="traffic-item t-amber">Anything going out under your name &mdash; read it carefully, make it genuinely yours</div>
-    <div class="traffic-item t-amber">AI images of people &mdash; check carefully for errors (hands, faces, text in images)</div>
-    <div class="traffic-item t-amber">Sensitive topics &mdash; AI may give generic responses to things that need nuance and care</div>
+    <div class="traffic-item t-amber">AI images of people &mdash; check carefully for errors before publishing</div>
+    <div class="traffic-item t-amber">Translated content &mdash; always ask a fluent speaker to review before printing or displaying</div>
   </div>
 
   <div class="traffic-group">
-    <div class="traffic-heading"><span class="dot dot-red"></span> Don&rsquo;t do this</div>
+    <div class="traffic-heading"><span class="dot dot-red"></span>Don&rsquo;t do this</div>
     <div class="traffic-item t-red">Sharing confidential pastoral information &mdash; never include real names or sensitive situations</div>
-    <div class="traffic-item t-red">Using AI output without reading it &mdash; it can be wrong, and it will go out under your name</div>
-    <div class="traffic-item t-red">Copying AI content into official legal or safeguarding documents without expert review</div>
+    <div class="traffic-item t-red">Using AI as a substitute for pastoral supervision, a colleague, or a professional counsellor</div>
+    <div class="traffic-item t-red">Using AI output without reading it &mdash; it can be wrong, and it goes out under your name</div>
+    <div class="traffic-item t-red">Copying AI into official legal or safeguarding documents without expert review</div>
     <div class="traffic-item t-red">Asking AI to depict Jesus or biblical figures &mdash; results are often theologically problematic</div>
-    <div class="traffic-item t-red">Treating AI as a replacement for prayer, discernment, or genuine human presence</div>
   </div>
 
   <div class="principle">"AI is a brilliant first draft, never a final authority."</div>
 
   <div class="info-box info-teal">
-    <div class="info-box-title">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-      A note on privacy
-    </div>
-    <p>Free AI tools like ChatGPT, Claude, and Gemini may use your conversations to improve their models. Avoid entering anything you would not be comfortable being seen by others &mdash; especially names, personal situations, or confidential disclosures. For sensitive work, check your organisation&rsquo;s data policy, and consider whether a paid or enterprise plan with stronger privacy protections is appropriate.</p>
+    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>A note on privacy</div>
+    <p>Free AI tools like ChatGPT, Claude, and Gemini may use your conversations to improve their models. Avoid entering anything you would not be comfortable being seen by others &mdash; especially names, personal situations, or confidential disclosures. For sensitive work, check your organisation&rsquo;s data policy.</p>
   </div>
 
   <div class="info-box info-amber" style="margin-top:0.75rem;">
-    <div class="info-box-title">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      Copyright &amp; AI images
-    </div>
+    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>Copyright &amp; AI images</div>
     <p>Images generated by AI tools are generally free for you to use &mdash; but check the terms of the specific tool. Adobe Firefly is the safest option as it is trained only on licensed content. Avoid using AI to recreate specific artists&rsquo; styles or existing artworks.</p>
   </div>
-
 </section>
 
-<!-- ===== LEARN MORE ===== -->
+<!-- LEARN MORE -->
 <section id="tab-more" class="tab-section">
-
   <p class="section-intro">Want to go deeper? Here are some helpful starting points for learning more about AI and how it might serve your ministry.</p>
 
   <p style="font-weight:500; font-size:14px; margin-bottom:0.75rem;">Get started with the tools</p>
-
   <div class="tool-card">
     <p class="tool-desc" style="margin-bottom:0.75rem;">Not sure which tool to try first? Search YouTube for beginner walkthroughs &mdash; there are excellent free tutorials for all of these.</p>
     <div style="display:flex; flex-wrap:wrap; gap:8px;">
-      <a class="tool-link" href="https://www.youtube.com/results?search_query=chatgpt+beginners+tutorial" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        ChatGPT tutorial
-      </a>
-      <a class="tool-link" href="https://www.youtube.com/results?search_query=canva+church+tutorial+beginners" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Canva for church
-      </a>
-      <a class="tool-link" href="https://adoption.microsoft.com/en-us/copilot/" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Copilot training
-      </a>
+      <a class="tool-link" href="https://www.youtube.com/results?search_query=chatgpt+beginners+tutorial" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>ChatGPT tutorial</a>
+      <a class="tool-link" href="https://www.youtube.com/results?search_query=canva+church+tutorial+beginners" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Canva for church</a>
+      <a class="tool-link" href="https://adoption.microsoft.com/en-us/copilot/" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Copilot training</a>
+      <a class="tool-link" href="https://www.logos.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Logos Bible software</a>
     </div>
   </div>
 
   <p style="font-weight:500; font-size:14px; margin-bottom:0.75rem; margin-top:1.5rem;">Faith &amp; AI conversations</p>
-
   <div class="tool-card">
     <p class="tool-name" style="margin-bottom:4px;">AI, faith, and ministry</p>
     <p class="tool-desc">Thoughtful Christian voices are engaging seriously with AI. Search for podcast episodes from Fuller Studio, The Gospel Coalition, or BioLogos for nuanced perspectives on technology and faith.</p>
-    <a class="tool-link" href="https://www.youtube.com/results?search_query=AI+faith+church+technology+Christian+ministry" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-      Search YouTube
-    </a>
+    <a class="tool-link" href="https://www.youtube.com/results?search_query=AI+faith+church+technology+Christian+ministry" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Search YouTube</a>
   </div>
 
   <div class="tool-card">
-    <p class="tool-name" style="margin-bottom:4px;">Ministry Tech</p>
-    <p class="tool-desc">A growing community of ministry practitioners sharing practical experience with technology in church contexts. Worth following for real-world examples.</p>
-    <a class="tool-link" href="https://ministrytech.com" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-      Visit site
-    </a>
+    <p class="tool-name" style="margin-bottom:4px;">A word of honest caution</p>
+    <p class="tool-desc" style="margin-bottom:0;">The CEO of YouVersion (the world&rsquo;s most downloaded Bible app) has noted that general AI tools misquote or misattribute Scripture in 15&ndash;60% of cases depending on the tool. Use specialist tools like Logos for anything doctrinal, and always verify before you preach or publish.</p>
   </div>
 
   <div class="principle" style="margin-top:1.5rem;">"The goal isn&rsquo;t to use AI more. It&rsquo;s to be more present for the people and work that only you can do."</div>
 
   <div class="info-box info-teal" style="margin-top:1.25rem;">
-    <div class="info-box-title">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      One practical challenge
-    </div>
+    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>One practical challenge</div>
     <p>Before next Sunday &mdash; pick just one prompt from this resource and try it. Notice where AI helps, where it falls short, and what you need to adjust. That&rsquo;s the learning curve, and it&rsquo;s shorter than you think.</p>
   </div>
-
 </section>
 
-<div class="back-to-top">
-  <a href="#top">Back to top &uarr;</a>
-</div>
-
+<div class="back-to-top"><a href="#top">Back to top &uarr;</a></div>
 </main>
 
 <footer>
-  <p>Resource prepared for the Emmaus Anglican Leaders workshop 2026&mdash; AI for Ministry</p>
+  <p>Resource prepared for the Emmaus Leadership Training workshop &mdash; AI for Ministry</p>
   <p style="margin-top:6px;">Prompts are starting points &mdash; always review and personalise before using. Keep confidential information private.</p>
 </footer>
 
@@ -1223,32 +687,19 @@ function showTab(id, btn) {
   if (btn) btn.classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
 function copyPrompt(id, btn) {
   var text = document.getElementById(id).innerText;
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(function() {
-      showCopied(btn);
-    }).catch(function() {
-      fallbackCopy(text, btn);
-    });
-  } else {
-    fallbackCopy(text, btn);
-  }
+    navigator.clipboard.writeText(text).then(function() { showCopied(btn); }).catch(function() { fallbackCopy(text, btn); });
+  } else { fallbackCopy(text, btn); }
 }
-
 function fallbackCopy(text, btn) {
   var ta = document.createElement('textarea');
-  ta.value = text;
-  ta.style.position = 'fixed';
-  ta.style.opacity = '0';
-  document.body.appendChild(ta);
-  ta.focus();
-  ta.select();
+  ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.focus(); ta.select();
   try { document.execCommand('copy'); showCopied(btn); } catch(e) {}
   document.body.removeChild(ta);
 }
-
 function showCopied(btn) {
   btn.classList.add('copied');
   btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
@@ -1258,6 +709,5 @@ function showCopied(btn) {
   }, 2000);
 }
 </script>
-
 </body>
 </html>

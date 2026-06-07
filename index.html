@@ -3,711 +3,2136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Tools for Parish Use - Workshop Resource</title>
+<title>Church Cyber Safety - Phishing Awareness Tool | NZ Church Safety</title>
+<meta name="description" content="A free phishing awareness and training tool for New Zealand churches. Learn to recognise AI-assisted phishing attacks and protect your congregation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #faf9f7; --surface: #ffffff; --surface2: #f3f1ee;
-    --border: rgba(0,0,0,0.1); --border2: rgba(0,0,0,0.18);
-    --text: #1a1916; --text2: #5a574f; --text3: #8a8780;
-    --teal-bg: #e1f5ee; --teal-border: #5dcaa5; --teal-text: #085041; --teal-mid: #0f6e56;
-    --amber-bg: #faeeda; --amber-border: #ef9f27; --amber-text: #633806;
-    --red-bg: #fcebeb; --red-border: #f09595; --red-text: #791f1f;
-    --green-bg: #eaf3de; --green-border: #97c459; --green-text: #27500a;
-    --purple-bg: #eeedfe; --purple-border: #afa9ec; --purple-text: #3c3489;
-    --blue-bg: #e6f1fb; --blue-border: #85b7eb; --blue-text: #0c447c;
-    --coral-bg: #faece7; --coral-border: #f0997b; --coral-text: #712b13;
-    --radius: 10px; --radius-sm: 6px;
+    --navy: #1a2744;
+    --navy-mid: #243461;
+    --navy-light: #2f4480;
+    --gold: #c8922a;
+    --gold-light: #e8b04a;
+    --gold-pale: #fdf3e0;
+    --cream: #faf8f4;
+    --white: #ffffff;
+    --text: #1a1a2e;
+    --text-mid: #3d3d5c;
+    --text-muted: #6b6b8a;
+    --border: #e2ddd6;
+    --border-dark: #ccc7bc;
+    --success: #2d6a4f;
+    --success-bg: #d8f3dc;
+    --danger: #9b2226;
+    --danger-bg: #fde8e8;
+    --warn: #7b4f12;
+    --warn-bg: #fff3cd;
+    --info: #1a4f6e;
+    --info-bg: #d6eaf8;
+    --radius: 10px;
+    --radius-lg: 16px;
+    --shadow: 0 2px 12px rgba(26,39,68,0.10);
+    --shadow-lg: 0 8px 32px rgba(26,39,68,0.16);
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #1a1916; --surface: #242220; --surface2: #2e2c29;
-      --border: rgba(255,255,255,0.1); --border2: rgba(255,255,255,0.18);
-      --text: #f0ede8; --text2: #a8a49c; --text3: #6a6760;
-      --teal-bg: #04342c; --teal-border: #1d9e75; --teal-text: #9fe1cb; --teal-mid: #5dcaa5;
-      --amber-bg: #412402; --amber-border: #ba7517; --amber-text: #fac775;
-      --red-bg: #501313; --red-border: #a32d2d; --red-text: #f7c1c1;
-      --green-bg: #173404; --green-border: #3b6d11; --green-text: #c0dd97;
-      --purple-bg: #26215c; --purple-border: #534ab7; --purple-text: #cecbf6;
-      --blue-bg: #042c53; --blue-border: #185fa5; --blue-text: #b5d4f4;
-      --coral-bg: #4a1b0c; --coral-border: #993c1d; --coral-text: #f5c4b3;
-    }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
   }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', system-ui, sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.6; min-height: 100vh; }
-  .site-header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 2.5rem 1.5rem 2rem; text-align: center; }
-  .eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); margin-bottom: 0.6rem; }
-  .site-header h1 { font-family: 'Lora', Georgia, serif; font-size: clamp(1.75rem, 5vw, 2.4rem); font-weight: 600; line-height: 1.2; margin-bottom: 0.6rem; }
-  .site-header p { color: var(--text2); font-size: 15px; max-width: 520px; margin: 0 auto 1.25rem; line-height: 1.65; }
-  .header-tagline { display: inline-block; font-family: 'Lora', serif; font-style: italic; font-size: 14px; color: var(--teal-mid); border: 1px solid var(--teal-border); background: var(--teal-bg); border-radius: 20px; padding: 5px 16px; }
-  .tab-nav { position: sticky; top: 0; z-index: 100; background: var(--surface); border-bottom: 1px solid var(--border); padding: 0.75rem 1rem; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-  .tab-nav::-webkit-scrollbar { display: none; }
-  .tab-btn { flex-shrink: 0; padding: 7px 15px; border-radius: 20px; border: 1px solid var(--border2); background: transparent; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--text2); cursor: pointer; transition: all 0.15s ease; white-space: nowrap; }
-  .tab-btn:hover { background: var(--surface2); color: var(--text); }
-  .tab-btn.active { background: var(--text); color: var(--bg); border-color: var(--text); }
-  main { max-width: 720px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
-  .tab-section { display: none; }
-  .tab-section.visible { display: block; }
-  .section-intro { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
-  .prompt-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.25rem; margin-bottom: 1rem; transition: border-color 0.15s; }
-  .prompt-card:hover { border-color: var(--border2); }
-  .card-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 0.85rem; }
-  .card-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 17px; }
-  .card-title { font-weight: 500; font-size: 15px; margin-bottom: 3px; line-height: 1.3; }
-  .card-desc { font-size: 13px; color: var(--text2); line-height: 1.5; }
-  .prompt-box { background: var(--surface2); border-radius: var(--radius-sm); border-left: 2px solid var(--border2); padding: 0.85rem 1rem; font-size: 13.5px; line-height: 1.7; color: var(--text); font-style: italic; margin-bottom: 0.85rem; white-space: pre-wrap; }
-  .card-footer { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .copy-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 13px; border-radius: var(--radius-sm); border: 1px solid var(--border2); background: transparent; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; color: var(--text2); cursor: pointer; transition: all 0.15s; }
-  .copy-btn:hover { background: var(--surface2); color: var(--text); }
-  .copy-btn.copied { background: var(--teal-bg); border-color: var(--teal-border); color: var(--teal-text); }
-  .copy-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
-  .badge { font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 10px; }
-  .badge-any { background: var(--surface2); color: var(--text3); border: 1px solid var(--border); }
-  .badge-claude { background: var(--purple-bg); color: var(--purple-text); }
-  .badge-chatgpt { background: var(--green-bg); color: var(--green-text); }
-  .badge-copilot { background: var(--blue-bg); color: var(--blue-text); }
-  .badge-gemini { background: var(--amber-bg); color: var(--amber-text); }
-  .badge-image { background: var(--coral-bg); color: var(--coral-text); }
-  .info-box { border-radius: var(--radius); padding: 1rem 1.1rem; margin-bottom: 1rem; font-size: 13.5px; line-height: 1.65; }
-  .info-box-title { font-weight: 500; font-size: 13px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-  .info-teal { background: var(--teal-bg); border: 1px solid var(--teal-border); color: var(--teal-text); }
-  .info-teal .info-box-title { color: var(--teal-text); }
-  .info-amber { background: var(--amber-bg); border: 1px solid var(--amber-border); color: var(--amber-text); }
-  .info-amber .info-box-title { color: var(--amber-text); }
-  .info-red { background: var(--red-bg); border: 1px solid var(--red-border); color: var(--red-text); }
-  .info-red .info-box-title { color: var(--red-text); }
-  .traffic-group { margin-bottom: 1.5rem; }
-  .traffic-heading { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; margin-bottom: 0.6rem; }
-  .dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
-  .dot-green { background: #639922; } .dot-amber { background: #ba7517; } .dot-red { background: #a32d2d; }
-  .traffic-item { border-radius: var(--radius-sm); padding: 0.65rem 1rem; margin-bottom: 6px; font-size: 13.5px; line-height: 1.55; }
-  .t-green { background: var(--green-bg); color: var(--green-text); border: 1px solid var(--green-border); }
-  .t-amber { background: var(--amber-bg); color: var(--amber-text); border: 1px solid var(--amber-border); }
-  .t-red { background: var(--red-bg); color: var(--red-text); border: 1px solid var(--red-border); }
-  .principle { font-family: 'Lora', serif; font-style: italic; font-size: 15px; border-left: 3px solid var(--border2); padding: 0.75rem 1rem; color: var(--text2); margin: 1.25rem 0; background: var(--surface2); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
-  .tool-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 0.85rem; }
-  .tool-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
-  .tool-name { font-weight: 500; font-size: 15px; }
-  .tool-desc { font-size: 13.5px; color: var(--text2); line-height: 1.6; margin-bottom: 0.75rem; }
-  .tool-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--blue-text); text-decoration: none; border: 1px solid var(--blue-border); background: var(--blue-bg); padding: 5px 12px; border-radius: var(--radius-sm); transition: opacity 0.15s; }
-  .tool-link:hover { opacity: 0.8; }
-  .tool-link svg { width: 13px; height: 13px; }
-  .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
-  .tool-grid-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; }
-  .tg-name { font-weight: 500; font-size: 14px; margin-bottom: 4px; }
-  .tg-free { font-size: 11px; font-weight: 500; padding: 2px 7px; border-radius: 8px; margin-bottom: 8px; display: inline-block; }
-  .free { background: var(--green-bg); color: var(--green-text); }
-  .freemium { background: var(--amber-bg); color: var(--amber-text); }
-  .paid { background: var(--red-bg); color: var(--red-text); }
-  .tg-desc { font-size: 12.5px; color: var(--text2); line-height: 1.55; margin-bottom: 0.6rem; }
-  .tg-link { font-size: 12px; color: var(--blue-text); text-decoration: none; }
-  .tg-link:hover { text-decoration: underline; }
-  .design-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
-  .design-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 8px; }
-  .design-title { font-weight: 500; font-size: 15px; }
-  .design-desc { font-size: 13.5px; color: var(--text2); line-height: 1.6; margin-bottom: 0.75rem; }
-  .design-uses { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.75rem; }
-  .use-tag { font-size: 11.5px; background: var(--surface2); border: 1px solid var(--border); color: var(--text2); padding: 3px 9px; border-radius: 8px; }
-  .image-prompt { background: var(--surface2); border-radius: var(--radius-sm); padding: 0.85rem 1rem; font-size: 13.5px; line-height: 1.7; font-style: italic; margin-bottom: 0.75rem; border-left: 2px solid var(--coral-border); }
-  .specialist-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
-  .specialist-name { font-weight: 500; font-size: 15px; margin-bottom: 4px; }
-  .specialist-tag { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 8px; margin-bottom: 8px; display: inline-block; }
-  .specialist-desc { font-size: 13.5px; color: var(--text2); line-height: 1.6; margin-bottom: 0.75rem; }
-  footer { text-align: center; padding: 2rem 1.5rem; font-size: 13px; color: var(--text3); border-top: 1px solid var(--border); max-width: 720px; margin: 0 auto; }
-  .back-to-top { display: block; text-align: center; margin-top: 2rem; }
-  .back-to-top a { font-size: 13px; color: var(--text3); text-decoration: none; }
-  .back-to-top a:hover { color: var(--text); }
-  @media (max-width: 480px) { main { padding: 1.5rem 1rem 3rem; } }
+
+  /* ---- HEADER ---- */
+  .site-header {
+    background: var(--navy);
+    color: white;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+  }
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .header-shield {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+  .header-text h1 {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+    line-height: 1.2;
+  }
+  .header-text p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 1px;
+  }
+  .header-badge {
+    margin-left: auto;
+    background: rgba(200,146,42,0.2);
+    border: 1px solid rgba(200,146,42,0.4);
+    color: var(--gold-light);
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  /* ---- MAIN LAYOUT ---- */
+  .main-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 16px 60px;
+  }
+
+  /* ---- NAV TABS ---- */
+  .section-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--border);
+    margin: 0 0 32px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .section-nav::-webkit-scrollbar { display: none; }
+  .nav-tab {
+    padding: 14px 22px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'DM Sans', sans-serif;
+    user-select: none;
+  }
+  .nav-tab:hover { color: var(--navy); }
+  .nav-tab.active { color: var(--navy); border-bottom-color: var(--gold); font-weight: 500; }
+
+  /* ---- HERO ---- */
+  .hero {
+    background: var(--navy);
+    border-radius: var(--radius-lg);
+    padding: 44px 40px;
+    color: white;
+    margin: 28px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(200,146,42,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -40px;
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle, rgba(47,68,128,0.6) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(200,146,42,0.18);
+    border: 1px solid rgba(200,146,42,0.35);
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .hero h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    max-width: 560px;
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 28px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-stat {
+    text-align: center;
+  }
+  .hero-stat-num {
+    font-family: 'Lora', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--gold-light);
+    display: block;
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ---- CARDS ---- */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+  }
+  .card.accent-gold { border-left: 4px solid var(--gold); }
+  .card.accent-navy { border-left: 4px solid var(--navy); }
+  .card.accent-danger { border-left: 4px solid var(--danger); }
+  .card.accent-success { border-left: 4px solid var(--success); }
+
+  /* ---- FORM ELEMENTS ---- */
+  label.field-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-mid);
+    margin-bottom: 6px;
+  }
+  input[type="text"], select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    background: var(--white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  input[type="text"]:focus, select:focus {
+    border-color: var(--navy-light);
+    box-shadow: 0 0 0 3px rgba(47,68,128,0.12);
+  }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 580px) { .form-grid { grid-template-columns: 1fr; } }
+  .form-group { margin-bottom: 16px; }
+
+  /* ---- BUTTONS ---- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 24px;
+    border-radius: var(--radius);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+    text-decoration: none;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary {
+    background: var(--navy);
+    color: white;
+    box-shadow: 0 2px 8px rgba(26,39,68,0.25);
+  }
+  .btn-primary:hover { background: var(--navy-mid); box-shadow: 0 4px 16px rgba(26,39,68,0.3); }
+  .btn-gold {
+    background: var(--gold);
+    color: white;
+    box-shadow: 0 2px 8px rgba(200,146,42,0.3);
+  }
+  .btn-gold:hover { background: #b8821e; }
+  .btn-outline {
+    background: transparent;
+    color: var(--navy);
+    border: 1.5px solid var(--border-dark);
+  }
+  .btn-outline:hover { background: var(--cream); border-color: var(--navy-light); }
+  .btn-sm { padding: 7px 16px; font-size: 13px; }
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+
+  /* ---- PROGRESS ---- */
+  .progress-track {
+    height: 5px;
+    background: var(--border);
+    border-radius: 4px;
+    margin: 12px 0 20px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--navy-light), var(--gold));
+    border-radius: 4px;
+    transition: width 0.4s cubic-bezier(.4,0,.2,1);
+  }
+
+  /* ---- QUESTION OPTION ---- */
+  .option-card {
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    user-select: none;
+    background: var(--white);
+  }
+  .option-card:hover { border-color: var(--navy-light); background: #f5f7fc; transform: translateX(3px); }
+  .option-card.selected { border-color: var(--navy); background: #eef1fa; }
+  .option-card.correct { border-color: var(--success); background: var(--success-bg); cursor: default; }
+  .option-card.wrong { border-color: var(--danger); background: var(--danger-bg); cursor: default; }
+  .option-card.disabled { cursor: default; }
+  .option-card.disabled:hover { transform: none; border-color: var(--border); background: var(--white); }
+  .option-letter {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .option-card.correct .option-letter { background: var(--success); border-color: var(--success); color: white; }
+  .option-card.wrong .option-letter { background: var(--danger); border-color: var(--danger); color: white; }
+  .option-card:hover .option-letter { border-color: var(--navy-light); color: var(--navy); }
+  .option-text { font-size: 14.5px; line-height: 1.5; padding-top: 3px; }
+
+  /* ---- EMAIL MOCK ---- */
+  .email-mock {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin: 16px 0;
+    overflow: hidden;
+    font-size: 13.5px;
+  }
+  .email-chrome {
+    background: #e8e4de;
+    padding: 8px 14px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .chrome-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .chrome-dot.red { background: #ff5f57; }
+  .chrome-dot.yellow { background: #febc2e; }
+  .chrome-dot.green { background: #28c840; }
+  .email-fields {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .email-row { display: flex; gap: 8px; margin-bottom: 5px; font-size: 13px; }
+  .email-row:last-child { margin-bottom: 0; }
+  .email-field-label { color: var(--text-muted); min-width: 48px; font-weight: 500; }
+  .email-subject { font-weight: 600; font-size: 14px; color: var(--text); }
+  .email-body-area { padding: 16px; line-height: 1.7; color: var(--text-mid); }
+  .red-flag { color: var(--danger); font-weight: 600; }
+  .warn-flag { color: var(--warn); font-weight: 600; }
+
+  /* ---- REVEAL BOX ---- */
+  .reveal-box {
+    background: var(--info-bg);
+    border-left: 4px solid var(--info);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 16px 18px;
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--info);
+    display: none;
+    animation: slideDown 0.25s ease;
+  }
+  .reveal-box.show { display: block; }
+  .reveal-box strong { color: var(--navy); }
+  @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ---- SCORE ---- */
+  .score-display {
+    text-align: center;
+    padding: 24px 0 16px;
+  }
+  .score-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--navy);
+    box-shadow: 0 4px 20px rgba(26,39,68,0.3);
+  }
+  .score-num { font-family: 'Lora', serif; font-size: 36px; font-weight: 600; color: white; line-height: 1; }
+  .score-denom { font-size: 14px; color: rgba(255,255,255,0.6); }
+  .score-label { font-size: 16px; color: var(--text-mid); margin-top: 8px; }
+
+  /* ---- MODULE CARD ---- */
+  .module-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    transition: border-color 0.2s;
+  }
+  .module-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 20px;
+    color: white;
+  }
+  .module-icon.gold { background: var(--gold); }
+  .module-icon.teal { background: #1a7a6e; }
+  .module-title { font-weight: 500; font-size: 15px; margin-bottom: 3px; }
+  .module-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+  /* ---- RESOURCE LINKS ---- */
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .resource-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .resource-card:hover { border-color: var(--navy-light); box-shadow: var(--shadow); transform: translateY(-2px); }
+  .resource-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    color: white;
+  }
+  .resource-name { font-weight: 500; font-size: 14px; margin-bottom: 3px; }
+  .resource-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+  .resource-url { font-size: 11px; color: var(--gold); margin-top: 4px; }
+
+  /* ---- VULNERABLE PEOPLE SECTION ---- */
+  .scam-type-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    margin-bottom: 14px;
+  }
+  .scam-type-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .scam-type-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    color: white;
+  }
+  .scam-badge {
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 12px;
+    font-weight: 500;
+    margin-left: auto;
+  }
+  .badge-high { background: var(--danger-bg); color: var(--danger); }
+  .badge-medium { background: var(--warn-bg); color: var(--warn); }
+  .badge-info { background: var(--info-bg); color: var(--info); }
+  .tip-list { list-style: none; padding: 0; }
+  .tip-list li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .tip-list li:last-child { border-bottom: none; }
+  .tip-check { color: var(--success); flex-shrink: 0; margin-top: 1px; font-weight: 600; }
+  .tip-warn-icon { color: var(--danger); flex-shrink: 0; margin-top: 1px; font-weight: 600; }
+
+  /* ---- CHECKLIST ---- */
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .checklist-item:hover { background: var(--cream); }
+  .checklist-item.checked { background: var(--success-bg); border-color: #a8d8b9; }
+  .check-box {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--border-dark);
+    border-radius: 5px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+    font-size: 13px;
+    color: transparent;
+  }
+  .checklist-item.checked .check-box { background: var(--success); border-color: var(--success); color: white; }
+  .check-text { font-size: 14px; line-height: 1.5; }
+  .checklist-item.checked .check-text { text-decoration: line-through; color: var(--text-muted); }
+
+  /* ---- FOOTER ---- */
+  .site-footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.65);
+    text-align: center;
+    padding: 28px 24px;
+    font-size: 13px;
+    margin-top: 40px;
+    line-height: 1.8;
+  }
+  .site-footer a { color: var(--gold-light); text-decoration: none; }
+  .site-footer a:hover { text-decoration: underline; }
+
+  /* ---- SECTION HEADING ---- */
+  .section-heading {
+    font-family: 'Lora', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .section-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  /* ---- DIVIDER ---- */
+  hr.divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+
+  /* ---- COMPLETION ---- */
+  .complete-banner {
+    text-align: center;
+    padding: 32px 20px;
+  }
+  .complete-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--success-bg);
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+  }
+
+  /* ---- INLINE ALERTS ---- */
+  .alert {
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 16px 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .alert-warn { background: var(--warn-bg); color: var(--warn); border: 1px solid #f0d08a; }
+  .alert-info { background: var(--info-bg); color: var(--info); border: 1px solid #90cce8; }
+  .alert-success { background: var(--success-bg); color: var(--success); border: 1px solid #90d4a5; }
+  .alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ---- SCREEN VISIBILITY ---- */
+  .app-screen { display: none; }
+  .app-screen.active { display: block; }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeIn 0.3s ease forwards; }
+
+  /* ---- PRINT-FRIENDLY BUTTON ---- */
+  .print-hint { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
+
+  /* ---- DENOMINATION PILL ---- */
+  .denom-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--gold-pale);
+    border: 1px solid #e8d5aa;
+    border-radius: 20px;
+    padding: 4px 12px 4px 8px;
+    font-size: 13px;
+    color: var(--warn);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .denom-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+
+  /* ---- TABS SECTION ---- */
+  .section-panel { display: none; padding-top: 8px; }
+  .section-panel.active { display: block; }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 580px) {
+    .hero { padding: 28px 22px; }
+    .card { padding: 18px 18px; }
+    .hero-stats { gap: 20px; }
+  }
 </style>
 </head>
 <body>
 
-<header class="site-header" id="top">
-  <p class="eyebrow">Workshop resource &mdash; Emmaus Leadership Training</p>
-  <h1>AI Tools for Parish Use</h1>
-  <p>Practical prompts and guidance to help church leaders use AI wisely &mdash; saving time on draining tasks so you can be more present for the people and work that matters.</p>
-  <span class="header-tagline">AI is a brilliant first draft, never a final authority.</span>
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <svg class="header-shield" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M18 3L6 8v10c0 8 5.5 14.5 12 16 6.5-1.5 12-8 12-16V8L18 3Z" fill="rgba(200,146,42,0.3)" stroke="#c8922a" stroke-width="1.5"/>
+      <path d="M18 3L6 8v10c0 8 5.5 14.5 12 16V3Z" fill="rgba(255,255,255,0.08)"/>
+      <path d="M12 18l4 4 8-8" stroke="#e8b04a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="header-text">
+      <h1>Church Cyber Safety</h1>
+      <p>nzchurchsafety.com/scams &mdash; free for all churches</p>
+    </div>
+    <div class="header-badge">Free Resource</div>
+  </div>
 </header>
 
-<nav class="tab-nav" role="navigation" aria-label="Resource sections">
-  <button class="tab-btn active" onclick="showTab('start', this)">Getting started</button>
-  <button class="tab-btn" onclick="showTab('sermons', this)">Sermon prep</button>
-  <button class="tab-btn" onclick="showTab('admin', this)">Admin &amp; emails</button>
-  <button class="tab-btn" onclick="showTab('pastoral', this)">Pastoral care</button>
-  <button class="tab-btn" onclick="showTab('events', this)">Events &amp; comms</button>
-  <button class="tab-btn" onclick="showTab('study', this)">Bible study</button>
-  <button class="tab-btn" onclick="showTab('translation', this)">Translation</button>
-  <button class="tab-btn" onclick="showTab('images', this)">Images &amp; design</button>
-  <button class="tab-btn" onclick="showTab('safety', this)">Safe use</button>
-  <button class="tab-btn" onclick="showTab('more', this)">Learn more</button>
-</nav>
+<!-- MAIN -->
+<div class="main-wrap">
 
-<main>
-
-<!-- GETTING STARTED -->
-<section id="tab-start" class="tab-section visible">
-  <div class="info-box info-teal" style="margin-bottom:1.5rem;">
-    <div class="info-box-title">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      The big idea
+  <!-- HERO -->
+  <div class="hero fade-in">
+    <div class="hero-eyebrow">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="#e8b04a"/><path d="M6 4v2.5l1.5 1.5" stroke="#1a2744" stroke-width="1.5" stroke-linecap="round"/></svg>
+      New Zealand churches
     </div>
-    <p>AI is a very capable writing and thinking assistant &mdash; not a replacement for your pastoral heart. It doesn&rsquo;t know your congregation, your theology, or your relationships. You bring all of that. Use it to handle draining tasks so you have more energy for people and prayer.</p>
-  </div>
-  <p style="font-size:14px; color:var(--text2); line-height:1.7; margin-bottom:1.5rem;">Choose any tab above to explore ready-to-use prompts for common ministry tasks. Each prompt can be copied and pasted straight into your AI tool of choice &mdash; then personalise from there.</p>
-  <div class="principle">"AI handles the draining draft. You bring the pastor&rsquo;s heart."</div>
-  <p style="font-size:14px; font-weight:500; margin-bottom:0.75rem; margin-top:1.5rem;">The main AI tools</p>
-  <div class="tool-card">
-    <div class="tool-card-header"><span class="badge badge-chatgpt">ChatGPT</span></div>
-    <p class="tool-desc">Made by OpenAI. Free to start. The most widely known AI tool. Excellent for writing, drafting, planning, and research. The free version is very capable for most ministry tasks.</p>
-    <a class="tool-link" href="https://chatgpt.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Open ChatGPT</a>
-  </div>
-  <div class="tool-card">
-    <div class="tool-card-header"><span class="badge badge-claude">Claude</span></div>
-    <p class="tool-desc">Made by Anthropic. Free to start. Known for thoughtful, nuanced responses &mdash; especially good for longer writing, pastoral language, and reflection tasks. Often feels a little more considered than ChatGPT.</p>
-    <a class="tool-link" href="https://claude.ai" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Open Claude</a>
-  </div>
-  <div class="tool-card">
-    <div class="tool-card-header"><span class="badge badge-gemini">Gemini</span></div>
-    <p class="tool-desc">Made by Google. Free to start. Integrates well with Gmail and Google Docs if your church uses Google Workspace. Available inside Google apps directly.</p>
-    <a class="tool-link" href="https://gemini.google.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Open Gemini</a>
-  </div>
-  <div class="tool-card">
-    <div class="tool-card-header"><span class="badge badge-copilot">Microsoft Copilot</span></div>
-    <p class="tool-desc">Made by Microsoft. If your church has a Microsoft 365 Business subscription, Copilot is available inside Word, Outlook, and Teams. Excellent for document-heavy tasks.</p>
-    <a class="tool-link" href="https://copilot.microsoft.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Open Copilot</a>
-  </div>
-  <div class="info-box info-amber" style="margin-top:1.25rem;">
-    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>One challenge to take away</div>
-    <p>Before next Sunday &mdash; pick just one prompt from this resource and try it. Notice where AI helps, where it falls short, and what you need to adjust. That&rsquo;s the learning curve, and it&rsquo;s shorter than you think.</p>
-  </div>
-</section>
-
-<!-- SERMON PREP -->
-<section id="tab-sermons" class="tab-section">
-  <p class="section-intro">AI works best as a <em>thinking partner</em> for sermon prep &mdash; helping you explore angles, find illustrations, or write discussion questions. Your exegesis, your pastoral voice, and your prayerful discernment remain entirely yours.</p>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--purple-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-text)" stroke-width="2" width="18" height="18"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-      <div><p class="card-title">Fresh sermon angles</p><p class="card-desc">When you&rsquo;re stuck on how to approach a passage</p></div>
-    </div>
-    <div class="prompt-box" id="ps1">I'm preaching on [passage, e.g. John 6:1-15] this Sunday. My congregation includes [describe your people briefly, e.g. young families, long-term Christians, people new to faith]. Give me three fresh angles on this passage I might not have considered, and suggest one contemporary illustration for each angle.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('ps1', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--teal-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-      <div><p class="card-title">Small group discussion questions</p><p class="card-desc">Turn a sermon into a week of community conversation</p></div>
-    </div>
-    <div class="prompt-box" id="ps2">Based on a sermon on [passage or theme], write 5 discussion questions for a small group. Make them progressively deeper - starting with observation, then reflection, then personal application. Include one question that might challenge longer-term Christians and one that's accessible to someone newer to faith.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('ps2', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--amber-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2" width="18" height="18"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
-      <div><p class="card-title">Sermon series outline</p><p class="card-desc">Plan several weeks in one go</p></div>
-    </div>
-    <div class="prompt-box" id="ps3">Help me plan a 4-week sermon series on [theme or book of the Bible]. Suggest a title for the series, a title for each week, a key passage for each week, and one central question the sermon should answer. Keep it grounded in Scripture and accessible to a mixed congregation.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('ps3', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--coral-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral-text)" stroke-width="2" width="18" height="18"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-      <div><p class="card-title">Children&rsquo;s talk version</p><p class="card-desc">Adapt a passage for younger ears</p></div>
-    </div>
-    <div class="prompt-box" id="ps4">I'm preaching on [passage] for adults. Help me write a short 3-minute children's talk on the same theme for ages 5-10. Use a simple object lesson or story, avoid jargon, and end with one clear takeaway that a child could repeat back.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('ps4', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--blue-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-      <div><p class="card-title">Historical and cultural context</p><p class="card-desc">Background that helps a passage come alive</p></div>
-    </div>
-    <div class="prompt-box" id="ps5">Give me a brief summary of the historical and cultural context of [passage, e.g. the Sermon on the Mount / Nehemiah rebuilding the walls]. What would the original audience have understood that a modern reader might miss? Keep it accessible - I want to weave this into a sermon, not write an academic paper.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('ps5', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="info-box info-amber">
-    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>Heads up</div>
-    <p>AI can be confidently wrong on theology &mdash; especially on nuanced or denominational matters. Always bring your own discernment and cross-check anything doctrinal. AI is a starting point, not a commentary.</p>
-  </div>
-</section>
-
-<!-- ADMIN & EMAILS -->
-<section id="tab-admin" class="tab-section">
-  <p class="section-intro">Admin and email are where most leaders say AI saves them the most time, fastest. Paste in your rough notes and get a polished draft back in seconds &mdash; then personalise it.</p>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--blue-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-      <div><p class="card-title">Turn dot-points into a warm email</p><p class="card-desc">The fastest admin win &mdash; works in seconds</p></div>
-    </div>
-    <div class="prompt-box" id="pa1">Turn these rough notes into a warm, clear email from a church leader to their congregation. Keep the tone caring and personal, not corporate. Notes: [paste your rough dot points here]</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pa1', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--purple-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-text)" stroke-width="2" width="18" height="18"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>
-      <div><p class="card-title">Meeting notes to action list</p><p class="card-desc">Especially useful for wardens and vestry meetings</p></div>
-    </div>
-    <div class="prompt-box" id="pa2">Here are rough notes from a church leadership meeting. Please summarise the key decisions made, and list all action items with the person responsible and any deadline mentioned. Format it clearly so it can be sent to the team. Notes: [paste your meeting notes here]</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pa2', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-copilot">Great for Copilot</span><span class="badge badge-gemini">Or Gemini</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--teal-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <div><p class="card-title">Policy or procedure first draft</p><p class="card-desc">Save hours on document drafting</p></div>
-    </div>
-    <div class="prompt-box" id="pa3">Draft a [type of policy, e.g. child safety policy / volunteer onboarding guide / building hire agreement] for a small Anglican church in New Zealand. Keep it practical and clearly written. Flag any sections where I'll need to add our specific details or check with a legal adviser.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pa3', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--amber-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2" width="18" height="18"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
-      <div><p class="card-title">Rewrite for clarity</p><p class="card-desc">Simplify something that&rsquo;s become too long or formal</p></div>
-    </div>
-    <div class="prompt-box" id="pa4">Please rewrite the following text so it is clearer, warmer, and easier to read. Aim for plain language at about a Year 10 reading level. Keep all the key information but cut anything repetitive. Here is the original: [paste your text]</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pa4', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--coral-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral-text)" stroke-width="2" width="18" height="18"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-      <div><p class="card-title">Annual report section</p><p class="card-desc">Turn activity notes into a polished report narrative</p></div>
-    </div>
-    <div class="prompt-box" id="pa5">Here are rough notes about what our church did this year in [area, e.g. community outreach / youth ministry / pastoral care]: [paste notes]. Please write a 200-word section for our annual report. Keep it warm, honest, and grateful in tone - highlighting people and impact rather than just activity counts.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pa5', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-</section>
-
-<!-- PASTORAL CARE -->
-<section id="tab-pastoral" class="tab-section">
-  <p class="section-intro">AI has a limited and specific role in pastoral care. It can help you <em>prepare</em> &mdash; finding words for a card, drafting a prayer, or thinking through a difficult conversation in advance. It is not a substitute for human presence, professional supervision, or the advice of a trusted colleague.</p>
-
-  <div class="info-box info-red" style="margin-bottom:1.25rem;">
-    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg>For actual pastoral situations &mdash; talk to a person</div>
-    <p>For real pastoral challenges &mdash; a difficult conversation, a safeguarding concern, a complex family situation, a person in crisis &mdash; your supervisor, a trusted colleague, or a professional counsellor is always the right first call. AI does not know the person, cannot exercise pastoral judgement, and should never replace professional supervision.</p>
-  </div>
-
-  <div class="info-box" style="background:var(--red-bg); border:1px solid var(--red-border); color:var(--red-text); margin-bottom:1.25rem;">
-    <div class="info-box-title" style="color:var(--red-text);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Always protect privacy</div>
-    <p>Never include real names, identifying details, or confidential disclosures in any AI prompt. Use generic descriptions only &mdash; &ldquo;a church member&rdquo; or &ldquo;someone in my congregation&rdquo;.</p>
-  </div>
-
-  <p style="font-size:14px; font-weight:500; margin-bottom:0.75rem;">Where AI can help: preparation and written communication</p>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--blue-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-      <div><p class="card-title">Condolence or sympathy message</p><p class="card-desc">When words don&rsquo;t come easily &mdash; a starting point only</p></div>
-    </div>
-    <div class="prompt-box" id="pp1">Help me write a short, heartfelt message to someone in my congregation who has recently lost [e.g. a spouse / a parent / a child]. Keep it warm and grounded in Christian hope without being platitudinous. About 3-4 sentences. I'll personalise it before sending.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pp1', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--teal-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
-      <div><p class="card-title">Prayer for a specific situation</p><p class="card-desc">A starting point for a service, visit, or card</p></div>
-    </div>
-    <div class="prompt-box" id="pp2">Write a short prayer (about 100 words) for [describe situation generally, e.g. a family facing serious illness / a couple preparing for marriage / a community grieving a sudden loss]. Use accessible, non-jargon language that someone unfamiliar with church would still find meaningful.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pp2', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--amber-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-      <div><p class="card-title">Prepare open questions for a visit</p><p class="card-desc">Conversation starter ideas for specific situations</p></div>
-    </div>
-    <div class="prompt-box" id="pp3">I'm visiting a church member who is [describe situation generally, e.g. recently bereaved / living with a long-term illness]. Suggest 3-4 open questions I could use to open conversation well. Also, are there any topics or phrases I should be careful to avoid in this situation?</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pp3', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-claude">Works well in Claude</span></div>
-  </div>
-
-  <div class="principle">"AI can help you find words. It cannot replace the wisdom of a trusted colleague or the presence of a caring pastor."</div>
-</section>
-
-<!-- EVENTS & COMMS -->
-<section id="tab-events" class="tab-section">
-  <p class="section-intro">Planning events and communicating them across multiple channels takes time. AI can help you turn one idea into a full suite of communications quickly.</p>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--blue-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-      <div><p class="card-title">One idea, many formats</p><p class="card-desc">Turn one event or sermon into a week of content</p></div>
-    </div>
-    <div class="prompt-box" id="pe1">Here is a short summary of our upcoming [event/sermon/announcement]: [paste summary]. From this, please write: (1) a short Facebook post, (2) a 3-sentence email newsletter intro, (3) a bulletin notice under 50 words, and (4) a short text message version for SMS or WhatsApp. Keep the tone warm and inviting.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pe1', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--amber-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2" width="18" height="18"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
-      <div><p class="card-title">Event planning checklist</p><p class="card-desc">Don&rsquo;t miss anything &mdash; especially for new events</p></div>
-    </div>
-    <div class="prompt-box" id="pe2">I'm planning [describe the event, e.g. a community Christmas carols evening for around 200 people at a church in New Zealand]. Create a practical planning checklist with tasks grouped by timing - 6 weeks out, 3 weeks out, 1 week out, and day of event. Include things that churches often forget.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pe2', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--purple-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-text)" stroke-width="2" width="18" height="18"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg></div>
-      <div><p class="card-title">Volunteer recruitment message</p><p class="card-desc">Inviting people to serve without the guilt</p></div>
-    </div>
-    <div class="prompt-box" id="pe3">Write a warm, non-pressuring invitation for church members to volunteer for [describe the role or team, e.g. our welcome team / Sunday morning kids programme / community meal]. Include what the role involves, why it matters, and how people can express interest. About 150 words. Avoid guilt-based language.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pe3', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--teal-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-      <div><p class="card-title">Monthly newsletter draft</p><p class="card-desc">From rough notes to a readable newsletter</p></div>
-    </div>
-    <div class="prompt-box" id="pe4">Here are my rough notes for this month's church newsletter: [paste notes]. Please organise these into a readable newsletter with a short opening paragraph from the minister, then clear sections for each item. Keep the tone warm, personal, and encouraging. Flag anywhere I should add a specific detail.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pe4', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-copilot">Great for Copilot</span><span class="badge badge-gemini">Or Gemini</span></div>
-  </div>
-</section>
-
-<!-- BIBLE STUDY -->
-<section id="tab-study" class="tab-section">
-  <p class="section-intro">AI can be a genuinely useful study companion &mdash; helping you explore context, generate questions, and think through a passage from different angles. Several specialist tools now go deeper than general AI, with access to commentaries, original languages, and theological resources.</p>
-
-  <p style="font-weight:500; font-size:14px; margin-bottom:0.75rem;">Specialist Bible study tools</p>
-
-  <div class="specialist-card">
-    <p class="specialist-name">Logos Bible Software</p>
-    <span class="specialist-tag freemium">Free tier + paid</span>
-    <p class="specialist-desc">The most powerful dedicated Bible study platform available. AI-assisted search, sermon builder, original language tools, and a library of 250,000+ titles. The free tier includes 40+ books. Widely used by clergy and seminary students. Available on web, iOS, and Android.</p>
-    <a class="tool-link" href="https://www.logos.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Visit Logos</a>
-  </div>
-
-  <div class="specialist-card">
-    <p class="specialist-name">YouVersion Bible App</p>
-    <span class="specialist-tag free">Free</span>
-    <p class="specialist-desc">The world&rsquo;s most downloaded Bible app &mdash; over 1 billion installs. AI features help surface relevant reading plans, devotionals, and cross-references based on what you&rsquo;re studying. Over 3,600 Bible versions in 2,300+ languages, including te reo M&#257;ori. Good for congregation members as well as leaders.</p>
-    <a class="tool-link" href="https://www.youversion.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Visit YouVersion</a>
-  </div>
-
-  <div class="specialist-card">
-    <p class="specialist-name">Ecclesia Bible</p>
-    <span class="specialist-tag free">Free</span>
-    <p class="specialist-desc">A free AI-enhanced study app offering source language analysis, nearly 50,000 verse correlations, and real-time translational variations. Good for digging into original-language meaning without needing Hebrew or Greek training.</p>
-    <a class="tool-link" href="https://ecclesiabible.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Visit Ecclesia Bible</a>
-  </div>
-
-  <div class="specialist-card">
-    <p class="specialist-name">ScriptureArk</p>
-    <span class="specialist-tag freemium">Free tier</span>
-    <p class="specialist-desc">An AI research tool trained specifically on biblical and theological resources. Good for pastors, Bible study leaders, and anyone wanting deeper engagement with Scripture beyond what general AI tools provide.</p>
-    <a class="tool-link" href="https://www.scriptureark.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Visit ScriptureArk</a>
-  </div>
-
-  <p style="font-weight:500; font-size:14px; margin-bottom:0.75rem; margin-top:1.5rem;">Prompts for general AI tools</p>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--amber-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2" width="18" height="18"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
-      <div><p class="card-title">Explain a passage in plain language</p><p class="card-desc">Useful for teaching prep or personal study</p></div>
-    </div>
-    <div class="prompt-box" id="st1">Please explain [passage, e.g. Romans 8:1-17] in plain, accessible language. What is the main point? What would a first-time reader struggle to understand? What are 2-3 key ideas that someone could take away from this passage?</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('st1', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--purple-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-text)" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-      <div><p class="card-title">Explore a theological question</p><p class="card-desc">Understand how different traditions approach an issue</p></div>
-    </div>
-    <div class="prompt-box" id="st2">I'd like to understand how different Christian traditions approach the question of [theological topic, e.g. the nature of baptism / spiritual gifts / salvation and free will]. Please summarise the main positions briefly and fairly, noting where Anglican thinking typically sits. I'm not looking for a definitive answer, just a map of the landscape.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('st2', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-claude">Works well in Claude</span></div>
-  </div>
-
-  <div class="info-box info-amber">
-    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>Important caution</div>
-    <p>General AI tools like ChatGPT and Claude can be confidently wrong on theology &mdash; sometimes subtly so. The YouVersion CEO has noted AI Bible misquote rates of 15&ndash;60% depending on the tool. Specialist tools like Logos are safer for doctrinal questions because they draw from verified theological sources. Always cross-check anything significant.</p>
-  </div>
-</section>
-
-<!-- TRANSLATION -->
-<section id="tab-translation" class="tab-section">
-  <p class="section-intro">AI translation has become genuinely useful for communicating across language barriers &mdash; making newsletters, notices, and simple resources accessible to congregation members whose first language isn&rsquo;t English. It is not perfect, and for important documents a fluent speaker should always check the output.</p>
-
-  <div class="info-box info-teal" style="margin-bottom:1.25rem;">
-    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>Best practice</div>
-    <p>AI translation is strongest for widely spoken languages (Spanish, Mandarin, Samoan, Tongan, Hindi, Tagalog) and weaker for languages with less online content. For anything going on signage or in a printed bulletin, always ask a fluent speaker to review it before publishing. For te reo M&#257;ori, consider using a specialist service or a kaumātua review.</p>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--blue-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-      <div><p class="card-title">Translate a newsletter</p><p class="card-desc">Make your regular communication accessible to all</p></div>
-    </div>
-    <div class="prompt-box" id="tr1">Please translate the following church newsletter into [language, e.g. Samoan / Tongan / Mandarin / Hindi]. Keep the tone warm and friendly. If any phrase doesn't translate well culturally, please note it and suggest an alternative. Here is the newsletter: [paste text]</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('tr1', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--purple-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple-text)" stroke-width="2" width="18" height="18"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-      <div><p class="card-title">Translate a church notice or sign</p><p class="card-desc">Welcome signage, service times, toilet signs, safety notices</p></div>
-    </div>
-    <div class="prompt-box" id="tr2">Please translate the following short notice into [language]. Keep it simple and clear. If there is a more natural or culturally appropriate way to express any of it, please suggest that instead of a literal translation. Text to translate: [paste notice]</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('tr2', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--teal-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
-      <div><p class="card-title">Translate sermon notes or a summary</p><p class="card-desc">Help English-second-language members follow along</p></div>
-    </div>
-    <div class="prompt-box" id="tr3">Please translate these sermon notes into [language]. These will be used as a reading guide for congregation members whose first language is [language]. Keep the language clear and accessible - avoid overly formal or religious vocabulary where simpler words work just as well. Sermon notes: [paste notes]</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('tr3', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--amber-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-      <div><p class="card-title">Simplify English for ESL readers</p><p class="card-desc">Plain English version for those still learning</p></div>
-    </div>
-    <div class="prompt-box" id="tr4">Please rewrite the following text in simple English suitable for someone who is still learning the language. Use short sentences, common words, and avoid idioms or cultural references that might be confusing. Keep the same meaning and warm tone. Text: [paste content]</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('tr4', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--coral-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral-text)" stroke-width="2" width="18" height="18"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-      <div><p class="card-title">Welcoming message in another language</p><p class="card-desc">A warm welcome for visitors whose first language isn&rsquo;t English</p></div>
-    </div>
-    <div class="prompt-box" id="tr5">Please write a short, warm welcome message (about 50 words) in [language] for visitors to our church who speak [language] as their first language. The message should: welcome them warmly, let them know they belong, and tell them that English-language support is available if they need help during the service.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('tr5', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-any">Any AI tool</span></div>
-  </div>
-
-  <div class="info-box info-amber">
-    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>Always get a human check</div>
-    <p>AI translation can be surprisingly good, but it makes mistakes &mdash; especially with Pacific languages, te reo M&#257;ori, and less commonly spoken languages. Before anything is printed or displayed, ask a fluent speaker from your congregation or community to review it. This also builds relationship and shows genuine respect.</p>
-  </div>
-</section>
-
-<!-- IMAGES & DESIGN -->
-<section id="tab-images" class="tab-section">
-  <p class="section-intro">AI can generate original, royalty-free images from a plain-English description &mdash; and design tools now have AI built right in. No graphic design experience needed.</p>
-
-  <p style="font-weight:500; font-size:15px; margin-bottom:0.75rem;">AI image generation tools</p>
-
-  <div class="tool-grid">
-    <div class="tool-grid-card">
-      <p class="tg-name">Adobe Firefly</p>
-      <span class="tg-free freemium">Free starter</span>
-      <p class="tg-desc">The safest choice for church use &mdash; trained only on licensed content. Excellent quality. Free account available.</p>
-      <a class="tg-link" href="https://firefly.adobe.com" target="_blank">firefly.adobe.com &rarr;</a>
-    </div>
-    <div class="tool-grid-card">
-      <p class="tg-name">ChatGPT (DALL-E)</p>
-      <span class="tg-free freemium">Free with limits</span>
-      <p class="tg-desc">Ask for an image the same way you&rsquo;d ask a question. Free accounts get limited generations per day.</p>
-      <a class="tg-link" href="https://chatgpt.com" target="_blank">chatgpt.com &rarr;</a>
-    </div>
-    <div class="tool-grid-card">
-      <p class="tg-name">Gemini (Imagen)</p>
-      <span class="tg-free freemium">Free with limits</span>
-      <p class="tg-desc">Google&rsquo;s image generation inside Gemini chat. Good for simple illustrative visuals.</p>
-      <a class="tg-link" href="https://gemini.google.com" target="_blank">gemini.google.com &rarr;</a>
-    </div>
-    <div class="tool-grid-card">
-      <p class="tg-name">Microsoft Designer</p>
-      <span class="tg-free freemium">Free with Microsoft</span>
-      <p class="tg-desc">Included with Microsoft 365. Good for social posts and newsletter images.</p>
-      <a class="tg-link" href="https://designer.microsoft.com" target="_blank">designer.microsoft.com &rarr;</a>
+    <h2>Protect your church from cyber attacks &amp; scams</h2>
+    <p>Phishing attacks targeting churches and faith communities are growing &mdash; and AI is making them more convincing than ever. This free tool helps staff, clergy, and volunteers recognise and respond to these threats.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hero-stat-num">#1</span><span class="hero-stat-label">cyber threat reported<br>to CERT NZ is phishing</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">5&ndash;10 min</span><span class="hero-stat-label">to complete this<br>training</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">100%</span><span class="hero-stat-label">free &mdash; no login<br>or sign-up needed</span></div>
     </div>
   </div>
 
-  <p style="font-weight:500; font-size:15px; margin-bottom:0.75rem; margin-top:1.75rem;">How to write a good image prompt</p>
-  <div class="info-box info-teal" style="margin-bottom:1rem;">
-    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>The formula</div>
-    <p><strong>[Subject]</strong> + <strong>[Setting or mood]</strong> + <strong>[Style]</strong> + <strong>[What to avoid]</strong></p>
-  </div>
+  <!-- NAV TABS -->
+  <nav class="section-nav" role="tablist" aria-label="Tool sections" style="margin-top: 28px;">
+    <button class="nav-tab active" role="tab" aria-selected="true" onclick="showSection('phishing')">&#127345; Phishing training</button>
+    <button class="nav-tab" role="tab" aria-selected="false" onclick="showSection('congregation')">&#128101; Protecting your congregation</button>
+    <button class="nav-tab" role="tab" aria-selected="false" onclick="showSection('checklist')">&#9989; Cyber safety checklist</button>
+    <button class="nav-tab" role="tab" aria-selected="false" onclick="showSection('resources')">&#128279; Resources &amp; reporting</button>
+  </nav>
 
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--coral-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral-text)" stroke-width="2" width="18" height="18"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-      <div><p class="card-title">Newsletter header image</p><p class="card-desc">A welcoming image for the top of a church newsletter</p></div>
+  <!-- ========== SECTION: PHISHING TRAINING ========== -->
+  <div class="section-panel active" id="panel-phishing">
+
+    <!-- SETUP SCREEN -->
+    <div class="app-screen active" id="screen-setup">
+      <h2 class="section-heading">Phishing awareness assessment</h2>
+      <p class="section-sub">Enter your church details to personalise the training scenarios. All data stays in this browser &mdash; nothing is saved or sent anywhere.</p>
+
+      <div class="card">
+        <div class="form-grid">
+          <div class="form-group" style="margin-bottom:0">
+            <label class="field-label" for="sel-denomination">Your denomination</label>
+            <select id="sel-denomination">
+              <option value="">Select denomination...</option>
+              <option value="anglican">Anglican Church Aotearoa NZ</option>
+              <option value="catholic">Roman Catholic</option>
+              <option value="presbyterian">Presbyterian Church of Aotearoa NZ</option>
+              <option value="methodist">Methodist Church of NZ</option>
+              <option value="baptist">Baptist Churches of NZ</option>
+              <option value="salvation">Salvation Army NZ</option>
+              <option value="pentecostal">Pentecostal / Assemblies of God</option>
+              <option value="lutheran">Lutheran Church of NZ</option>
+              <option value="brethren">Brethren / Plymouth Brethren</option>
+              <option value="adventist">Seventh-day Adventist</option>
+              <option value="independent">Independent / Non-denominational</option>
+              <option value="other">Other denomination</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label class="field-label" for="inp-org">Parish / Church name</label>
+            <input type="text" id="inp-org" placeholder="e.g. St Andrew's Takapuna">
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label class="field-label" for="inp-leader">Senior leader name</label>
+            <input type="text" id="inp-leader" placeholder="e.g. Rev. Sarah Mitchell">
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label class="field-label" for="sel-role">Your role</label>
+            <select id="sel-role">
+              <option value="">Select your role...</option>
+              <option value="clergy">Clergy / Pastor / Minister</option>
+              <option value="admin">Administrator / Secretary</option>
+              <option value="finance">Finance / Accounts</option>
+              <option value="coordinator">Coordinator / Programme staff</option>
+              <option value="volunteer">Volunteer</option>
+              <option value="it">IT / Communications</option>
+              <option value="warden">Warden / Elder / Deacon</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-info">
+        <span class="alert-icon">&#8505;</span>
+        <span>The assessment takes about 5&ndash;7 minutes. You'll be shown phishing emails using real domain patterns for your denomination, then directed to training on the areas where you need it most.</span>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="startAssessment()">
+          Start assessment <span aria-hidden="true">&rarr;</span>
+        </button>
+      </div>
     </div>
-    <div class="image-prompt" id="pi1">A warm, inviting photograph of a small community gathering around a table in a light-filled room, soft natural light, diverse group of people, joyful and peaceful atmosphere, photorealistic style. No text in the image.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pi1', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-image">Image tool</span></div>
-  </div>
 
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--blue-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-text)" stroke-width="2" width="18" height="18"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-      <div><p class="card-title">Sermon slide background</p><p class="card-desc">Subtle backgrounds that don&rsquo;t distract from text</p></div>
+    <!-- PRE-ASSESSMENT SCREEN -->
+    <div class="app-screen" id="screen-assess">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px;">
+        <h2 class="section-heading" style="margin-bottom:0;">Pre-assessment</h2>
+        <span id="q-counter" style="font-size:13px; color:var(--text-muted); font-weight:500;"></span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="assess-progress" style="width:0%"></div></div>
+      <div id="denom-pill-area"></div>
+      <div id="question-area" class="fade-in"></div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="btn-next-q" onclick="nextQuestion()" style="display:none">Next <span aria-hidden="true">&rarr;</span></button>
+      </div>
     </div>
-    <div class="image-prompt" id="pi2">Abstract watercolour wash in soft muted blues and greens, calm and contemplative mood, wide landscape orientation, no figures, no text, subtle texture, suitable as a presentation slide background.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pi2', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-image">Image tool</span></div>
-  </div>
 
-  <div class="prompt-card">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--teal-bg);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-mid)" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-      <div><p class="card-title">Social media event graphic</p><p class="card-desc">Square image to pair with an event post</p></div>
+    <!-- RESULTS SCREEN -->
+    <div class="app-screen" id="screen-results">
+      <h2 class="section-heading">Your results</h2>
+      <div class="score-display">
+        <div class="score-circle"><span class="score-num" id="res-score">0</span><span class="score-denom">/ 6</span></div>
+        <p class="score-label" id="res-label"></p>
+      </div>
+      <hr class="divider">
+      <h3 style="font-family:'Lora',serif; font-size:18px; font-weight:600; color:var(--navy); margin-bottom:6px;">Your personalised training plan</h3>
+      <p class="section-sub" style="margin-bottom:16px;" id="plan-intro"></p>
+      <div id="training-plan-list"></div>
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="startTraining()">Start training <span aria-hidden="true">&rarr;</span></button>
+        <button class="btn btn-outline" onclick="restartAssessment()">Retake assessment</button>
+      </div>
     </div>
-    <div class="image-prompt" id="pi3">Minimalist flat illustration of [describe event theme, e.g. candles and stars for a Christmas service / open hands and sunlight for Easter], warm colour palette, square format suitable for Instagram or Facebook, space at the top for overlaid text. Clean and modern style.</div>
-    <div class="card-footer"><button class="copy-btn" onclick="copyPrompt('pi3', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy prompt</button><span class="badge badge-image">Image tool</span></div>
-  </div>
 
-  <div class="info-box info-amber" style="margin-top:0.5rem; margin-bottom:1.75rem;">
-    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>AI image cautions</div>
-    <p>Always check AI images carefully before publishing &mdash; hands, faces, and text within images can go wrong. Avoid asking AI to depict Jesus or biblical figures; the results are often theologically and culturally problematic. Adobe Firefly is the safest option as it is trained only on licensed content.</p>
-  </div>
-
-  <p style="font-weight:500; font-size:15px; margin-bottom:0.75rem;">Design tools for slides, newsletters &amp; graphics</p>
-
-  <div class="design-card">
-    <div class="design-card-top"><p class="design-title">Canva</p><span class="tg-free freemium" style="font-size:11px; padding:3px 9px; border-radius:8px;">Free &amp; paid</span></div>
-    <p class="design-desc">The most popular design tool for non-designers. Thousands of church and ministry templates. The free version is excellent &mdash; paid adds AI features like background removal and Magic Write for drafting text inside designs.</p>
-    <div class="design-uses"><span class="use-tag">Sermon slides</span><span class="use-tag">Social graphics</span><span class="use-tag">Newsletters</span><span class="use-tag">Posters &amp; flyers</span><span class="use-tag">Bulletins</span></div>
-    <a class="tool-link" href="https://canva.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Open Canva</a>
-  </div>
-
-  <div class="design-card">
-    <div class="design-card-top"><p class="design-title">Microsoft PowerPoint + Copilot</p><span class="badge badge-copilot" style="font-size:11px;">Office 365</span></div>
-    <p class="design-desc">If your church has Microsoft 365 Business, Copilot can build an entire presentation from a brief description, suggest layouts, and generate images. Ask it: &ldquo;Create a 6-slide sermon presentation on [passage] with a clean, calm design.&rdquo;</p>
-    <div class="design-uses"><span class="use-tag">Sermon slides</span><span class="use-tag">Teaching series</span><span class="use-tag">AGM presentations</span></div>
-  </div>
-
-  <div class="design-card">
-    <div class="design-card-top"><p class="design-title">Google Slides + Gemini</p><span class="badge badge-gemini" style="font-size:11px;">Google Workspace</span></div>
-    <p class="design-desc">If your church uses Google Workspace, Gemini is available inside Google Slides to help structure presentations, suggest speaker notes, and improve layouts.</p>
-    <div class="design-uses"><span class="use-tag">Sermon slides</span><span class="use-tag">Shared team presentations</span><span class="use-tag">Training materials</span></div>
-  </div>
-</section>
-
-<!-- SAFE USE -->
-<section id="tab-safety" class="tab-section">
-  <p class="section-intro">Using AI wisely means knowing where it helps and where to be careful. Here&rsquo;s a simple framework for church leaders.</p>
-
-  <div class="traffic-group">
-    <div class="traffic-heading"><span class="dot dot-green"></span>Generally fine &mdash; go ahead</div>
-    <div class="traffic-item t-green">Drafting, editing, and summarising text you will review before using</div>
-    <div class="traffic-item t-green">Research and brainstorming &mdash; exploring ideas, illustrations, angles</div>
-    <div class="traffic-item t-green">Admin writing &mdash; emails, notices, meeting summaries, reports</div>
-    <div class="traffic-item t-green">Planning tools &mdash; event checklists, series outlines, communication calendars</div>
-    <div class="traffic-item t-green">Royalty-free image creation for newsletters, slides, and social media</div>
-    <div class="traffic-item t-green">Translation of newsletters, notices, and signage (with a human review)</div>
-    <div class="traffic-item t-green">Bible study support &mdash; context, questions, reflection prompts</div>
-  </div>
-
-  <div class="traffic-group">
-    <div class="traffic-heading"><span class="dot dot-amber"></span>Use with care &mdash; your judgement required</div>
-    <div class="traffic-item t-amber">Theological questions &mdash; AI can be confidently wrong; always cross-check important claims</div>
-    <div class="traffic-item t-amber">Pastoral preparation &mdash; AI can help you find words, but not replace wisdom or presence</div>
-    <div class="traffic-item t-amber">Anything going out under your name &mdash; read it carefully, make it genuinely yours</div>
-    <div class="traffic-item t-amber">AI images of people &mdash; check carefully for errors before publishing</div>
-    <div class="traffic-item t-amber">Translated content &mdash; always ask a fluent speaker to review before printing or displaying</div>
-  </div>
-
-  <div class="traffic-group">
-    <div class="traffic-heading"><span class="dot dot-red"></span>Don&rsquo;t do this</div>
-    <div class="traffic-item t-red">Sharing confidential pastoral information &mdash; never include real names or sensitive situations</div>
-    <div class="traffic-item t-red">Using AI as a substitute for pastoral supervision, a colleague, or a professional counsellor</div>
-    <div class="traffic-item t-red">Using AI output without reading it &mdash; it can be wrong, and it goes out under your name</div>
-    <div class="traffic-item t-red">Copying AI into official legal or safeguarding documents without expert review</div>
-    <div class="traffic-item t-red">Asking AI to depict Jesus or biblical figures &mdash; results are often theologically problematic</div>
-  </div>
-
-  <div class="principle">"AI is a brilliant first draft, never a final authority."</div>
-
-  <div class="info-box info-teal">
-    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>A note on privacy</div>
-    <p>Free AI tools like ChatGPT, Claude, and Gemini may use your conversations to improve their models. Avoid entering anything you would not be comfortable being seen by others &mdash; especially names, personal situations, or confidential disclosures. For sensitive work, check your organisation&rsquo;s data policy.</p>
-  </div>
-
-  <div class="info-box info-amber" style="margin-top:0.75rem;">
-    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>Copyright &amp; AI images</div>
-    <p>Images generated by AI tools are generally free for you to use &mdash; but check the terms of the specific tool. Adobe Firefly is the safest option as it is trained only on licensed content. Avoid using AI to recreate specific artists&rsquo; styles or existing artworks.</p>
-  </div>
-</section>
-
-<!-- LEARN MORE -->
-<section id="tab-more" class="tab-section">
-  <p class="section-intro">Want to go deeper? Here are some helpful starting points for learning more about AI and how it might serve your ministry.</p>
-
-  <p style="font-weight:500; font-size:14px; margin-bottom:0.75rem;">Get started with the tools</p>
-  <div class="tool-card">
-    <p class="tool-desc" style="margin-bottom:0.75rem;">Not sure which tool to try first? Search YouTube for beginner walkthroughs &mdash; there are excellent free tutorials for all of these.</p>
-    <div style="display:flex; flex-wrap:wrap; gap:8px;">
-      <a class="tool-link" href="https://www.youtube.com/results?search_query=chatgpt+beginners+tutorial" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>ChatGPT tutorial</a>
-      <a class="tool-link" href="https://www.youtube.com/results?search_query=canva+church+tutorial+beginners" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Canva for church</a>
-      <a class="tool-link" href="https://adoption.microsoft.com/en-us/copilot/" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Copilot training</a>
-      <a class="tool-link" href="https://www.logos.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Logos Bible software</a>
+    <!-- TRAINING SCREEN -->
+    <div class="app-screen" id="screen-training">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px;">
+        <h2 class="section-heading" id="training-heading" style="margin-bottom:0;"></h2>
+        <span id="training-counter" style="font-size:13px; color:var(--text-muted); font-weight:500;"></span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="training-progress" style="width:0%"></div></div>
+      <div id="training-area" class="fade-in"></div>
+      <div class="btn-row" id="training-btn-row"></div>
     </div>
-  </div>
 
-  <p style="font-weight:500; font-size:14px; margin-bottom:0.75rem; margin-top:1.5rem;">Faith &amp; AI conversations</p>
-  <div class="tool-card">
-    <p class="tool-name" style="margin-bottom:4px;">AI, faith, and ministry</p>
-    <p class="tool-desc">Thoughtful Christian voices are engaging seriously with AI. Search for podcast episodes from Fuller Studio, The Gospel Coalition, or BioLogos for nuanced perspectives on technology and faith.</p>
-    <a class="tool-link" href="https://www.youtube.com/results?search_query=AI+faith+church+technology+Christian+ministry" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Search YouTube</a>
-  </div>
+    <!-- COMPLETE SCREEN -->
+    <div class="app-screen" id="screen-complete">
+      <div class="complete-banner">
+        <div class="complete-icon">&#10003;</div>
+        <h2 class="section-heading">Training complete</h2>
+        <p id="complete-msg" style="color:var(--text-muted); font-size:15px; margin-top:8px;"></p>
+      </div>
+      <div class="card accent-success">
+        <h3 style="font-family:'Lora',serif; font-size:17px; margin-bottom:14px; color:var(--navy);">Five things to remember</h3>
+        <ul class="tip-list" id="final-tips"></ul>
+      </div>
+      <hr class="divider">
+      <h3 style="font-family:'Lora',serif; font-size:17px; margin-bottom:12px; color:var(--navy);">What to do next</h3>
+      <div class="resource-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+        <div class="resource-card" style="cursor:pointer;" onclick="showSection('checklist')">
+          <div class="resource-icon" style="background:#1a4f6e;">&#9989;</div>
+          <div><div class="resource-name">Cyber safety checklist</div><div class="resource-desc">Work through our church-specific security checklist</div></div>
+        </div>
+        <div class="resource-card" style="cursor:pointer;" onclick="showSection('congregation')">
+          <div class="resource-icon" style="background:#2d6a4f;">&#128101;</div>
+          <div><div class="resource-name">Protect your congregation</div><div class="resource-desc">Help vulnerable members recognise phone and email scams</div></div>
+        </div>
+        <div class="resource-card" style="cursor:pointer;" onclick="showSection('resources')">
+          <div class="resource-icon" style="background:var(--navy);">&#128279;</div>
+          <div><div class="resource-name">Report a scam</div><div class="resource-desc">Links to NZ reporting agencies and learning resources</div></div>
+        </div>
+      </div>
+      <div class="btn-row" style="margin-top:20px;">
+        <button class="btn btn-outline" onclick="restartAssessment()">Take assessment again</button>
+        <button class="btn btn-outline btn-sm" onclick="window.print()">&#128424; Print certificate</button>
+      </div>
+      <p class="print-hint">The print view includes your completion summary.</p>
+    </div>
 
-  <div class="tool-card">
-    <p class="tool-name" style="margin-bottom:4px;">A word of honest caution</p>
-    <p class="tool-desc" style="margin-bottom:0;">The CEO of YouVersion (the world&rsquo;s most downloaded Bible app) has noted that general AI tools misquote or misattribute Scripture in 15&ndash;60% of cases depending on the tool. Use specialist tools like Logos for anything doctrinal, and always verify before you preach or publish.</p>
-  </div>
+  </div><!-- /panel-phishing -->
 
-  <div class="principle" style="margin-top:1.5rem;">"The goal isn&rsquo;t to use AI more. It&rsquo;s to be more present for the people and work that only you can do."</div>
+  <!-- ========== SECTION: CONGREGATION PROTECTION ========== -->
+  <div class="section-panel" id="panel-congregation">
+    <h2 class="section-heading">Protecting vulnerable people in your congregation</h2>
+    <p class="section-sub">Older adults, recent migrants, and isolated individuals are disproportionately targeted by scammers. As a church community, you are ideally placed to help. Here's what to know &mdash; and what to do.</p>
 
-  <div class="info-box info-teal" style="margin-top:1.25rem;">
-    <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>One practical challenge</div>
-    <p>Before next Sunday &mdash; pick just one prompt from this resource and try it. Notice where AI helps, where it falls short, and what you need to adjust. That&rsquo;s the learning curve, and it&rsquo;s shorter than you think.</p>
-  </div>
-</section>
+    <div class="alert alert-warn">
+      <span class="alert-icon">&#9888;</span>
+      <span><strong>New Zealand context:</strong> In 2024, New Zealanders lost over $200 million to scams. Older people (65+) are the most frequently targeted group. Churches are trusted communities &mdash; which scammers exploit.</span>
+    </div>
 
-<div class="back-to-top"><a href="#top">Back to top &uarr;</a></div>
-</main>
+    <!-- Phone scams -->
+    <div class="scam-type-card">
+      <div class="scam-type-header" onclick="toggleScam(this)">
+        <div class="scam-type-icon" style="background:#9b2226;">&#128222;</div>
+        <div>
+          <div style="font-weight:600; font-size:15px;">Phone and voice scams</div>
+          <div style="font-size:13px; color:var(--text-muted);">Including "wangiri", bank impersonation, and grandparent scams</div>
+        </div>
+        <span class="scam-badge badge-high">High risk</span>
+        <span style="color:var(--text-muted); font-size:18px; margin-left:8px;">&#8964;</span>
+      </div>
+      <div class="scam-content">
+        <p style="font-size:14px; color:var(--text-mid); margin-bottom:14px; line-height:1.65;">Phone scams are the most common type reported to New Zealand police. AI is now being used to clone family members' voices, making some calls nearly indistinguishable from genuine ones.</p>
+        <p style="font-size:13px; font-weight:600; color:var(--navy); margin-bottom:8px;">Common patterns targeting older New Zealanders:</p>
+        <ul class="tip-list">
+          <li><span class="tip-warn-icon">!</span><strong>"Your grandchild is in trouble"</strong> &mdash; A caller claims a family member is in trouble and needs money urgently. AI voice cloning can make this caller sound exactly like the person.</li>
+          <li><span class="tip-warn-icon">!</span><strong>Bank impersonation</strong> &mdash; A caller says they're from ANZ, Westpac, ASB, etc. and your account has been compromised. They ask for your details or to transfer funds to a "safe account".</li>
+          <li><span class="tip-warn-icon">!</span><strong>Tech support fraud</strong> &mdash; Caller claims to be from Microsoft, Spark, or your internet provider. Says your computer has a virus and they need remote access.</li>
+          <li><span class="tip-warn-icon">!</span><strong>Wangiri ("one-ring" scam)</strong> &mdash; A missed call from an international number. Calling back connects you to a premium-rate service.</li>
+          <li><span class="tip-warn-icon">!</span><strong>IRD / government impersonation</strong> &mdash; Caller claims to be from IRD and demands immediate payment to avoid arrest or prosecution.</li>
+        </ul>
+        <p style="font-size:13px; font-weight:600; color:var(--success); margin-top:14px; margin-bottom:8px;">What to tell congregation members:</p>
+        <ul class="tip-list">
+          <li><span class="tip-check">&#10003;</span><strong>Hang up</strong> &mdash; No bank, government agency, or tech company will ever ask you to transfer money, buy gift cards, or give remote access over the phone. Hanging up is always safe.</li>
+          <li><span class="tip-check">&#10003;</span><strong>Call back on a known number</strong> &mdash; If worried, hang up and call the bank or agency using the number on the back of your card or on their official website.</li>
+          <li><span class="tip-check">&#10003;</span><strong>Establish a family safe word</strong> &mdash; Agree on a code word with family members. If someone calls claiming to be family and can't say the safe word, it's not them.</li>
+          <li><span class="tip-check">&#10003;</span><strong>Never feel rushed</strong> &mdash; Urgency is a scam tactic. Real emergencies allow time to verify. Slow down and check.</li>
+        </ul>
+      </div>
+    </div>
 
-<footer>
-  <p>Resource prepared for the Emmaus Leadership Training workshop &mdash; AI Tools for Parish Use</p>
-  <p style="margin-top:6px;">Prompts are starting points &mdash; always review and personalise before using. Keep confidential information private.</p>
+    <!-- Romance / friendship scams -->
+    <div class="scam-type-card">
+      <div class="scam-type-header" onclick="toggleScam(this)">
+        <div class="scam-type-icon" style="background:#7b4f12;">&#10084;</div>
+        <div>
+          <div style="font-weight:600; font-size:15px;">Romance and friendship scams</div>
+          <div style="font-size:13px; color:var(--text-muted);">Long-running deceptions on dating sites, Facebook, and WhatsApp</div>
+        </div>
+        <span class="scam-badge badge-high">High risk</span>
+        <span style="color:var(--text-muted); font-size:18px; margin-left:8px;">&#8964;</span>
+      </div>
+      <div class="scam-content">
+        <p style="font-size:14px; color:var(--text-mid); margin-bottom:14px; line-height:1.65;">Romance scams cause immense emotional and financial harm. Widowed, divorced, and isolated individuals in congregations are frequently targeted. Scammers often spend weeks or months building trust before asking for money.</p>
+        <ul class="tip-list">
+          <li><span class="tip-warn-icon">!</span><strong>The offshore professional</strong> &mdash; An online contact (often claiming to be a widowed doctor, engineer, or military officer) builds a deep connection but can never meet in person. Eventually asks for money for an emergency.</li>
+          <li><span class="tip-warn-icon">!</span><strong>Cryptocurrency investment romance</strong> &mdash; A new online partner introduces "a great investment opportunity" and encourages the victim to invest through a fake platform. Profits are shown but withdrawal is impossible.</li>
+          <li><span class="tip-warn-icon">!</span><strong>Facebook / WhatsApp impersonation</strong> &mdash; A fake account pretending to be a friend or acquaintance makes contact and requests money for an emergency.</li>
+        </ul>
+        <p style="font-size:13px; font-weight:600; color:var(--success); margin-top:14px; margin-bottom:8px;">How your church community can help:</p>
+        <ul class="tip-list">
+          <li><span class="tip-check">&#10003;</span>Create a culture where it's normal and safe to ask a trusted friend to review an online relationship without shame.</li>
+          <li><span class="tip-check">&#10003;</span>Teach members to do a reverse image search on profile photos (right-click the photo and search Google Images).</li>
+          <li><span class="tip-check">&#10003;</span>Gently raise the topic in pastoral conversations with people who seem unusually secretive about a new "online friend".</li>
+          <li><span class="tip-check">&#10003;</span>If someone has been scammed, respond with compassion &mdash; shame is the scammer's best protection. Help them report it to Netsafe and the bank immediately.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Investment / crypto scams -->
+    <div class="scam-type-card">
+      <div class="scam-type-header" onclick="toggleScam(this)">
+        <div class="scam-type-icon" style="background:#1a4f6e;">&#128200;</div>
+        <div>
+          <div style="font-weight:600; font-size:15px;">Investment and cryptocurrency scams</div>
+          <div style="font-size:13px; color:var(--text-muted);">Fake platforms, "pig butchering," and impersonated financial advisors</div>
+        </div>
+        <span class="scam-badge badge-high">High risk</span>
+        <span style="color:var(--text-muted); font-size:18px; margin-left:8px;">&#8964;</span>
+      </div>
+      <div class="scam-content">
+        <p style="font-size:14px; color:var(--text-mid); margin-bottom:14px; line-height:1.65;">Investment scams are the highest-value scam type in NZ by total losses. They often begin through social media ads or messaging apps and can target financially astute people, not just the vulnerable.</p>
+        <ul class="tip-list">
+          <li><span class="tip-warn-icon">!</span><strong>"Pig butchering"</strong> &mdash; A long-term relationship is built (often romantic) with the goal of slowly convincing the victim to invest on a fake platform. Funds are "fattened" with fake profits, then the platform disappears.</li>
+          <li><span class="tip-warn-icon">!</span><strong>Celebrity endorsement ads</strong> &mdash; Social media ads using AI-generated videos of well-known New Zealanders endorsing a crypto platform.</li>
+          <li><span class="tip-warn-icon">!</span><strong>Recovery scams</strong> &mdash; After being scammed, victims are contacted by "recovery agents" who claim they can retrieve the lost money for an upfront fee.</li>
+        </ul>
+        <ul class="tip-list">
+          <li><span class="tip-check">&#10003;</span>Check any investment platform with the FMA register at <strong>fma.govt.nz</strong> before investing.</li>
+          <li><span class="tip-check">&#10003;</span>If you can only profit by recruiting others, it's likely a pyramid scheme &mdash; walk away.</li>
+          <li><span class="tip-check">&#10003;</span>No legitimate recovery service exists for crypto losses. Anyone claiming otherwise is a second scam.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Donation / charity scams -->
+    <div class="scam-type-card">
+      <div class="scam-type-header" onclick="toggleScam(this)">
+        <div class="scam-type-icon" style="background:#2d6a4f;">&#127873;</div>
+        <div>
+          <div style="font-weight:600; font-size:15px;">Charity and donation scams</div>
+          <div style="font-size:13px; color:var(--text-muted);">Fake charities, door-to-door collectors, and emergency appeals</div>
+        </div>
+        <span class="scam-badge badge-medium">Medium risk</span>
+        <span style="color:var(--text-muted); font-size:18px; margin-left:8px;">&#8964;</span>
+      </div>
+      <div class="scam-content">
+        <p style="font-size:14px; color:var(--text-mid); margin-bottom:14px; line-height:1.65;">Charitable and generous people in faith communities are specifically targeted by fake charity scams, particularly after natural disasters or during the Christmas season.</p>
+        <ul class="tip-list">
+          <li><span class="tip-warn-icon">!</span>Fake charity names that closely resemble well-known organisations (e.g. "NZ Red Crescent" instead of the Red Cross).</li>
+          <li><span class="tip-warn-icon">!</span>Unsolicited door-to-door or phone collectors asking for cash only.</li>
+          <li><span class="tip-warn-icon">!</span>Urgent disaster-relief emails or social media posts linking to unofficial donation pages.</li>
+        </ul>
+        <ul class="tip-list">
+          <li><span class="tip-check">&#10003;</span>Verify any charity at <strong>charities.govt.nz</strong> before donating.</li>
+          <li><span class="tip-check">&#10003;</span>Donate directly through an organisation's official website &mdash; not through links in emails or social posts.</li>
+          <li><span class="tip-check">&#10003;</span>Legitimate collectors always carry ID and will never pressure you for immediate cash.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- AI deepfake / impersonation -->
+    <div class="scam-type-card">
+      <div class="scam-type-header" onclick="toggleScam(this)">
+        <div class="scam-type-icon" style="background:#4a1f7b;">&#129302;</div>
+        <div>
+          <div style="font-weight:600; font-size:15px;">AI voice cloning and impersonation</div>
+          <div style="font-size:13px; color:var(--text-muted);">Calls that sound like family, clergy, or trusted contacts</div>
+        </div>
+        <span class="scam-badge badge-high">Emerging high risk</span>
+        <span style="color:var(--text-muted); font-size:18px; margin-left:8px;">&#8964;</span>
+      </div>
+      <div class="scam-content">
+        <p style="font-size:14px; color:var(--text-mid); margin-bottom:14px; line-height:1.65;">This is a rapidly growing threat that many people are not aware of yet. AI tools can now generate a convincing voice clone from a few seconds of audio &mdash; available from Facebook videos, YouTube, or even a voicemail.</p>
+        <ul class="tip-list">
+          <li><span class="tip-warn-icon">!</span><strong>Family emergency calls</strong> &mdash; A call that sounds exactly like a grandchild, child, or spouse says they're in trouble and need money immediately.</li>
+          <li><span class="tip-warn-icon">!</span><strong>Clergy impersonation</strong> &mdash; A caller claiming to be (and sounding like) the vicar, pastor, or bishop asking for a financial favour.</li>
+          <li><span class="tip-warn-icon">!</span><strong>WhatsApp voice message cloning</strong> &mdash; A voice message in a group chat sounding like a trusted member making an urgent request.</li>
+        </ul>
+        <div class="alert alert-info" style="margin:12px 0;">
+          <span class="alert-icon">&#128161;</span>
+          <span><strong>Teach your congregation this rule:</strong> A convincing voice is no longer proof of identity. For any unexpected financial request &mdash; no matter how convincing the caller sounds &mdash; hang up and call back on a number you already have.</span>
+        </div>
+        <ul class="tip-list">
+          <li><span class="tip-check">&#10003;</span>Set up a family "safe word" that must be said for any financial request &mdash; something not publicly known.</li>
+          <li><span class="tip-check">&#10003;</span>If a caller says "don't tell anyone" &mdash; that is the scam. Always tell someone.</li>
+          <li><span class="tip-check">&#10003;</span>Raise awareness in your congregation by talking about this threat directly &mdash; from the pulpit if appropriate.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- How churches can help -->
+    <div class="card accent-navy" style="margin-top:8px;">
+      <h3 style="font-family:'Lora',serif; font-size:17px; color:var(--navy); margin-bottom:12px;">How your church community can be a line of defence</h3>
+      <ul class="tip-list">
+        <li><span class="tip-check">&#10003;</span><strong>Make it easy to ask</strong> &mdash; Regularly remind members that they can always run something past a trusted person in the church before acting. No shame, no judgment.</li>
+        <li><span class="tip-check">&#10003;</span><strong>Run regular awareness conversations</strong> &mdash; A 5-minute mention in a Sunday bulletin or small group can plant seeds that save someone thousands of dollars.</li>
+        <li><span class="tip-check">&#10003;</span><strong>Connect isolated members</strong> &mdash; Loneliness increases vulnerability. Regular pastoral contact reduces the conditions that scammers exploit.</li>
+        <li><span class="tip-check">&#10003;</span><strong>Have a clear protocol</strong> &mdash; Make it known: "If anyone in our congregation is approached by someone suspicious, call [name] on [number]."</li>
+        <li><span class="tip-check">&#10003;</span><strong>Respond to scam victims with compassion</strong> &mdash; Many victims never report because of shame. The church should be a safe place to disclose without judgment.</li>
+      </ul>
+    </div>
+
+  </div><!-- /panel-congregation -->
+
+  <!-- ========== SECTION: CYBER SAFETY CHECKLIST ========== -->
+  <div class="section-panel" id="panel-checklist">
+    <h2 class="section-heading">Church cyber safety checklist</h2>
+    <p class="section-sub">Work through this checklist with your church's leadership team. Tick each item as you confirm it's in place. Progress is saved in this browser session.</p>
+
+    <div id="checklist-score-bar" style="margin-bottom:20px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+        <span style="font-size:13px; font-weight:500; color:var(--text-mid);">Checklist progress</span>
+        <span style="font-size:13px; color:var(--text-muted);" id="cl-score-text">0 of 20 complete</span>
+      </div>
+      <div class="progress-track" style="margin:0;"><div class="progress-fill" id="cl-progress" style="width:0%"></div></div>
+    </div>
+
+    <h3 style="font-family:'Lora',serif; font-size:16px; color:var(--navy); margin:20px 0 10px;">Email and communication</h3>
+    <div id="cl-email"></div>
+
+    <h3 style="font-family:'Lora',serif; font-size:16px; color:var(--navy); margin:20px 0 10px;">Accounts and passwords</h3>
+    <div id="cl-accounts"></div>
+
+    <h3 style="font-family:'Lora',serif; font-size:16px; color:var(--navy); margin:20px 0 10px;">Financial controls</h3>
+    <div id="cl-finance"></div>
+
+    <h3 style="font-family:'Lora',serif; font-size:16px; color:var(--navy); margin:20px 0 10px;">Culture and training</h3>
+    <div id="cl-culture"></div>
+
+    <div class="btn-row">
+      <button class="btn btn-outline btn-sm" onclick="resetChecklist()">Reset checklist</button>
+    </div>
+  </div><!-- /panel-checklist -->
+
+  <!-- ========== SECTION: RESOURCES ========== -->
+  <div class="section-panel" id="panel-resources">
+    <h2 class="section-heading">Report a scam &amp; find help</h2>
+    <p class="section-sub">If you or someone in your congregation has been targeted or affected by a scam, here's where to go. Reporting helps protect others.</p>
+
+    <div class="alert alert-warn" style="margin-bottom:20px;">
+      <span class="alert-icon">&#9888;</span>
+      <span><strong>If money has been lost:</strong> Contact your bank immediately &mdash; they may be able to stop or reverse a transfer. Then report to Netsafe and Police.</span>
+    </div>
+
+    <h3 style="font-family:'Lora',serif; font-size:17px; color:var(--navy); margin-bottom:12px;">Report scams in New Zealand</h3>
+    <div class="resource-grid">
+      <a href="https://www.netsafe.org.nz/report" target="_blank" rel="noopener noreferrer" class="resource-card">
+        <div class="resource-icon" style="background:#1a7a6e;">&#128737;</div>
+        <div>
+          <div class="resource-name">Netsafe &mdash; Report online harm</div>
+          <div class="resource-desc">NZ's primary online safety organisation. Report scams, phishing, and online abuse.</div>
+          <div class="resource-url">netsafe.org.nz/report</div>
+        </div>
+      </a>
+      <a href="https://www.police.govt.nz/reporting" target="_blank" rel="noopener noreferrer" class="resource-card">
+        <div class="resource-icon" style="background:#1a2744;">&#128104;&#8205;&#128170;</div>
+        <div>
+          <div class="resource-name">NZ Police &mdash; Report fraud</div>
+          <div class="resource-desc">Report significant financial fraud. For emergencies call 111; non-urgent: 105.</div>
+          <div class="resource-url">police.govt.nz</div>
+        </div>
+      </a>
+      <a href="https://www.cert.govt.nz/individuals/report-incident/" target="_blank" rel="noopener noreferrer" class="resource-card">
+        <div class="resource-icon" style="background:#9b2226;">&#128272;</div>
+        <div>
+          <div class="resource-name">CERT NZ &mdash; Cyber incidents</div>
+          <div class="resource-desc">Report phishing emails, account compromises, and malware to NZ's cyber security agency.</div>
+          <div class="resource-url">cert.govt.nz</div>
+        </div>
+      </a>
+      <a href="https://www.fma.govt.nz/consumers/scams-and-fraud/" target="_blank" rel="noopener noreferrer" class="resource-card">
+        <div class="resource-icon" style="background:#2d6a4f;">&#128200;</div>
+        <div>
+          <div class="resource-name">FMA &mdash; Investment scams</div>
+          <div class="resource-desc">Report fake investment schemes and check if a financial service is registered.</div>
+          <div class="resource-url">fma.govt.nz</div>
+        </div>
+      </a>
+      <a href="https://www.consumerprotection.govt.nz/complaints/report-a-scam/" target="_blank" rel="noopener noreferrer" class="resource-card">
+        <div class="resource-icon" style="background:#7b4f12;">&#128722;</div>
+        <div>
+          <div class="resource-name">Consumer Protection &mdash; Scams</div>
+          <div class="resource-desc">Report and learn about consumer scams including fake charities and online shopping fraud.</div>
+          <div class="resource-url">consumerprotection.govt.nz</div>
+        </div>
+      </a>
+      <a href="https://www.dia.govt.nz/spam" target="_blank" rel="noopener noreferrer" class="resource-card">
+        <div class="resource-icon" style="background:#4a1f7b;">&#128140;</div>
+        <div>
+          <div class="resource-name">DIA &mdash; Report spam</div>
+          <div class="resource-desc">Report unsolicited commercial email (spam) to the Department of Internal Affairs.</div>
+          <div class="resource-url">dia.govt.nz/spam</div>
+        </div>
+      </a>
+    </div>
+
+    <hr class="divider">
+    <h3 style="font-family:'Lora',serif; font-size:17px; color:var(--navy); margin-bottom:12px;">Free learning resources</h3>
+    <div class="resource-grid">
+      <a href="https://www.cert.govt.nz/individuals/guides/" target="_blank" rel="noopener noreferrer" class="resource-card">
+        <div class="resource-icon" style="background:#1a4f6e;">&#128218;</div>
+        <div>
+          <div class="resource-name">CERT NZ guides</div>
+          <div class="resource-desc">Plain-English guides on strong passwords, two-factor authentication, safe browsing, and more.</div>
+          <div class="resource-url">cert.govt.nz/individuals/guides</div>
+        </div>
+      </a>
+      <a href="https://www.toitu.govt.nz/your-rights/online-safety-tips" target="_blank" rel="noopener noreferrer" class="resource-card">
+        <div class="resource-icon" style="background:#2d6a4f;">&#128100;</div>
+        <div>
+          <div class="resource-name">Privacy Commissioner &mdash; Online safety</div>
+          <div class="resource-desc">Practical advice on protecting personal information and privacy online.</div>
+          <div class="resource-url">privacy.org.nz</div>
+        </div>
+      </a>
+      <a href="https://www.netsafe.org.nz/advice/" target="_blank" rel="noopener noreferrer" class="resource-card">
+        <div class="resource-icon" style="background:#1a7a6e;">&#128161;</div>
+        <div>
+          <div class="resource-name">Netsafe advice library</div>
+          <div class="resource-desc">Guides for older people, migrants, and community groups. Available in multiple languages.</div>
+          <div class="resource-url">netsafe.org.nz/advice</div>
+        </div>
+      </a>
+      <a href="https://www.sorted.org.nz/guides/scams/" target="_blank" rel="noopener noreferrer" class="resource-card">
+        <div class="resource-icon" style="background:#7b4f12;">&#128179;</div>
+        <div>
+          <div class="resource-name">Sorted &mdash; Scam guides</div>
+          <div class="resource-desc">Financial scam awareness from NZ's free financial guidance service.</div>
+          <div class="resource-url">sorted.org.nz</div>
+        </div>
+      </a>
+      <a href="https://2degrees.nz/help/scam-safety" target="_blank" rel="noopener noreferrer" class="resource-card">
+        <div class="resource-icon" style="background:#1a2744;">&#128241;</div>
+        <div>
+          <div class="resource-name">Mobile carrier scam guides</div>
+          <div class="resource-desc">Spark, Vodafone, and 2degrees all publish guidance on blocking scam calls and texts.</div>
+          <div class="resource-url">Check your carrier's website</div>
+        </div>
+      </a>
+      <a href="https://www.charities.govt.nz/for-the-public/search-for-a-registered-charity/" target="_blank" rel="noopener noreferrer" class="resource-card">
+        <div class="resource-icon" style="background:#2d6a4f;">&#10067;</div>
+        <div>
+          <div class="resource-name">Verify a charity</div>
+          <div class="resource-desc">Check if a charity is legitimately registered with the NZ Charities Register before donating.</div>
+          <div class="resource-url">charities.govt.nz</div>
+        </div>
+      </a>
+    </div>
+
+    <hr class="divider">
+    <div class="card accent-gold">
+      <h3 style="font-family:'Lora',serif; font-size:17px; color:var(--navy); margin-bottom:10px;">Share this tool with your church</h3>
+      <p style="font-size:14px; color:var(--text-mid); line-height:1.65; margin-bottom:12px;">This tool is completely free and may be shared with anyone. You can link to it, embed it on your church website, or save this HTML file to your intranet. No attribution required &mdash; just share freely.</p>
+      <div style="font-size:13px; color:var(--text-muted);">&#127760;&nbsp; <strong style="color:var(--navy);">nzchurchsafety.com/scams</strong></div>
+    </div>
+
+  </div><!-- /panel-resources -->
+
+</div><!-- /main-wrap -->
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p><strong style="color:white;">NZ Church Safety</strong> &mdash; free cyber safety resources for New Zealand faith communities</p>
+  <p style="margin-top:4px;">
+    <a href="https://www.netsafe.org.nz" target="_blank" rel="noopener">Netsafe</a> &nbsp;|&nbsp;
+    <a href="https://www.cert.govt.nz" target="_blank" rel="noopener">CERT NZ</a> &nbsp;|&nbsp;
+    <a href="https://www.fma.govt.nz" target="_blank" rel="noopener">FMA</a> &nbsp;|&nbsp;
+    <a href="https://www.police.govt.nz" target="_blank" rel="noopener">NZ Police</a>
+  </p>
+  <p style="margin-top:8px; font-size:12px; color:rgba(255,255,255,0.4);">This tool is for awareness and education only. No data is collected or transmitted. &copy; 2025 nzchurchsafety.com/scams</p>
 </footer>
 
 <script>
-function showTab(id, btn) {
-  document.querySelectorAll('.tab-section').forEach(function(s) { s.classList.remove('visible'); });
-  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
-  document.getElementById('tab-' + id).classList.add('visible');
-  if (btn) btn.classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+// ============================================================
+// DENOMINATION DATA
+// ============================================================
+const denomData = {
+  anglican: {
+    label: "Anglican Church Aotearoa NZ",
+    domains: ["anglican.org.nz","anglicanlife.org.nz","dioceseofauckland.org.nz","christchurchcathedral.co.nz"],
+    fakeDomains: ["angIican.org.nz","anglican-nz.net","anglicanlife-portal.com","diocese-auckland.org"],
+    leaderTitle: "Bishop",
+    orgType: "Diocese",
+    systemName: "Anglican portal",
+    groupName: "vestry"
+  },
+  catholic: {
+    label: "Roman Catholic",
+    domains: ["catholic.org.nz","aucklandcatholic.org.nz","wellingtonarchdiocese.org.nz"],
+    fakeDomains: ["cath0lic.org.nz","nz-catholic.net","aucklandcath0lic.org"],
+    leaderTitle: "Bishop / Archbishop",
+    orgType: "Diocese",
+    systemName: "parish management system",
+    groupName: "parish pastoral council"
+  },
+  presbyterian: {
+    label: "Presbyterian Church of Aotearoa NZ",
+    domains: ["presbyterian.org.nz","knoxchurch.org.nz"],
+    fakeDomains: ["presbyterian-nz.net","presbyterian.org.nz.login-portal.com","pcanz-portal.com"],
+    leaderTitle: "Minister",
+    orgType: "Presbytery",
+    systemName: "PCANZ portal",
+    groupName: "session"
+  },
+  methodist: {
+    label: "Methodist Church of NZ",
+    domains: ["methodist.org.nz","wesleycommunitychurch.org.nz"],
+    fakeDomains: ["meth0dist.org.nz","methodist-nz.net","mcnz-portal.com"],
+    leaderTitle: "Superintendent Minister",
+    orgType: "District",
+    systemName: "Methodist Connect",
+    groupName: "leaders meeting"
+  },
+  baptist: {
+    label: "Baptist Churches of NZ",
+    domains: ["baptist.org.nz","bcnz.ac.nz"],
+    fakeDomains: ["bapt1st.org.nz","baptist-nz.net","bcnz-login.com"],
+    leaderTitle: "Senior Pastor",
+    orgType: "Association",
+    systemName: "church management system",
+    groupName: "eldership team"
+  },
+  salvation: {
+    label: "Salvation Army NZ",
+    domains: ["salvationarmy.org.nz","salvos.org.nz"],
+    fakeDomains: ["salvati0narmy.org.nz","salvationarmy-nz.net","salvos-portal.com"],
+    leaderTitle: "Divisional Commander",
+    orgType: "Division",
+    systemName: "Salvation Army portal",
+    groupName: "corps council"
+  },
+  pentecostal: {
+    label: "Pentecostal / Assemblies of God",
+    domains: ["aognz.com","elim.org.nz","cityimpact.com"],
+    fakeDomains: ["aognz.net","elim-nz.com","ag-nz-portal.com"],
+    leaderTitle: "Senior Pastor",
+    orgType: "Network",
+    systemName: "church portal",
+    groupName: "leadership team"
+  },
+  lutheran: {
+    label: "Lutheran Church of NZ",
+    domains: ["lutheran.org.nz"],
+    fakeDomains: ["Iutheran.org.nz","lutheran-nz.net","lcnz-portal.com"],
+    leaderTitle: "Bishop",
+    orgType: "Synod",
+    systemName: "Lutheran portal",
+    groupName: "church council"
+  },
+  brethren: {
+    label: "Brethren / Plymouth Brethren",
+    domains: ["plymouthbrethren.org.nz","brethren.co.nz"],
+    fakeDomains: ["brethren-nz.net","plymouth-brethren.com","pbnz-portal.com"],
+    leaderTitle: "Elder",
+    orgType: "Assembly",
+    systemName: "assembly portal",
+    groupName: "elders"
+  },
+  adventist: {
+    label: "Seventh-day Adventist",
+    domains: ["adventist.org.nz","npuc.org.nz"],
+    fakeDomains: ["advent1st.org.nz","sda-nz.net","adventist-nz-portal.com"],
+    leaderTitle: "Conference President",
+    orgType: "Conference",
+    systemName: "Adventist Connect",
+    groupName: "church board"
+  },
+  independent: {
+    label: "Independent / Non-denominational",
+    domains: ["yourown-church.org.nz","faithcommunitynz.org"],
+    fakeDomains: ["church-nz.net","nz-church-portal.com","faithnz-login.com"],
+    leaderTitle: "Senior Pastor",
+    orgType: "Church",
+    systemName: "church management system",
+    groupName: "leadership team"
+  },
+  other: {
+    label: "Other denomination",
+    domains: ["yourdomain.org.nz"],
+    fakeDomains: ["church-nz.net","nz-church-portal.com"],
+    leaderTitle: "Senior Leader",
+    orgType: "Organisation",
+    systemName: "church portal",
+    groupName: "leadership team"
+  }
+};
+
+// ============================================================
+// APP STATE
+// ============================================================
+let state = {
+  denom: null, orgName: '', leaderName: '', userRole: '',
+  currentQ: 0, score: 0, answers: [],
+  weakAreas: [], modules: [], currentModule: 0,
+  currentStep: 0, stepStage: 'read', quizAnswered: false,
+  // Tracks which variant index was used last for each question category
+  // so retakes always get a different question
+  lastVariant: {}
+};
+
+// ============================================================
+// SECTION NAVIGATION
+// ============================================================
+function showSection(id) {
+  document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+  document.getElementById('panel-' + id).classList.add('active');
+  const tabs = document.querySelectorAll('.nav-tab');
+  const map = {phishing:0, congregation:1, checklist:2, resources:3};
+  if (map[id] !== undefined) {
+    tabs[map[id]].classList.add('active');
+    tabs[map[id]].setAttribute('aria-selected','true');
+  }
+  window.scrollTo({top: 0, behavior:'smooth'});
+  if (id === 'checklist') initChecklist();
 }
-function copyPrompt(id, btn) {
-  var text = document.getElementById(id).innerText;
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(function() { showCopied(btn); }).catch(function() { fallbackCopy(text, btn); });
-  } else { fallbackCopy(text, btn); }
+
+// ============================================================
+// ASSESSMENT
+// ============================================================
+function startAssessment() {
+  const denomSel = document.getElementById('sel-denomination').value;
+  if (!denomSel) { alert('Please select your denomination to personalise the training.'); return; }
+  state.denom = denomData[denomSel] || denomData['other'];
+  state.orgName = document.getElementById('inp-org').value.trim() || 'your church';
+  state.leaderName = document.getElementById('inp-leader').value.trim() || (state.denom.leaderTitle + ' Sarah Mitchell');
+  state.userRole = document.getElementById('sel-role').value || 'admin';
+  state.currentQ = 0; state.score = 0; state.answers = [];
+  showAppScreen('screen-assess');
+  renderQuestion();
 }
-function fallbackCopy(text, btn) {
-  var ta = document.createElement('textarea');
-  ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-  document.body.appendChild(ta); ta.focus(); ta.select();
-  try { document.execCommand('copy'); showCopied(btn); } catch(e) {}
-  document.body.removeChild(ta);
+
+function restartAssessment() {
+  // Advance variant index for any question the user got wrong last time
+  // so they see a fresh question on retake
+  const categories = ['sender-spoofing','ai-personalisation','urgency','link-inspection','deepfake-voice','reporting'];
+  categories.forEach(cat => {
+    const wasWrong = state.answers.find(a => a.id === cat && !a.correct);
+    if (wasWrong) {
+      const bankLen = getQuestionBank()[cat].length;
+      state.lastVariant[cat] = ((state.lastVariant[cat] || 0) + 1) % bankLen;
+    }
+  });
+  state.currentQ = 0; state.score = 0; state.answers = [];
+  state.weakAreas = []; state.modules = []; state.currentModule = 0;
+  state.currentStep = 0; state.stepStage = 'read';
+  showAppScreen('screen-setup');
 }
-function showCopied(btn) {
-  btn.classList.add('copied');
-  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
-  setTimeout(function() {
-    btn.classList.remove('copied');
-    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy prompt';
-  }, 2000);
+
+function showAppScreen(id) {
+  document.querySelectorAll('.app-screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById('id' in document ? id : id).scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ============================================================
+// QUESTIONS (denomination-aware)
+// ============================================================
+
+// Helper: turn a full name like "Rev. Sarah Mitchell" or "Bishop Jim White"
+// into a valid email-safe local part: "sarah.mitchell" or "j.white"
+function nameToEmail(fullName) {
+  // Strip honorifics
+  const stripped = fullName.replace(/^(Rev\.?|Bishop|Senior Pastor|Pastor|Superintendent Minister|Minister|Divisional Commander|Conference President|Senior Leader|Elder|Dr\.?|Sr\.?)\s+/i, '').trim();
+  const parts = stripped.split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return 'admin';
+  if (parts.length === 1) return parts[0].toLowerCase();
+  // firstname.lastname
+  return (parts[0] + '.' + parts[parts.length - 1]).toLowerCase();
+}
+
+// Helper: return the current variant index for a category (0 on first run)
+function variantFor(cat) {
+  return state.lastVariant[cat] || 0;
+}
+
+// The full question bank - each category has 3 variants
+// getQuestionBank() is called with denomination context already set in state
+function getQuestionBank() {
+  const d = state.denom;
+  const org = state.orgName;
+  const leader = state.leaderName;
+  const leaderFirst = leader.replace(/^(Rev\.?|Bishop|Pastor|Minister|Elder|Dr\.?)\s+/i,'').split(' ')[0];
+  const leaderEmail = nameToEmail(leader);
+  const realDomain = d.domains[0] || 'yourdomain.org.nz';
+  const fakeDomain0 = d.fakeDomains[0] || 'church-nz.net';
+  const fakeDomain1 = d.fakeDomains[1] || 'nz-church-portal.com';
+  const fakeDomain2 = d.fakeDomains[2] || 'churchportal.net';
+  const fakeFrom0 = leaderEmail + '@' + fakeDomain0;
+  const fakeFrom1 = leaderEmail + '@' + fakeDomain1;
+  const fakeFrom2 = leaderEmail + '@' + fakeDomain2;
+
+  return {
+
+    // ----------------------------------------------------------
+    'sender-spoofing': [
+      // Variant 0 - Prezzy card gift card scam
+      {
+        id: 'sender-spoofing', area: 'Sender verification',
+        question: `You receive the following email. What is your first concern?`,
+        email: {
+          from: `${leader} <${fakeFrom0}>`,
+          to: 'You',
+          subject: `Urgent request - Prezzy cards needed today`,
+          body: `Hi,\n\nI'm in a meeting and unable to take calls. I need your help urgently - please purchase 4x $100 Prezzy cards from a nearby store and send me the redemption codes as soon as possible.\n\nI will reimburse you by end of day. Please keep this between us for now - I'll explain later.\n\n${leader}`
+        },
+        options: [
+          { text: `This is almost certainly a scam - no leader would ask for Prezzy card codes by email`, correct: true },
+          { text: `The email uses ${leader}'s name so it's probably genuine`, correct: false },
+          { text: `I should buy the cards quickly to help`, correct: false },
+          { text: `I should reply asking for more information`, correct: false }
+        ],
+        explanation: `This is a "CEO fraud" scam. Three red flags: (1) the sending domain is <strong>${fakeDomain0}</strong> - not <strong>${realDomain}</strong>; (2) requests for gift card codes are almost always scams - no legitimate leader will ever ask for this by email; (3) "keep this between us" is a manipulation tactic to stop you verifying. Always expand the From field and read the full email address, not just the display name.`
+      },
+      // Variant 1 - Invoice redirect scam with spoofed domain
+      {
+        id: 'sender-spoofing', area: 'Sender verification',
+        question: `You receive the following email. What should you do?`,
+        email: {
+          from: `${leader} <${fakeFrom1}>`,
+          to: 'You',
+          subject: `Change of bank account for supplier payments`,
+          body: `Hi,\n\nPlease update our records - our regular supplier has changed their bank account. All future payments should go to:\n\nAccount name: NZ Supply Co\nBank: ANZ\nAccount number: 06-0999-1234567-00\n\nPlease process the outstanding $2,400 invoice to the new account today.\n\nThanks,\n${leader}`
+        },
+        options: [
+          { text: `Update the account and process the payment - it came from ${leaderFirst}`, correct: false },
+          { text: `The sending address doesn't match ${org}'s real domain - verify by calling ${leaderFirst} before changing anything`, correct: true },
+          { text: `Reply to confirm the new account details are correct`, correct: false },
+          { text: `Forward to finance to handle`, correct: false }
+        ],
+        explanation: `This is a "bank account redirection" scam - one of the most costly types targeting NZ organisations. The sending domain <strong>${fakeDomain1}</strong> is not <strong>${realDomain}</strong>. Replying to the email just replies to the attacker. Always verify bank account changes by calling the person on a number you already have - never through email or a number in the email.`
+      },
+      // Variant 2 - Display name spoofing (address looks plausible but wrong)
+      {
+        id: 'sender-spoofing', area: 'Sender verification',
+        question: `You receive the following email. What is the most important thing to check?`,
+        email: {
+          from: `${leader} <${fakeFrom2}>`,
+          to: 'You',
+          subject: `Quick favour while I'm travelling`,
+          body: `Hi,\n\nI'm travelling for a ${d.orgType.toLowerCase()} meeting and my phone isn't working overseas. I need you to process an urgent payment of $3,200 to a visiting speaker before they leave NZ today.\n\nI'll send the account details shortly. Please don't mention this to anyone else yet as it's still being confirmed.\n\nBest,\n${leader}`
+        },
+        options: [
+          { text: `Process the payment - ${leaderFirst} is travelling and clearly needs help urgently`, correct: false },
+          { text: `The sending email address doesn't match ${org}'s real domain - this is very likely a scam`, correct: true },
+          { text: `Wait for the account details before deciding what to do`, correct: false },
+          { text: `Ask a colleague if they've heard from ${leaderFirst} today`, correct: false }
+        ],
+        explanation: `The sending domain <strong>${fakeDomain2}</strong> is not <strong>${realDomain}</strong>. "Don't mention this to anyone" is a classic social engineering tactic - it's designed to prevent you from checking. Real leaders don't ask staff to keep financial transactions secret. Always verify payment requests by calling the person on their known number, regardless of what the email says.`
+      }
+    ],
+
+    // ----------------------------------------------------------
+    'ai-personalisation': [
+      // Variant 0 - What info is publicly available
+      {
+        id: 'ai-personalisation', area: 'AI-generated personalisation',
+        question: `An AI-assisted phishing email arrives mentioning your name, a recent ${org} event, and ${leader}'s name. What does this tell you?`,
+        email: null,
+        options: [
+          { text: `The sender must have insider access to ${org}'s systems`, correct: false },
+          { text: `Nothing - AI can scrape all of this from public sources in seconds`, correct: true },
+          { text: `The email is probably genuine because of the specific detail`, correct: false },
+          { text: `Someone in the ${d.groupName} must have leaked the information`, correct: false }
+        ],
+        explanation: `AI phishing tools can gather names, roles, recent events, and leadership details from your church website, Facebook, event listings, and newsletters in seconds - no insider access needed. Personalisation is no longer a sign of legitimacy. Apply the same scepticism to detailed, personal-feeling emails as you would to generic ones.`
+      },
+      // Variant 1 - Which info is risky to post publicly
+      {
+        id: 'ai-personalisation', area: 'AI-generated personalisation',
+        question: `Which of these on the public ${org} website gives an attacker the most useful material for a convincing phishing email?`,
+        email: null,
+        options: [
+          { text: `Service times and a list of upcoming community events`, correct: false },
+          { text: `A staff page with names, direct email addresses, roles, and a photo of each person`, correct: true },
+          { text: `A general contact form with a single info@ email address`, correct: false },
+          { text: `A news post about a recent community project`, correct: false }
+        ],
+        explanation: `A full staff directory gives attackers exactly what they need: names to impersonate, roles to target (finance staff, the administrator), and direct email addresses to spoof. Consider using a contact form or a single info@ address instead. The goal isn't to hide your church - it's to reduce the detail available to attackers.`
+      },
+      // Variant 2 - Recognising an AI-personalised attack in practice
+      {
+        id: 'ai-personalisation', area: 'AI-generated personalisation',
+        question: `You receive an email that mentions you by name, references last Sunday's ${org} service topic, and asks you to urgently update your login details. How should you treat this?`,
+        email: null,
+        options: [
+          { text: `It's probably legitimate - they know too much to be a scammer`, correct: false },
+          { text: `With the same caution as any other unexpected request - personalisation can be faked using public information`, correct: true },
+          { text: `Reply and ask how they know about the service`, correct: false },
+          { text: `It must be from someone who attended the service`, correct: false }
+        ],
+        explanation: `AI can generate this kind of personalised email from publicly available content - your website, Facebook posts, or livestream titles. The detail feels convincing but costs an attacker almost nothing to produce. Treat any unexpected request involving login details or financial action with the same process: slow down, verify independently, don't click links in the email.`
+      }
+    ],
+
+    // ----------------------------------------------------------
+    'urgency': [
+      // Variant 0 - Bank account frozen
+      {
+        id: 'urgency', area: 'Urgency and pressure tactics',
+        question: `You receive an email claiming to be from ${org}'s bank, saying the account will be frozen in 2 hours unless you click a link to verify your details. What should you do?`,
+        email: null,
+        options: [
+          { text: `Click the link immediately - you can't risk the account being frozen`, correct: false },
+          { text: `Close the email and ring the bank directly using the number on your statement or the bank's official website`, correct: true },
+          { text: `Reply to the email asking for more time`, correct: false },
+          { text: `Forward it to a colleague to deal with`, correct: false }
+        ],
+        explanation: `Artificial urgency is one of the most common phishing tactics. A 2-hour deadline is designed to make you act before you think. Legitimate banks never ask you to click links in emails to verify sensitive account details. Always contact your bank using a number you find yourself - from your card, statement, or their official website. Never use contact details in the suspicious email.`
+      },
+      // Variant 1 - IRD threat of prosecution
+      {
+        id: 'urgency', area: 'Urgency and pressure tactics',
+        question: `You receive an urgent email claiming ${org} owes overdue tax and will face prosecution if payment isn't made within 24 hours via the link provided. What is the right response?`,
+        email: null,
+        options: [
+          { text: `Click the link and pay immediately to avoid prosecution`, correct: false },
+          { text: `Panic - this sounds very serious`, correct: false },
+          { text: `Ignore the email entirely without checking`, correct: false },
+          { text: `Do not click the link - contact IRD directly at ird.govt.nz to check whether any debt is genuine`, correct: true }
+        ],
+        explanation: `IRD never demands immediate payment via links in emails or threatens prosecution this way. This is a government impersonation scam using urgency and fear. Verify any claimed tax debt by going directly to ird.govt.nz or calling 0800 227 774. The 24-hour pressure is designed to stop you thinking clearly - it's a manipulation tactic, not a real deadline.`
+      },
+      // Variant 2 - Microsoft account about to be deleted
+      {
+        id: 'urgency', area: 'Urgency and pressure tactics',
+        question: `An email arrives saying ${org}'s Microsoft 365 account will be permanently deleted in 6 hours due to "unusual activity" unless you verify your password by clicking the link. What do you do?`,
+        email: null,
+        options: [
+          { text: `Click the link quickly - losing the church email accounts would be a disaster`, correct: false },
+          { text: `Open a new browser tab, go directly to office.com, and log in there to check for any real alerts`, correct: true },
+          { text: `Reply to the email asking for more details`, correct: false },
+          { text: `Forward to everyone in the ${d.groupName} so they know what's happening`, correct: false }
+        ],
+        explanation: `Microsoft never deletes accounts by email with a 6-hour warning. This urgency is manufactured to make you click before thinking. Always navigate directly to the service yourself (office.com, myaccount.microsoft.com) rather than following email links. Real account alerts appear when you log in normally - they don't require emergency clicks in emails.`
+      }
+    ],
+
+    // ----------------------------------------------------------
+    'link-inspection': [
+      // Variant 0 - Spot the fake domain
+      {
+        id: 'link-inspection', area: 'Link and URL inspection',
+        question: `You receive an email with a "log in to ${d.systemName}" button. Before clicking, you hover over it. Which URL should concern you most?`,
+        email: null,
+        options: [
+          { text: `https://portal.${realDomain}/login`, correct: false },
+          { text: `https://${fakeDomain1}/verify`, correct: true },
+          { text: `https://login.${realDomain}`, correct: false },
+          { text: `https://${realDomain}/account`, correct: false }
+        ],
+        explanation: `The suspicious URL is the second one. The root domain - the last two parts before the first single forward slash - is <strong>${fakeDomain1}</strong>, which is not owned by your church. Attackers create convincing pages on unrelated domains. Always confirm the root domain matches a genuine church address before entering any login details.`
+      },
+      // Variant 1 - Subdomain trick
+      {
+        id: 'link-inspection', area: 'Link and URL inspection',
+        question: `A link in an email displays as "Update your ${d.systemName} password". When you hover over it you see this URL. Which part tells you whether it's safe?\n\nhttps://${realDomain}.reset-login.com/verify`,
+        email: null,
+        options: [
+          { text: `The "https://" at the start - that means it's secure and trustworthy`, correct: false },
+          { text: `The presence of ${realDomain} in the address - that's a trusted name`, correct: false },
+          { text: `The root domain - "reset-login.com" - which is not owned by ${org}`, correct: true },
+          { text: `The "/verify" path at the end`, correct: false }
+        ],
+        explanation: `Attackers use a classic trick: put a legitimate-looking name as a <em>subdomain</em> so it appears first. The root domain - the last two parts before the first slash - is <strong>reset-login.com</strong>, which is not your church. HTTPS only means the connection is encrypted; it says nothing about who owns the site. Always read from the first single slash backwards to find the real owner.`
+      },
+      // Variant 2 - Shortened / disguised link
+      {
+        id: 'link-inspection', area: 'Link and URL inspection',
+        question: `An email asks you to "click here to confirm your details" using a shortened link: bit.ly/ch3ck-nz. You can't see where it leads. What is the safest option?`,
+        email: null,
+        options: [
+          { text: `Click it - bit.ly links are used by legitimate organisations too`, correct: false },
+          { text: `Don't click it - instead, go directly to the login page you know by typing the address yourself`, correct: true },
+          { text: `Copy and paste the link into a reply email to check with the sender`, correct: false },
+          { text: `Click it quickly on your phone so it's less risky`, correct: false }
+        ],
+        explanation: `Shortened links hide the real destination entirely. Legitimate system notifications from ${org}'s tools will link to their actual domain - not bit.ly or other shorteners. If you ever need to confirm something in a system, navigate directly to it by typing the known address yourself. You can also paste shortened links into a URL expander like checkshorturl.com to preview the destination before clicking.`
+      }
+    ],
+
+    // ----------------------------------------------------------
+    'deepfake-voice': [
+      // Variant 0 - Voicemail from leader requesting transfer
+      {
+        id: 'deepfake-voice', area: 'AI voice cloning',
+        question: `You receive a voicemail that sounds exactly like ${leader}, asking you to transfer $1,500 from the ${d.orgType.toLowerCase()} account for an urgent mission commitment. What should you do?`,
+        email: null,
+        options: [
+          { text: `Transfer the funds - you'd recognise ${leaderFirst}'s voice anywhere`, correct: false },
+          { text: `Call ${leaderFirst} back on their known number to verify before doing anything`, correct: true },
+          { text: `Email the ${d.groupName} to authorise the transfer`, correct: false },
+          { text: `Transfer half the amount as a compromise`, correct: false }
+        ],
+        explanation: `AI voice cloning tools can replicate a person's voice from as little as 10-30 seconds of audio - readily available from recorded services, YouTube sermons, or Facebook Live. A convincing voice is no longer proof of identity. For any financial request - however familiar the voice sounds - always call back on a number you already have saved. Never use a number left in the voicemail.`
+      },
+      // Variant 1 - WhatsApp voice message in group chat
+      {
+        id: 'deepfake-voice', area: 'AI voice cloning',
+        question: `A WhatsApp voice message appears in the ${org} staff group. It sounds like ${leader} asking everyone to urgently send their login credentials to a new IT system. What should you do?`,
+        email: null,
+        options: [
+          { text: `Send your credentials - ${leaderFirst} clearly needs them urgently`, correct: false },
+          { text: `No legitimate IT system ever asks for passwords via WhatsApp - call ${leaderFirst} directly to verify`, correct: true },
+          { text: `Send your credentials but change your password immediately after`, correct: false },
+          { text: `Wait to see what other staff members do first`, correct: false }
+        ],
+        explanation: `Two red flags here: (1) no IT system legitimately requests passwords via WhatsApp voice message; (2) AI voice cloning can generate a convincing voice message from audio available online. Attackers increasingly target group chats because the social pressure of a group context makes people less likely to question. Call ${leaderFirst} on their personal number to verify before doing anything.`
+      },
+      // Variant 2 - Live phone call during a busy moment
+      {
+        id: 'deepfake-voice', area: 'AI voice cloning',
+        question: `You receive a call that sounds exactly like ${leader} while you're preparing for a busy service. They say they've forgotten the bank login and need you to read it out over the phone urgently. What is the right response?`,
+        email: null,
+        options: [
+          { text: `Read out the details - ${leaderFirst} knows better than to share these unnecessarily`, correct: false },
+          { text: `Say you'll call them back in two minutes on their usual number, then do so to verify`, correct: true },
+          { text: `Give them half the details and ask them to confirm the rest`, correct: false },
+          { text: `Tell them you'll email the details instead`, correct: false }
+        ],
+        explanation: `The busyness of a service day is intentional - attackers time calls to moments when staff are distracted and more likely to comply without thinking. "I'll call you back on your usual number" is always the right response to an unexpected request for sensitive information over the phone - even if the voice is completely convincing. A real ${leaderFirst} will have no problem with that.`
+      }
+    ],
+
+    // ----------------------------------------------------------
+    'reporting': [
+      // Variant 0 - Clicked link and entered credentials
+      {
+        id: 'reporting', area: 'Reporting and response',
+        question: `You realise you clicked a suspicious link 30 minutes ago and may have entered your login details. What should you do first?`,
+        email: null,
+        options: [
+          { text: `Say nothing and hope nothing happens`, correct: false },
+          { text: `Delete the email and change your password when you have time`, correct: false },
+          { text: `Immediately change your password, enable two-factor authentication, and tell your IT contact or ${d.groupName}`, correct: true },
+          { text: `Only report it if you notice unusual activity in the next few days`, correct: false }
+        ],
+        explanation: `Speed is critical. Attackers can act within minutes of receiving stolen credentials. Immediately: (1) change your password on the real system; (2) enable two-factor authentication; (3) tell your IT contact or supervisor - even if you feel embarrassed. Your report could protect others in ${org} who may receive the same attack. There is no shame in being targeted - these attacks are designed by professionals.`
+      },
+      // Variant 1 - Gave bank details over the phone
+      {
+        id: 'reporting', area: 'Reporting and response',
+        question: `You realise you may have given your bank account password to a scammer over the phone an hour ago. What is the most important first step?`,
+        email: null,
+        options: [
+          { text: `Wait and monitor transactions over the next few days`, correct: false },
+          { text: `Call your bank immediately to report the call and ask them to protect the account`, correct: true },
+          { text: `Change your internet banking password and say nothing to anyone else`, correct: false },
+          { text: `Report it to Netsafe before contacting the bank`, correct: false }
+        ],
+        explanation: `Call your bank immediately - use the number on the back of your card or from your statement, not a number from the call. Banks have fraud teams available 24/7 and may be able to freeze the account or stop transactions already in progress. Speed matters enormously. After calling the bank, also report to Netsafe (0508 638 723) and, if money has been lost, to the Police (105).`
+      },
+      // Variant 2 - Uncertainty about whether something was a scam
+      {
+        id: 'reporting', area: 'Reporting and response',
+        question: `You're not sure whether an email you responded to yesterday was a phishing attempt - you didn't click any links, but you did reply with your name and role. Should you report it?`,
+        email: null,
+        options: [
+          { text: `No - you didn't click anything so there's no risk`, correct: false },
+          { text: `Only if you start receiving more suspicious emails`, correct: false },
+          { text: `Yes - even partial information given to a scammer is worth reporting to your IT contact`, correct: true },
+          { text: `No - it's too minor to bother anyone with`, correct: false }
+        ],
+        explanation: `Even "minor" information like your name, role, and the fact that you responded confirms to attackers that your email address is active and monitored - making you a higher-value target for follow-up attacks. Report it to your IT contact so they can monitor for follow-up phishing attempts targeting you or ${org}. When in doubt, report - it's never a waste of time.`
+      }
+    ]
+
+  };
+}
+
+// Build the flat question list using variant tracking
+function getQuestions() {
+  const bank = getQuestionBank();
+  const order = ['sender-spoofing','ai-personalisation','urgency','link-inspection','deepfake-voice','reporting'];
+  return order.map(cat => {
+    const variants = bank[cat];
+    const idx = variantFor(cat) % variants.length;
+    return variants[idx];
+  });
+}
+
+// ============================================================
+// RENDER QUESTION
+// ============================================================
+function renderQuestion() {
+  const qs = getQuestions();
+  const q = qs[state.currentQ];
+  const letters = ['A','B','C','D'];
+  document.getElementById('q-counter').textContent = `Question ${state.currentQ + 1} of ${qs.length}`;
+  document.getElementById('assess-progress').style.width = `${(state.currentQ / qs.length) * 100}%`;
+  document.getElementById('btn-next-q').style.display = 'none';
+
+  // Denom pill
+  document.getElementById('denom-pill-area').innerHTML =
+    `<div class="denom-pill"><span class="denom-dot"></span>${state.denom.label}</div>`;
+
+  let html = `<div class="card" style="margin-bottom:12px;"><p style="font-weight:500; font-size:15px; line-height:1.6; margin-bottom:${q.email ? '12px' : '0'}">${q.question}</p>`;
+
+  if (q.email) {
+    const e = q.email;
+    const fromParts = e.from.match(/^(.*?)\s*<(.+?)>$/) || [null, e.from, ''];
+    const displayName = fromParts[1] || '';
+    const emailAddr = fromParts[2] || e.from;
+    html += `<div class="email-mock">
+      <div class="email-chrome"><div class="chrome-dot red"></div><div class="chrome-dot yellow"></div><div class="chrome-dot green"></div></div>
+      <div class="email-fields">
+        <div class="email-row"><span class="email-field-label">From:</span><span>${displayName} &lt;<span class="red-flag">${emailAddr}</span>&gt;</span></div>
+        <div class="email-row"><span class="email-field-label">To:</span><span>You</span></div>
+        <div class="email-row"><span class="email-field-label">Subject:</span><span class="email-subject">${e.subject}</span></div>
+      </div>
+      <div class="email-body-area">${e.body.replace(/\n/g,'<br>')}</div>
+    </div>`;
+  }
+
+  html += `</div><div id="opts-area">`;
+  q.options.forEach((opt, i) => {
+    html += `<div class="option-card" id="opt-${i}" onclick="selectAnswer(${i})" tabindex="0" role="button" aria-label="Option ${letters[i]}: ${opt.text}">
+      <div class="option-letter">${letters[i]}</div>
+      <div class="option-text">${opt.text}</div>
+    </div>`;
+  });
+  html += `</div><div class="reveal-box" id="q-reveal">${q.explanation}</div>`;
+
+  document.getElementById('question-area').innerHTML = html;
+}
+
+function selectAnswer(idx) {
+  if (document.getElementById(`opt-${idx}`).classList.contains('disabled')) return;
+  const qs = getQuestions();
+  const q = qs[state.currentQ];
+  const isCorrect = q.options[idx].correct;
+  if (isCorrect) state.score++;
+  state.answers.push({ id: q.id, area: q.area, correct: isCorrect });
+
+  q.options.forEach((opt, i) => {
+    const el = document.getElementById(`opt-${i}`);
+    el.classList.add('disabled');
+    el.setAttribute('onclick','');
+    if (opt.correct) el.classList.add('correct');
+    else if (i === idx && !opt.correct) el.classList.add('wrong');
+  });
+  document.getElementById('q-reveal').classList.add('show');
+  const btn = document.getElementById('btn-next-q');
+  btn.style.display = 'inline-flex';
+  btn.textContent = state.currentQ < qs.length - 1 ? 'Next question →' : 'See my results →';
+}
+
+function nextQuestion() {
+  state.currentQ++;
+  if (state.currentQ >= getQuestions().length) { showResults(); return; }
+  document.getElementById('question-area').classList.remove('fade-in');
+  setTimeout(() => {
+    renderQuestion();
+    document.getElementById('question-area').classList.add('fade-in');
+  }, 50);
+}
+
+// ============================================================
+// RESULTS
+// ============================================================
+const allModulesMeta = [
+  { id: 'sender-spoofing', title: 'Recognising sender fraud', desc: 'How attackers fake names and domains to impersonate church leaders.', icon: '✉', color: '#9b2226' },
+  { id: 'ai-personalisation', title: 'AI-powered personalisation', desc: 'How AI scrapes public church data to make phishing emails feel genuine.', icon: '🤖', color: '#4a1f7b' },
+  { id: 'urgency', title: 'Pressure and urgency tactics', desc: 'Recognising artificial urgency designed to bypass careful thinking.', icon: '⏰', color: '#7b4f12' },
+  { id: 'link-inspection', title: 'Checking links and URLs', desc: 'How to identify fake websites before you click.', icon: '🔗', color: '#1a4f6e' },
+  { id: 'deepfake-voice', title: 'AI voice cloning and deepfakes', desc: 'Why a familiar voice is no longer proof of identity.', icon: '🎙', color: '#2d3a6e' },
+  { id: 'reporting', title: 'What to do if you\'re caught', desc: 'Immediate steps to take if you click a suspicious link.', icon: '🛡', color: '#2d6a4f' }
+];
+
+function showResults() {
+  document.getElementById('assess-progress').style.width = '100%';
+  document.getElementById('res-score').textContent = state.score;
+  const labels = ['Your awareness needs significant work - that\'s exactly what we\'re here for.','Getting there - a few important gaps to address.','Good awareness - we\'ll reinforce the areas where you hesitated.','Good awareness - we\'ll reinforce the areas where you hesitated.','Strong awareness - we\'ll top up the areas where you paused.','Excellent - we\'ll make sure the few gaps are covered.','Outstanding - you got everything right!'];
+  document.getElementById('res-label').textContent = labels[state.score] || '';
+
+  state.weakAreas = state.answers.filter(a => !a.correct).map(a => a.id);
+  state.modules = allModulesMeta.filter(m => state.weakAreas.includes(m.id));
+  if (state.modules.length < 2) {
+    allModulesMeta.forEach(m => { if (!state.modules.find(t => t.id === m.id) && state.modules.length < 3) state.modules.push(m); });
+  }
+
+  const introTexts = [
+    `All 6 areas need attention. We've prepared ${state.modules.length} focused training modules - let's work through them together.`,
+    `Several areas need work. We've prepared ${state.modules.length} targeted modules.`,
+    `A few gaps identified. Here are the ${state.modules.length} modules that will help most.`,
+    `A few gaps identified. Here are the ${state.modules.length} modules that will help most.`,
+    `Nearly there. We've prepared ${state.modules.length} modules for the areas where you hesitated.`,
+    `Great result. We've prepared a short module on the one area that caught you.`,
+    `Perfect score! We've still prepared some valuable training material for you.`
+  ];
+  document.getElementById('plan-intro').textContent = introTexts[state.score] || '';
+
+  let modHTML = '';
+  state.modules.forEach((m, i) => {
+    modHTML += `<div class="module-item">
+      <div class="module-icon" style="background:${m.color}">${m.icon}</div>
+      <div>
+        <div class="module-title">${i + 1}. ${m.title}</div>
+        <div class="module-desc">${m.desc}</div>
+      </div>
+    </div>`;
+  });
+  document.getElementById('training-plan-list').innerHTML = modHTML;
+  showAppScreen('screen-results');
+}
+
+// ============================================================
+// TRAINING CONTENT (denomination-aware)
+// ============================================================
+function getTrainingContent(id) {
+  const d = state.denom;
+  const org = state.orgName;
+  const leader = state.leaderName;
+  const realDomain = d.domains[0] || 'yourdomain.org.nz';
+  const fakeDomain = d.fakeDomains[0] || 'fake-domain.com';
+  const fakeDomain2 = d.fakeDomains[1] || 'church-portal.com';
+
+  const tc = {
+    'sender-spoofing': {
+      steps: [
+        {
+          heading: 'How attackers fake who they are',
+          body: `Attackers can make emails appear to come from ${leader} or ${org} without any access to the real account. There are two main techniques:\n\n<strong>Display name spoofing:</strong> The name shown ("${leader}") is just text - anyone can set it to anything. The actual sending address is what matters.\n\n<strong>Domain spoofing:</strong> Attackers register domains that look like yours. Examples of fake domains that impersonate <strong>${realDomain}</strong>:\n<ul style="margin:10px 0 10px 20px; color:var(--danger); font-weight:500;"><li>${fakeDomain}</li><li>${fakeDomain2}</li></ul>\nAlways expand the "From" field and read the <em>full</em> email address - not just the display name.`,
+          quiz: { q: `Which of these is a red flag in a sender address?`, opts: [`${nameToEmail(leader)}@${realDomain}`, `${nameToEmail(leader)}@${fakeDomain}`, `noreply@${realDomain}`], correct: 1, explanation: `The middle address uses the fake domain <strong>${fakeDomain}</strong> - not the genuine church domain <strong>${realDomain}</strong>. Look at the domain (the part after the @) very carefully.` }
+        },
+        {
+          heading: 'The gift card and wire transfer scam',
+          body: `${org} is a visible, public organisation. Faith communities are specifically targeted because:\n\n- Staff are trained to be helpful and responsive to leadership\n- There is often a culture of deference to senior figures like ${leader}\n- Financial controls may be less formal than corporate settings\n- Staff want to help and don't want to seem unhelpful or obstructive\n\n<strong>Common patterns:</strong> An "urgent" request from ${leader} to buy Prezzy cards, make a bank transfer, or pay an invoice - often outside normal processes and asking you to "keep this between us".\n\n<span style="color:var(--danger); font-weight:600;">Rule:</span> No legitimate church leader will ask for gift card codes by email. Ever. No exceptions.`,
+          quiz: { q: `What should you do if you receive an urgent financial request that appears to be from ${leader}?`, opts: [`Act quickly - they're busy and clearly need help`, `Call them back on their usual number to verify before doing anything`, `Reply asking for their bank account number to transfer directly`], correct: 1, explanation: `Always verify unexpected financial requests by calling the person on a number you already have saved - never a number provided in the email. Real leaders will never be offended by a verification call.` }
+        }
+      ]
+    },
+    'ai-personalisation': {
+      steps: [
+        {
+          heading: 'How AI makes phishing personal',
+          body: `Traditional phishing was easy to spot - generic, badly written, addressed to "Dear User". AI has changed this completely.\n\nAI phishing tools can scrape ${org}'s website, Facebook, event listings, and newsletters to build a detailed profile - then write a convincing, personalised email in seconds.\n\nAn attacker could send an email that:\n- Addresses you by name and role\n- Mentions a recent ${org} event\n- References ${leader} by name and title\n- Uses the correct ${d.orgType.toLowerCase()} terminology\n\n...all without ever having been inside your organisation.`,
+          quiz: { q: `An email mentions your name, a recent ${org} event, and ${leader}'s name. Does this personalisation mean the email is genuine?`, opts: [`Yes - they clearly have inside knowledge`, `No - all of this is publicly available and easily scraped by AI`, `Maybe - I should reply to check`], correct: 1, explanation: `Personalisation is no longer proof of legitimacy. AI can gather this information from public sources in seconds. Apply the same scepticism to personalised emails as you would to generic ones.` }
+        },
+        {
+          heading: 'What to think about before posting publicly',
+          body: `You can't (and shouldn't) make ${org} invisible online. But you can be thoughtful about what you share.\n\n<span style="color:var(--danger); font-weight:600;">Think carefully before posting:</span>\n- Full staff directories with roles, email addresses, and phone numbers\n- Internal meeting schedules and agendas\n- Financial details or donation totals\n- Detailed staff bios with home suburbs or personal background\n\n<span style="color:var(--success); font-weight:600;">Safe to share publicly:</span>\n- Service times and event listings\n- General news and community stories\n- Contact forms (rather than direct staff emails)\n\nThe goal isn't secrecy - it's reducing the detail available to attackers without compromising your public presence.`,
+          quiz: { q: `Which of these should you reconsider before posting on the public ${org} website?`, opts: [`Upcoming service times and event listings`, `A full staff directory listing names, direct emails, roles, and phone numbers`, `A photo from the community lunch (with appropriate consent)`], correct: 1, explanation: `A full staff directory gives attackers exactly what they need for impersonation attacks. Consider a contact form or a general info@ address instead.` }
+        }
+      ]
+    },
+    'urgency': {
+      steps: [
+        {
+          heading: 'Why urgency works - and how to resist it',
+          body: `Urgency bypasses careful thinking. When we feel time pressure, we act first and question later. This is exactly what attackers rely on.\n\n<strong>Common urgency tactics used against churches:</strong>\n- "Your account will be suspended in 2 hours"\n- "I'm in a meeting - please act immediately"\n- "This must be done before end of business today"\n- "Don't delay - the ${d.orgType.toLowerCase()} needs this now"\n\n<strong>The antidote is simple:</strong> Treat urgency itself as a red flag. The extra 2 minutes to verify will never cost you more than acting on a scam. Real emergencies always allow time for a 30-second verification call.`,
+          quiz: { q: `An email says ${org}'s bank account will be frozen unless you click a link and verify details in the next hour. What do you do?`, opts: [`Click the link - you can't risk losing access`, `Close the email, ring the bank on their official number, and explain what happened`, `Reply to the email asking for an extension`], correct: 1, explanation: `Manufactured urgency is a hallmark of phishing. Banks never ask you to click links in emails to verify sensitive details. Contact the bank directly using a number you source yourself.` }
+        }
+      ]
+    },
+    'link-inspection': {
+      steps: [
+        {
+          heading: 'Reading a URL - what actually matters',
+          body: `Every web address has a structure. The part that matters is the <strong>root domain</strong> - the last two words before the first single forward slash.\n\nExamples:\n- <span style="color:var(--success); font-weight:600;">https://login.${realDomain}/portal</span> → root domain is <strong>${realDomain}</strong> ✓\n- <span style="color:var(--danger); font-weight:600;">https://${fakeDomain2}/verify</span> → root domain is <strong>${fakeDomain2.split('.').slice(-2).join('.')}</strong> ✗\n- <span style="color:var(--danger); font-weight:600;">https://${realDomain}.verify-login.com</span> → root domain is <strong>verify-login.com</strong> ✗\n\nAttackers use free site builders, add misleading subdomains, or register similar-looking domains. Focus on the root domain.`,
+          quiz: { q: `Which of these is a legitimate ${d.label} URL?`, opts: [`https://${fakeDomain2}/login`, `https://portal.${realDomain}/login`, `https://nz-church-login.wixsite.com/verify`], correct: 1, explanation: `The middle URL has root domain <strong>${realDomain}</strong> - a genuine church domain. The others have root domains ${fakeDomain2.split('.').slice(-2).join('.')} and wixsite.com, neither of which are church-owned.` }
+        },
+        {
+          heading: 'What to do when you\'re not sure',
+          body: `If a link looks legitimate but you're not 100% certain:\n\n1. <strong>Don't click it.</strong> Open a new browser tab.\n2. <strong>Type the address yourself</strong> - go directly to the known website.\n3. If you don't know the address, search for it via Google - don't use links in emails.\n4. For login pages, always navigate directly to the site rather than following email links.\n\n<strong>Hovering trick:</strong> On a desktop computer, hovering over a link (without clicking) shows the real destination URL in the bottom bar of most email programs and browsers.`,
+          quiz: { q: `You receive an email with a "reset your ${d.systemName} password" link. What's the safest approach?`, opts: [`Click the link - that's what it's for`, `Open your browser, go directly to the login page you know, and use "forgot password" there`, `Reply to ask if the email is legitimate`], correct: 1, explanation: `Going directly to the site yourself is always safer. You know exactly where you are, regardless of what was in the email.` }
+        }
+      ]
+    },
+    'deepfake-voice': {
+      steps: [
+        {
+          heading: 'Voice cloning is real, cheap, and widely used',
+          body: `AI voice cloning tools can replicate a person's voice from as little as 10-30 seconds of audio. For ${d.orgType.toLowerCase()} leaders like ${leader}, that audio is often publicly available:\n\n- Recorded sermons on YouTube or church websites\n- Facebook Live services\n- Radio or podcast interviews\n- Zoom or Teams recordings shared online\n\nAn attacker could clone ${leader.split(' ')[0]}'s voice and call or leave a voicemail asking for an urgent bank transfer. It will sound exactly like them.\n\n<strong>This is already happening to NZ organisations.</strong> It is not a theoretical future threat.`,
+          quiz: { q: `You receive a voicemail that sounds exactly like ${leader}, asking for an urgent transfer. What should you do?`, opts: [`Transfer the funds - you'd recognise their voice`, `Call ${leader.split(' ')[0]} back on their known number before doing anything`, `Email the ${d.groupName} to authorise it`], correct: 1, explanation: `A convincing voice is no longer proof of identity. Always call back on a number you already have - never a number provided in the message.` }
+        },
+        {
+          heading: 'Building a verification culture',
+          body: `The best protection against voice cloning isn't technology - it's culture.\n\n<strong>Practical steps for ${org}:</strong>\n\n- Agree a "safe word" with your leadership team for any unusual financial requests - something not publicly known\n- Make it completely normal to say: "I just need to verify - I'll call you right back"\n- No one should feel embarrassed to double-check, even a request from ${leader}\n- Document a clear process: who authorises transfers, what the steps are, how verbal requests get confirmed in writing\n\nA culture where verification is expected protects everyone - including your leaders, who may themselves be impersonated.`,
+          quiz: { q: `A volunteer tells you they feel awkward asking ${leader} to verify an urgent request. What do you tell them?`, opts: [`Tell them to trust their instincts and just proceed`, `Explain that verifying is the right thing to do and no genuine leader will be offended by it`, `Suggest they just handle it this once and mention it later`], correct: 1, explanation: `Creating a culture where verification is normal is one of the most powerful defences against social engineering. Real leaders will always support it.` }
+        }
+      ]
+    },
+    'reporting': {
+      steps: [
+        {
+          heading: 'If you\'ve clicked - act immediately',
+          body: `If you realise you may have clicked a phishing link or entered your credentials somewhere suspicious:\n\n<strong>Step 1 (right now):</strong> Change your password on the real system immediately.\n\n<strong>Step 2 (right now):</strong> Enable two-factor authentication if it isn't already on.\n\n<strong>Step 3 (within the hour):</strong> Tell your IT contact, ${d.groupName}, or supervisor - even if you feel embarrassed.\n\n<strong>Step 4:</strong> Check for unusual activity - emails sent from your account, data accessed, settings changed.\n\n<strong>Step 5:</strong> If financial details were involved, contact your bank immediately.\n\nAttackers can act within minutes of receiving stolen credentials. Speed is your most important asset.`,
+          quiz: { q: `You clicked a suspicious link 2 hours ago and are now unsure if it was a phishing attempt. What should you do?`, opts: [`Wait to see if anything bad happens`, `Report it now and change your password - early action still limits damage`, `Delete the email and say nothing`], correct: 1, explanation: `It is never too late to report. Changing your password and alerting your IT contact can still limit damage even hours later. Silence only helps the attacker.` }
+        },
+        {
+          heading: 'Reporting is an act of protection, not failure',
+          body: `Phishing attacks are carefully designed by professionals to deceive people. Being targeted is not a sign of carelessness.\n\nWhen you report early:\n- IT can check whether others in ${org} received the same attack\n- Compromised accounts can be locked before more damage occurs\n- Colleagues can be warned before they click the same link\n- ${org} builds its understanding of current attack patterns\n\nMany of the most damaging breaches in NZ happened because someone was too embarrassed to report early.\n\n<strong>Report to CERT NZ:</strong> <a href="https://www.cert.govt.nz/individuals/report-incident/" target="_blank" rel="noopener">cert.govt.nz/report</a>\n<strong>Report to Netsafe:</strong> <a href="https://www.netsafe.org.nz/report" target="_blank" rel="noopener">netsafe.org.nz/report</a>`,
+          quiz: { q: `Why is reporting a phishing click important, even if you're embarrassed?`, opts: [`It isn't - just change your password and move on`, `It helps protect everyone in ${org} and limits damage that may already be occurring`, `It's only necessary if money has been lost`], correct: 1, explanation: `Early reporting is one of the most valuable actions you can take. It protects your colleagues and organisation - not just you.` }
+        }
+      ]
+    }
+  };
+  return tc[id];
+}
+
+// ============================================================
+// TRAINING
+// ============================================================
+function startTraining() {
+  state.currentModule = 0; state.currentStep = 0;
+  state.stepStage = 'read'; state.quizAnswered = false;
+  showAppScreen('screen-training');
+  renderTrainingStep();
+}
+
+function renderTrainingStep() {
+  const mod = state.modules[state.currentModule];
+  const content = getTrainingContent(mod.id);
+  const step = content.steps[state.currentStep];
+  const pct = Math.round(((state.currentModule * 10 + state.currentStep * 5) / (state.modules.length * 10)) * 100);
+  document.getElementById('training-heading').textContent = mod.title;
+  document.getElementById('training-counter').textContent = `Module ${state.currentModule + 1} of ${state.modules.length}`;
+  document.getElementById('training-progress').style.width = `${Math.min(pct, 93)}%`;
+  state.quizAnswered = false;
+
+  if (state.stepStage === 'read') {
+    document.getElementById('training-area').innerHTML =
+      `<div class="card accent-navy"><h3 style="font-family:'Lora',serif; font-size:17px; color:var(--navy); margin-bottom:12px;">${step.heading}</h3><div style="font-size:14.5px; line-height:1.75; color:var(--text-mid);">${step.body.replace(/\n/g,'<br>')}</div></div>`;
+    document.getElementById('training-btn-row').innerHTML =
+      `<button class="btn btn-primary" onclick="goToQuiz()">Check your understanding &rarr;</button>`;
+  } else {
+    const q = step.quiz;
+    const letters = ['A','B','C','D'];
+    let html = `<div class="card"><p style="font-weight:500; font-size:15px; margin-bottom:14px;">${q.q}</p>`;
+    q.opts.forEach((opt, i) => {
+      html += `<div class="option-card" id="topt-${i}" onclick="answerTrainingQ(${i})" tabindex="0" role="button">
+        <div class="option-letter">${letters[i]}</div>
+        <div class="option-text">${opt}</div>
+      </div>`;
+    });
+    html += `<div class="reveal-box" id="t-reveal">${q.explanation}</div></div>`;
+    document.getElementById('training-area').innerHTML = html;
+    const isLast = state.currentModule === state.modules.length - 1 && state.currentStep === content.steps.length - 1;
+    document.getElementById('training-btn-row').innerHTML =
+      `<button class="btn btn-primary" id="btn-continue" onclick="continueTraining()" style="display:none">${isLast ? 'Finish training &rarr;' : 'Continue &rarr;'}</button>`;
+  }
+}
+
+function goToQuiz() { state.stepStage = 'quiz'; renderTrainingStep(); }
+
+function answerTrainingQ(idx) {
+  if (state.quizAnswered) return;
+  state.quizAnswered = true;
+  const mod = state.modules[state.currentModule];
+  const content = getTrainingContent(mod.id);
+  const q = content.steps[state.currentStep].quiz;
+  const isCorrect = idx === q.correct;
+  q.opts.forEach((opt, i) => {
+    const el = document.getElementById(`topt-${i}`);
+    if (!el) return;
+    el.setAttribute('onclick','');
+    el.classList.add('disabled');
+    if (i === q.correct) el.classList.add('correct');
+    else if (i === idx && !isCorrect) el.classList.add('wrong');
+  });
+  document.getElementById('t-reveal').classList.add('show');
+  document.getElementById('btn-continue').style.display = 'inline-flex';
+}
+
+function continueTraining() {
+  const mod = state.modules[state.currentModule];
+  const content = getTrainingContent(mod.id);
+  state.currentStep++;
+  if (state.currentStep >= content.steps.length) {
+    state.currentModule++;
+    state.currentStep = 0;
+    if (state.currentModule >= state.modules.length) { showComplete(); return; }
+  }
+  state.stepStage = 'read';
+  document.getElementById('training-area').classList.remove('fade-in');
+  setTimeout(() => {
+    renderTrainingStep();
+    document.getElementById('training-area').classList.add('fade-in');
+  }, 50);
+}
+
+function showComplete() {
+  document.getElementById('training-progress').style.width = '100%';
+  document.getElementById('complete-msg').textContent =
+    `Well done. You've completed ${state.modules.length} training module${state.modules.length > 1 ? 's' : ''} tailored to ${state.orgName}. Share this tool with your colleagues - it's free for every church in New Zealand.`;
+
+  const tips = [
+    { icon: '📞', text: 'Verify unexpected financial requests by calling back on a known number - never one in the email.' },
+    { icon: '🔍', text: 'Hover over links before clicking. The root domain (last two words before the first slash) tells you who really owns the site.' },
+    { icon: '🎙', text: 'AI can clone voices. A familiar voice is no longer proof of identity for unusual requests.' },
+    { icon: '⏰', text: 'Urgency is a tactic, not a reason. The pause to verify always costs less than acting on a scam.' },
+    { icon: '🛡', text: 'If you click something suspicious, report it immediately. Speed protects everyone in your church.' }
+  ];
+  document.getElementById('final-tips').innerHTML = tips.map(t =>
+    `<li><span class="tip-check">${t.icon}</span><span>${t.text}</span></li>`
+  ).join('');
+  showAppScreen('screen-complete');
+}
+
+// ============================================================
+// SCAM ACCORDION
+// ============================================================
+function toggleScam(header) {
+  const card = header.closest('.scam-type-card');
+  const content = card.querySelector('.scam-content');
+  const arrow = header.querySelector('span:last-child');
+  if (!content) return;
+  const isOpen = content.style.display !== 'none' && content.style.display !== '';
+  content.style.display = isOpen ? 'none' : 'block';
+  if (arrow) arrow.textContent = isOpen ? '⌄' : '⌃';
+}
+
+// Init scam sections (closed by default except first)
+document.querySelectorAll('.scam-type-card').forEach((card, i) => {
+  const content = card.querySelector('.scam-content');
+  if (content) content.style.display = i === 0 ? 'block' : 'none';
+  const header = card.querySelector('.scam-type-header');
+  const arrow = header ? header.querySelector('span:last-child') : null;
+  if (arrow) arrow.textContent = i === 0 ? '⌃' : '⌄';
+});
+
+// ============================================================
+// CHECKLIST
+// ============================================================
+const checklistItems = {
+  email: [
+    'We have an SPF, DKIM, and DMARC record set up for our email domain',
+    'Staff know to check the full "From" email address - not just the display name',
+    'We have a process to verify unexpected financial requests before acting',
+    'Staff know never to send gift card codes or banking credentials by email',
+    'We have a clear email address for reporting suspicious messages internally'
+  ],
+  accounts: [
+    'Two-factor authentication (2FA) is enabled on all staff email accounts',
+    'Two-factor authentication is enabled on all church social media accounts',
+    'We use unique, strong passwords for each system (not shared passwords)',
+    'We have a password manager or secure method for storing passwords',
+    'We have a process for removing access when staff or volunteers leave'
+  ],
+  finance: [
+    'All bank transfers require sign-off from at least two people',
+    'Staff know that verbal or email-only requests for transfers are never sufficient on their own',
+    'We have verified our bank\'s actual contact number and it\'s saved somewhere secure',
+    'We review bank transactions at least monthly for unexpected activity',
+    'Our financial procedures have been reviewed in the last 12 months'
+  ],
+  culture: [
+    'All staff and regular volunteers have completed phishing awareness training',
+    'We have a clear, blame-free process for reporting phishing incidents',
+    'Staff feel comfortable calling back to verify unusual requests without fear of embarrassment',
+    'We have raised AI voice cloning / deepfake awareness with our leadership team',
+    'We share cyber safety reminders with our congregation at least once per year'
+  ]
+};
+
+const checkState = {};
+
+function initChecklist() {
+  if (document.getElementById('cl-email').innerHTML !== '') return;
+  const cats = ['email','accounts','finance','culture'];
+  cats.forEach(cat => {
+    const items = checklistItems[cat];
+    const container = document.getElementById('cl-' + cat);
+    container.innerHTML = items.map((item, i) => {
+      const key = `${cat}-${i}`;
+      const checked = checkState[key] || false;
+      return `<div class="checklist-item ${checked ? 'checked' : ''}" id="cli-${key}" onclick="toggleCheck('${key}')">
+        <div class="check-box">${checked ? '✓' : ''}</div>
+        <div class="check-text">${item}</div>
+      </div>`;
+    }).join('');
+  });
+  updateChecklistScore();
+}
+
+function toggleCheck(key) {
+  checkState[key] = !checkState[key];
+  const el = document.getElementById('cli-' + key);
+  const box = el.querySelector('.check-box');
+  if (checkState[key]) { el.classList.add('checked'); box.textContent = '✓'; }
+  else { el.classList.remove('checked'); box.textContent = ''; }
+  updateChecklistScore();
+}
+
+function updateChecklistScore() {
+  const total = 20;
+  const done = Object.values(checkState).filter(Boolean).length;
+  document.getElementById('cl-score-text').textContent = `${done} of ${total} complete`;
+  document.getElementById('cl-progress').style.width = `${(done / total) * 100}%`;
+}
+
+function resetChecklist() {
+  Object.keys(checkState).forEach(k => { checkState[k] = false; });
+  document.querySelectorAll('.checklist-item').forEach(el => {
+    el.classList.remove('checked');
+    el.querySelector('.check-box').textContent = '';
+  });
+  updateChecklistScore();
 }
 </script>
+
+<!-- PRINT STYLES -->
+<style media="print">
+  .site-header, .section-nav, .btn-row, .btn, .hero-stats { display: none !important; }
+  .section-panel { display: block !important; }
+  body { background: white; font-size: 13px; }
+  .main-wrap { max-width: 100%; padding: 0 20px; }
+  .hero { background: #1a2744; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+</style>
+
 </body>
 </html>

@@ -44,41 +44,8 @@
   .site-header p { color: var(--text2); font-size: 15px; max-width: 520px; margin: 0 auto 1.25rem; line-height: 1.65; }
   .header-tagline { display: inline-block; font-family: 'Lora', serif; font-style: italic; font-size: 14px; color: var(--teal-mid); border: 1px solid var(--teal-border); background: var(--teal-bg); border-radius: 20px; padding: 5px 16px; }
   .tab-nav-wrap { position: sticky; top: 0; z-index: 100; background: var(--surface); border-bottom: 1px solid var(--border); }
-  .tab-nav-inner { position: relative; }
-  .tab-nav { padding: 0.75rem 1rem; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-  .tab-nav::-webkit-scrollbar { display: none; }
-  /* Fade-out gradient on right edge to signal more content */
-  .tab-nav-inner::after {
-    content: '';
-    position: absolute;
-    top: 0; right: 0; bottom: 0;
-    width: 48px;
-    background: linear-gradient(to right, transparent, var(--surface));
-    pointer-events: none;
-    transition: opacity 0.2s;
-  }
-  .tab-nav-inner.at-end::after { opacity: 0; }
-  /* More indicator arrow */
-  .tab-more-hint {
-    position: absolute;
-    right: 6px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 26px;
-    height: 26px;
-    background: var(--surface);
-    border: 1px solid var(--border2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-    transition: opacity 0.2s;
-    box-shadow: -2px 0 6px rgba(0,0,0,0.06);
-  }
-  .tab-nav-inner.at-end .tab-more-hint { opacity: 0; }
-  .tab-more-hint svg { width: 12px; height: 12px; color: var(--text2); }
-  .tab-btn { flex-shrink: 0; padding: 7px 15px; border-radius: 20px; border: 1px solid var(--border2); background: transparent; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--text2); cursor: pointer; transition: all 0.15s ease; white-space: nowrap; }
+  .tab-nav { padding: 0.6rem 1rem 0.65rem; display: flex; flex-wrap: wrap; gap: 6px; }
+  .tab-btn { flex-shrink: 0; padding: 6px 13px; border-radius: 20px; border: 1px solid var(--border2); background: transparent; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--text2); cursor: pointer; transition: all 0.15s ease; white-space: nowrap; }
   .tab-btn:hover { background: var(--surface2); color: var(--text); }
   .tab-btn.active { background: var(--text); color: var(--bg); border-color: var(--text); }
   main { max-width: 720px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
@@ -167,23 +134,18 @@
 </header>
 
 <div class="tab-nav-wrap">
-  <div class="tab-nav-inner" id="tabNavInner">
-    <nav class="tab-nav" id="tabNav" role="navigation" aria-label="Resource sections">
-      <button class="tab-btn active" onclick="showTab('start', this)">Getting started</button>
-      <button class="tab-btn" onclick="showTab('sermons', this)">Sermon prep</button>
-      <button class="tab-btn" onclick="showTab('admin', this)">Admin &amp; emails</button>
-      <button class="tab-btn" onclick="showTab('pastoral', this)">Pastoral care</button>
-      <button class="tab-btn" onclick="showTab('events', this)">Events &amp; comms</button>
-      <button class="tab-btn" onclick="showTab('study', this)">Bible study</button>
-      <button class="tab-btn" onclick="showTab('translation', this)">Translation</button>
-      <button class="tab-btn" onclick="showTab('images', this)">Images &amp; design</button>
-      <button class="tab-btn" onclick="showTab('safety', this)">Safe use</button>
-      <button class="tab-btn" onclick="showTab('more', this)">Learn more</button>
-    </nav>
-    <div class="tab-more-hint" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-    </div>
-  </div>
+  <nav class="tab-nav" role="navigation" aria-label="Resource sections">
+    <button class="tab-btn active" onclick="showTab('start', this)">Getting started</button>
+    <button class="tab-btn" onclick="showTab('sermons', this)">Sermon prep</button>
+    <button class="tab-btn" onclick="showTab('admin', this)">Admin &amp; emails</button>
+    <button class="tab-btn" onclick="showTab('pastoral', this)">Pastoral care</button>
+    <button class="tab-btn" onclick="showTab('events', this)">Events &amp; comms</button>
+    <button class="tab-btn" onclick="showTab('study', this)">Bible study</button>
+    <button class="tab-btn" onclick="showTab('translation', this)">Translation</button>
+    <button class="tab-btn" onclick="showTab('images', this)">Images &amp; design</button>
+    <button class="tab-btn" onclick="showTab('safety', this)">Safe use</button>
+    <button class="tab-btn" onclick="showTab('more', this)">Learn more</button>
+  </nav>
 </div>
 
 <main>
@@ -751,20 +713,6 @@ function showCopied(btn) {
   }, 2000);
 }
 
-// Tab nav scroll indicator
-(function() {
-  var nav = document.getElementById('tabNav');
-  var inner = document.getElementById('tabNavInner');
-  if (!nav || !inner) return;
-  function updateHint() {
-    var atEnd = nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 8;
-    inner.classList.toggle('at-end', atEnd);
-  }
-  nav.addEventListener('scroll', updateHint, { passive: true });
-  window.addEventListener('resize', updateHint);
-  // Run after fonts/layout settle
-  setTimeout(updateHint, 200);
-})();
 </script>
 </body>
 </html>
